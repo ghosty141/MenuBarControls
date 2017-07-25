@@ -266,6 +266,12 @@ class PlayerPopoverViewController: NSViewController {
 
     @IBAction func next(_ sender: NSButton) {
         spotify.nextTrack()
+        if UserDefaults.standard.integer(forKey: "trackInfoDelay") != 0 {
+            mouseOverOn()
+            DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + UserDefaults.standard.double(forKey: "trackInfoDelay")) {
+                self.mouseOverOff()
+            }
+        }
     }
 
     @IBAction func previous(_ sender: NSButton) {

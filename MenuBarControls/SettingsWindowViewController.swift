@@ -30,9 +30,11 @@ class SettingsWindowViewController: NSViewController {
 
     @IBOutlet weak var blurValue: NSTextField!
     @IBOutlet weak var brightnessValue: NSTextField!
+    @IBOutlet weak var trackInfoDelayValue: NSTextField!
 
     @IBOutlet weak var blurValueStepperOutlet: NSStepperCell!
     @IBOutlet weak var brightnessValueStepperOutlet: NSStepperCell!
+    @IBOutlet weak var trackInfoDelayValueStepperOutlet: NSStepper!
 
     @IBOutlet weak var displayTrackTitleOutlet: NSButton!
     @IBOutlet weak var displayAlbumTitleOutlet: NSButton!
@@ -41,24 +43,35 @@ class SettingsWindowViewController: NSViewController {
 
     @IBAction func blurStepper(_ sender: NSStepperCell) {
         blurValue.integerValue = sender.integerValue
-        UserDefaults.standard.set(blurValue.integerValue, forKey: "blurValue")
+        UserDefaults.standard.set(sender.integerValue, forKey: "blurValue")
     }
 
     @IBAction func brightnessStepper(_ sender: NSStepperCell) {
         brightnessValue.integerValue = sender.integerValue
-        UserDefaults.standard.set(brightnessValue.integerValue, forKey: "brightnessValue")
+        UserDefaults.standard.set(sender.integerValue, forKey: "brightnessValue")
+    }
+
+    @IBAction func trackInfoDelayStepper(_ sender: NSStepperCell) {
+        trackInfoDelayValue.integerValue = sender.integerValue
+        UserDefaults.standard.set(sender.integerValue, forKey: "trackInfoDelay")
     }
 
     @IBAction func blurValueInput(_ sender: NSTextField) {
         blurValue.integerValue = sender.integerValue
         blurValueStepperOutlet.integerValue = sender.integerValue
-        UserDefaults.standard.set(blurValue.integerValue, forKey: "blurValue")
+        UserDefaults.standard.set(sender.integerValue, forKey: "blurValue")
     }
 
     @IBAction func brightnessValueInput(_ sender: NSTextField) {
         brightnessValue.integerValue = sender.integerValue
         brightnessValueStepperOutlet.integerValue = sender.integerValue
-        UserDefaults.standard.set(brightnessValue.integerValue, forKey: "brightnessValue")
+        UserDefaults.standard.set(sender.integerValue, forKey: "brightnessValue")
+    }
+
+    @IBAction func trackInfoDelayValueInput(_ sender: NSTextField) {
+        trackInfoDelayValue.integerValue = sender.integerValue
+        trackInfoDelayValueStepperOutlet.integerValue = sender.integerValue
+        UserDefaults.standard.set(sender.integerValue, forKey: "trackInfoDelay")
     }
 
     @IBAction func updateCoverButton(_ sender: NSButton) {
@@ -97,15 +110,19 @@ class SettingsWindowViewController: NSViewController {
 
         blurValue.formatter = onlyIntFormatter
         brightnessValue.formatter = onlyIntFormatter
+        trackInfoDelayValue.formatter = onlyIntFormatter
 
         updateRate.integerValue = UserDefaults.standard.integer(forKey: "UpdateRate")
         updateRateStepperOutlet.integerValue = UserDefaults.standard.integer(forKey: "UpdateRate")
 
         blurValue.integerValue = UserDefaults.standard.integer(forKey: "blurValue")
         blurValueStepperOutlet.integerValue = UserDefaults.standard.integer(forKey: "blurValue")
-
+        
         brightnessValue.integerValue = UserDefaults.standard.integer(forKey: "brightnessValue")
         brightnessValueStepperOutlet.integerValue = UserDefaults.standard.integer(forKey: "brightnessValue")
+
+        trackInfoDelayValue.integerValue = UserDefaults.standard.integer(forKey: "trackInfoDelay")
+        trackInfoDelayValueStepperOutlet.integerValue = UserDefaults.standard.integer(forKey: "trackInfoDelay")
 
         displayTrackTitleOutlet.state = UserDefaults.standard.integer(forKey: "displayTrackTitle")
         displayAlbumTitleOutlet.state = UserDefaults.standard.integer(forKey: "displayAlbumTitle")

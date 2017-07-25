@@ -683,20 +683,20 @@
             <objects>
                 <viewController showSeguePresentationStyle="single" id="XfG-lQ-9wD" customClass="SettingsWindowViewController" customModule="MenuBarControls" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" id="uhF-IL-j0s">
-                        <rect key="frame" x="0.0" y="0.0" width="422" height="256"/>
+                        <rect key="frame" x="0.0" y="0.0" width="422" height="265"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tabView translatesAutoresizingMaskIntoConstraints="NO" id="FXM-jl-jDJ">
-                                <rect key="frame" x="13" y="2" width="396" height="251"/>
+                                <rect key="frame" x="13" y="2" width="396" height="260"/>
                                 <font key="font" metaFont="system"/>
                                 <tabViewItems>
                                     <tabViewItem label="General" identifier="1" id="nA4-KJ-axq" userLabel="General">
                                         <view key="view" id="Id3-js-7Vu">
-                                            <rect key="frame" x="10" y="33" width="376" height="205"/>
+                                            <rect key="frame" x="10" y="33" width="376" height="214"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <subviews>
                                                 <stackView distribution="fill" orientation="horizontal" alignment="top" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="STF-QR-Kol" userLabel="UpdateRate Setting">
-                                                    <rect key="frame" x="10" y="186" width="356" height="19"/>
+                                                    <rect key="frame" x="10" y="195" width="356" height="19"/>
                                                     <subviews>
                                                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="NO" translatesAutoresizingMaskIntoConstraints="NO" id="edw-wK-vID" userLabel="Update Rate (seconds): Label">
                                                             <rect key="frame" x="-2" y="2" width="299" height="17"/>
@@ -770,11 +770,11 @@
                                     </tabViewItem>
                                     <tabViewItem label="Cover Art" identifier="" id="RbG-tV-MoQ">
                                         <view key="view" id="PoQ-eK-lQ9">
-                                            <rect key="frame" x="10" y="33" width="376" height="205"/>
+                                            <rect key="frame" x="10" y="33" width="376" height="214"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <subviews>
                                                 <stackView distribution="fill" orientation="horizontal" alignment="top" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="wqC-TV-2pl" userLabel="Blur Setting">
-                                                    <rect key="frame" x="10" y="186" width="356" height="19"/>
+                                                    <rect key="frame" x="10" y="195" width="356" height="19"/>
                                                     <subviews>
                                                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JId-y6-EBG" userLabel="Blur on mouseover Label">
                                                             <rect key="frame" x="-2" y="2" width="299" height="17"/>
@@ -831,7 +831,7 @@
                                                     </customSpacing>
                                                 </stackView>
                                                 <stackView distribution="fill" orientation="horizontal" alignment="centerY" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="kFb-yl-nVJ" userLabel="Brightness Setting">
-                                                    <rect key="frame" x="10" y="159" width="356" height="19"/>
+                                                    <rect key="frame" x="10" y="168" width="356" height="19"/>
                                                     <subviews>
                                                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vlz-n0-wGK" userLabel="Brightness on mouseover Label">
                                                             <rect key="frame" x="-2" y="1" width="299" height="17"/>
@@ -887,6 +887,63 @@
                                                         <real value="3.4028234663852886e+38"/>
                                                     </customSpacing>
                                                 </stackView>
+                                                <stackView distribution="fill" orientation="horizontal" alignment="centerY" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="GlA-IW-xcj" userLabel="TrackInfoDelay Setting">
+                                                    <rect key="frame" x="10" y="141" width="356" height="19"/>
+                                                    <subviews>
+                                                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LRb-L6-frb" userLabel="TrackInfoDelay">
+                                                            <rect key="frame" x="-2" y="1" width="299" height="17"/>
+                                                            <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Show track information after skipping (0 = off)" id="Pxr-Bm-XNF" userLabel="Show track information after skipping">
+                                                                <font key="font" metaFont="system"/>
+                                                                <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                                <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                                            </textFieldCell>
+                                                        </textField>
+                                                        <stackView distribution="fillProportionally" orientation="horizontal" alignment="top" spacing="2" horizontalStackHuggingPriority="250" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="XXn-wo-tqe" userLabel="Seconds Input">
+                                                            <rect key="frame" x="303" y="0.0" width="53" height="19"/>
+                                                            <subviews>
+                                                                <textField verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="NO" preferredMaxLayoutWidth="30" textCompletion="NO" translatesAutoresizingMaskIntoConstraints="NO" id="N5e-f1-Mjb" userLabel="Input Value">
+                                                                    <rect key="frame" x="0.0" y="0.0" width="40" height="19"/>
+                                                                    <constraints>
+                                                                        <constraint firstAttribute="width" constant="40" id="JSW-C8-O8s"/>
+                                                                        <constraint firstAttribute="height" constant="19" id="Pqd-uK-Stp"/>
+                                                                    </constraints>
+                                                                    <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" allowsUndo="NO" state="on" borderStyle="bezel" alignment="center" placeholderString="00" usesSingleLineMode="YES" bezelStyle="round" id="lXT-41-n7U">
+                                                                        <font key="font" metaFont="smallSystem"/>
+                                                                        <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                                                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                                    </textFieldCell>
+                                                                    <connections>
+                                                                        <action selector="trackInfoDelayValueInput:" target="XfG-lQ-9wD" id="Grx-6Y-oIT"/>
+                                                                    </connections>
+                                                                </textField>
+                                                                <stepper horizontalHuggingPriority="750" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="6oy-rO-rrc">
+                                                                    <rect key="frame" x="40" y="-2" width="15" height="22"/>
+                                                                    <stepperCell key="cell" controlSize="small" continuous="YES" alignment="left" maxValue="100" id="Hzc-gB-IhO">
+                                                                        <connections>
+                                                                            <action selector="trackInfoDelayStepper:" target="XfG-lQ-9wD" id="Jji-9w-9np"/>
+                                                                        </connections>
+                                                                    </stepperCell>
+                                                                </stepper>
+                                                            </subviews>
+                                                            <visibilityPriorities>
+                                                                <integer value="1000"/>
+                                                                <integer value="1000"/>
+                                                            </visibilityPriorities>
+                                                            <customSpacing>
+                                                                <real value="3.4028234663852886e+38"/>
+                                                                <real value="3.4028234663852886e+38"/>
+                                                            </customSpacing>
+                                                        </stackView>
+                                                    </subviews>
+                                                    <visibilityPriorities>
+                                                        <integer value="1000"/>
+                                                        <integer value="1000"/>
+                                                    </visibilityPriorities>
+                                                    <customSpacing>
+                                                        <real value="3.4028234663852886e+38"/>
+                                                        <real value="3.4028234663852886e+38"/>
+                                                    </customSpacing>
+                                                </stackView>
                                                 <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="jIY-UL-YwV" userLabel="Update Cover Art Button">
                                                     <rect key="frame" x="115" y="3" width="146" height="32"/>
                                                     <buttonCell key="cell" type="push" title="Update Cover Art" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="JcA-xk-QYv">
@@ -898,7 +955,7 @@
                                                     </connections>
                                                 </button>
                                                 <stackView distribution="fill" orientation="vertical" alignment="leading" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Af7-bA-fAE" userLabel="Display Options">
-                                                    <rect key="frame" x="10" y="69" width="219" height="80"/>
+                                                    <rect key="frame" x="10" y="51" width="219" height="80"/>
                                                     <subviews>
                                                         <button translatesAutoresizingMaskIntoConstraints="NO" id="FfW-4C-M4m">
                                                             <rect key="frame" x="-2" y="64" width="134" height="18"/>
@@ -957,15 +1014,18 @@
                                             </subviews>
                                             <constraints>
                                                 <constraint firstAttribute="bottom" secondItem="jIY-UL-YwV" secondAttribute="bottom" constant="10" id="0r9-Ij-jgr"/>
-                                                <constraint firstItem="Af7-bA-fAE" firstAttribute="top" secondItem="kFb-yl-nVJ" secondAttribute="bottom" constant="10" id="3RB-pV-KZP"/>
+                                                <constraint firstAttribute="trailing" secondItem="GlA-IW-xcj" secondAttribute="trailing" constant="10" id="1LE-lB-IzM"/>
+                                                <constraint firstItem="GlA-IW-xcj" firstAttribute="top" secondItem="kFb-yl-nVJ" secondAttribute="bottom" constant="8" symbolic="YES" id="2Qa-e8-4q4"/>
                                                 <constraint firstItem="wqC-TV-2pl" firstAttribute="top" secondItem="PoQ-eK-lQ9" secondAttribute="top" id="3jV-sk-i3f"/>
                                                 <constraint firstItem="Af7-bA-fAE" firstAttribute="leading" secondItem="PoQ-eK-lQ9" secondAttribute="leading" constant="10" id="7A1-8V-900"/>
                                                 <constraint firstItem="jIY-UL-YwV" firstAttribute="top" relation="greaterThanOrEqual" secondItem="Af7-bA-fAE" secondAttribute="bottom" constant="20" symbolic="YES" id="BNh-1w-XrJ"/>
+                                                <constraint firstItem="GlA-IW-xcj" firstAttribute="leading" secondItem="PoQ-eK-lQ9" secondAttribute="leading" constant="10" id="DTt-rM-UjF"/>
                                                 <constraint firstAttribute="trailing" secondItem="kFb-yl-nVJ" secondAttribute="trailing" constant="10" id="GEO-VT-PXl"/>
                                                 <constraint firstItem="kFb-yl-nVJ" firstAttribute="top" secondItem="wqC-TV-2pl" secondAttribute="bottom" constant="8" symbolic="YES" id="NMZ-6A-SqD"/>
                                                 <constraint firstAttribute="trailing" secondItem="wqC-TV-2pl" secondAttribute="trailing" constant="10" id="PAF-aJ-cgc"/>
                                                 <constraint firstItem="kFb-yl-nVJ" firstAttribute="leading" secondItem="PoQ-eK-lQ9" secondAttribute="leading" constant="10" id="UUz-Ki-dC9"/>
                                                 <constraint firstItem="wqC-TV-2pl" firstAttribute="leading" secondItem="PoQ-eK-lQ9" secondAttribute="leading" constant="10" id="dEi-gz-aqo"/>
+                                                <constraint firstItem="Af7-bA-fAE" firstAttribute="top" secondItem="GlA-IW-xcj" secondAttribute="bottom" constant="10" id="wzZ-pK-t07"/>
                                                 <constraint firstItem="jIY-UL-YwV" firstAttribute="centerX" secondItem="PoQ-eK-lQ9" secondAttribute="centerX" id="yck-if-t4V"/>
                                             </constraints>
                                         </view>
@@ -1023,6 +1083,8 @@
                         <outlet property="displayArtistNameOutlet" destination="8ZY-re-GwQ" id="H4d-vh-SzY"/>
                         <outlet property="displayTrackTimeOutlet" destination="Zr6-nj-fNs" id="mNR-AG-gD1"/>
                         <outlet property="displayTrackTitleOutlet" destination="FfW-4C-M4m" id="VCE-Zo-m6s"/>
+                        <outlet property="trackInfoDelayValue" destination="N5e-f1-Mjb" id="QNX-GE-guK"/>
+                        <outlet property="trackInfoDelayValueStepperOutlet" destination="6oy-rO-rrc" id="cWM-fS-HNo"/>
                         <outlet property="updateRate" destination="aKy-Na-1Se" id="BJS-3T-FMF"/>
                         <outlet property="updateRateStepperOutlet" destination="y2c-na-76n" id="s21-cb-ecy"/>
                     </connections>
