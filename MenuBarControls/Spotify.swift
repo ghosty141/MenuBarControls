@@ -41,7 +41,7 @@ class Spotify {
     var currentArtist: String {
         let getArtistScript = "tell application \"Spotify\"\n artist of current track \n end tell"
         if let scriptObject = NSAppleScript(source: getArtistScript) {
-            let getArtist = scriptObject.executeAndReturnError(nil).stringValue!
+            let getArtist = scriptObject.executeAndReturnError(nil).stringValue ?? "error"
             return getArtist
         }
         return "Error: No Artist Information found"
@@ -50,7 +50,7 @@ class Spotify {
     var currentTrack: String {
         let getTrackScript = "tell application \"Spotify\"\n name of current track \n end tell"
         if let scriptObject = NSAppleScript(source: getTrackScript) {
-            let getTrack = scriptObject.executeAndReturnError(nil).stringValue!
+            let getTrack = scriptObject.executeAndReturnError(nil).stringValue ?? "error"
             return getTrack
         }
         return "Error: No Track Information found"
@@ -59,7 +59,7 @@ class Spotify {
     var currentAlbum: String {
         let getAlbumScript = "tell application \"Spotify\"\n album of current track \n end tell"
         if let scriptObject = NSAppleScript(source: getAlbumScript) {
-            let getAlbum = scriptObject.executeAndReturnError(nil).stringValue!
+            let getAlbum = scriptObject.executeAndReturnError(nil).stringValue ?? "error"
             return getAlbum
         }
         return "Error: No Album Information found"
