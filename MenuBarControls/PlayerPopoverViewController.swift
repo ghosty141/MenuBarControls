@@ -247,7 +247,7 @@ class PlayerPopoverViewController: NSViewController {
 
     func mouseOverOff() {
         mouseoverIsActive = false
-        coverImage.image = imageGroup.original
+        coverImage.image = imageGroup.original ?? NSImage(named: "CoverError")
         trackLabel.isHidden = true
         albumLabel.isHidden = true
         artistLabel.isHidden = true
