@@ -10,13 +10,15 @@ A simple app that lets you control Spotify from the menubar. Completely written 
 
 Just download the app from [here](https://github.com/Ghosty141/MenuBarControls/releases/) and place it into your Applications Folder. Done!
 
-## License
-
-This project is licensed under the GNU General Public License v3.0 - see the LICENSE file for more details.
+In case it tells you that this app "can't be opened because it is from an unidentified developer.", just right-click the app and click on "Open".
 
 ## Usage Information
 
 To access the settings click on the cogwheel in the upper left corner under the cover-art, from there you can change how often the app should fetch information from Spotify or how the cover-art should look during mouseover.
+
+## License
+
+This project is licensed under the GNU General Public License v3.0 - see the LICENSE file for more details.
 
 ## Author
 
