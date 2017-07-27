@@ -658,6 +658,7 @@
                 </application>
                 <customObject id="Voe-Tx-rLC" customClass="AppDelegate" customModule="MenuBarControls" customModuleProvider="target"/>
                 <customObject id="Ady-hI-5gd" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+                <customObject id="Mwj-Wj-dbl" customClass="SUUpdater"/>
             </objects>
             <point key="canvasLocation" x="75" y="0.0"/>
         </scene>
@@ -1032,11 +1033,11 @@
                                     </tabViewItem>
                                     <tabViewItem label="About" identifier="2" id="r46-2r-vuC">
                                         <view key="view" id="3IY-o4-6k4">
-                                            <rect key="frame" x="10" y="33" width="376" height="205"/>
+                                            <rect key="frame" x="10" y="33" width="376" height="214"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <subviews>
                                                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zbY-Hb-Tcv">
-                                                    <rect key="frame" x="111" y="163" width="155" height="17"/>
+                                                    <rect key="frame" x="111" y="172" width="155" height="17"/>
                                                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Made with ❤️ by Ghosty" id="BJe-Sl-oxn">
                                                         <font key="font" metaFont="system"/>
                                                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -1044,7 +1045,7 @@
                                                     </textFieldCell>
                                                 </textField>
                                                 <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="TLI-sX-uUo" userLabel="OpenWebsite">
-                                                    <rect key="frame" x="148" y="115" width="81" height="32"/>
+                                                    <rect key="frame" x="148" y="124" width="81" height="32"/>
                                                     <buttonCell key="cell" type="push" title="Github" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="cCV-ow-C0o">
                                                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                                         <font key="font" metaFont="system"/>
