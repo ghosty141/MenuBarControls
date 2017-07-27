@@ -3,8 +3,8 @@
 <title>MenuBarControls</title>
 <item>
 <title>1.0.2</title>
-<pubDate>Thu, 27 Jul 2017 08:42:28 +0200</pubDate>
+<pubDate>Thu, 27 Jul 2017 09:20:31 +0200</pubDate>
 <sparkle:minimumSystemVersion>10.12</sparkle:minimumSystemVersion>
-<enclosure url="https://ghosty141.github.io/MenuBarControls/MenuBarControls_v1.0.2.dmg" sparkle:version="1.0.2" sparkle:shortVersionString="1.0.2" length="4642468" type="application/octet-stream" sparkle:dsaSignature="MC0CFDgGOJBGUp7bCXun0g2EN/7GMyyXAhUAkbbhmLyKbNwAZkhFd2aHzvPB5Ng="/>
+<enclosure url="https://github.com/Ghosty141/MenuBarControls/releases/download/v1.0.1/MenuBarControls.v1.0.1.dmg" sparkle:version="1.0.2" sparkle:shortVersionString="1.0.2" length="4642337" type="application/octet-stream" sparkle:dsaSignature="MCwCFCjZ2eV+uc+BCMjRM89IjhwSlsqgAhQ/6c4YooQTQl21ZIOYDbL60gkuBw=="/>
 </item>
 </channel></rss>
