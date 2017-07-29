@@ -24,10 +24,10 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSUserNotificationCenterDele
             UserDefaults.standard.set(10, forKey: "blurValue")
             UserDefaults.standard.set(50, forKey: "brightnessValue")
             UserDefaults.standard.set(0, forKey: "trackInfoDelay")
-            UserDefaults.standard.set(1, forKey: "displayTrackTitle")
-            UserDefaults.standard.set(1, forKey: "displayAlbumTitle")
-            UserDefaults.standard.set(1, forKey: "displayArtistName")
-            UserDefaults.standard.set(1, forKey: "displayTrackTime")
+            UserDefaults.standard.set(0, forKey: "displayTrackTitle")
+            UserDefaults.standard.set(0, forKey: "displayAlbumTitle")
+            UserDefaults.standard.set(0, forKey: "displayArtistName")
+            UserDefaults.standard.set(0, forKey: "displayTrackTime")
         }
 
         NSUserNotificationCenter.default.delegate = self
