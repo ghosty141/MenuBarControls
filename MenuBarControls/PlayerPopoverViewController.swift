@@ -12,12 +12,13 @@ var imageGroup = ImageMemory(originalImage: nil, processedImage: nil)
 
 class PlayerPopoverViewController: NSViewController {
 
-    private let appDel = NSApplication.shared().delegate as? AppDelegate
-    private var updateTimer: Timer?
-    private var lastURL: URL?
-    private var spotify = Spotify()
-    private var mouseoverIsActive = false
-    private var window: NSWindowController?
+    let appDel = NSApplication.shared().delegate as? AppDelegate
+    var updateTimer: Timer?
+    var lastURL: URL?
+    var spotify = Spotify()
+    var mouseoverIsActive = false
+    var window: NSWindowController?
+    let settingsController: NSWindowController = NSStoryboard(name: "Main", bundle: nil).instantiateController(withIdentifier: "SettingsWindow") as! NSWindowController
 
     @IBOutlet weak var coverImage: NSImageView!
     @IBOutlet weak var trackLabel: NSTextField!
@@ -77,37 +78,10 @@ class PlayerPopoverViewController: NSViewController {
         }
     }
 
-    // updateView only gets called when the Popover gets opened. See todo-file for it's future (it's a dark one)
-
-    func updateView() {
-        if spotify.isRunning() == true {
-            updateCover()
-            startTimer()
-            updatePlayPauseButton()
-            updateShuffleButton()
-            updateRepeatButton()
-            volumeSlider.doubleValue = Double(spotify.volume)
-
-            // Define tracking area for the mouseover on the artwork
-
-            let trackingArea = NSTrackingArea(rect: coverImage.bounds,
-                                              options: [NSTrackingAreaOptions.mouseEnteredAndExited,
-                                                        NSTrackingAreaOptions.activeAlways],
-                                              owner: self,
-                                              userInfo: nil)
-            coverImage.addTrackingArea(trackingArea)
-
-        } else {
-            stopTimer()
-            cover.image = NSImage(named: "ArtworkStartSpotify")
-        }
-
-    }
-
     func updatePlayPauseButton() {
-        if spotify.isPlaying() == true && playPauseButton.state == NSOffState {
+        if playPauseButton.state == NSOffState && spotify.isPlaying() == true {
             playPauseButton.state = NSOnState
-        } else if spotify.isPlaying() == false && playPauseButton.state == NSOnState {
+        } else if playPauseButton.state == NSOnState && spotify.isPlaying() == false {
             playPauseButton.state = NSOffState
         }
     }
@@ -164,7 +138,7 @@ class PlayerPopoverViewController: NSViewController {
         }
     }
 
-    // This might be a bit too much, not 100% happy with yet
+    // CABasicAnimation / Core Animation might be more suited for this
 
     func blurImage(_ inputImage: NSImage) -> NSImage {
         let context = CIContext(options: nil)
@@ -287,9 +261,7 @@ class PlayerPopoverViewController: NSViewController {
     }
 
     @IBAction func openSettings(_ sender: NSButton) {
-        let sb = NSStoryboard(name: "Main", bundle: nil)
-        window = sb.instantiateController(withIdentifier: "SettingsWindow") as? NSWindowController
-        window?.showWindow(self)
+        settingsController.showWindow(self)
     }
 
     // Overrides
@@ -305,17 +277,23 @@ class PlayerPopoverViewController: NSViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Notifications if the popover closes or shows
+        updateCover()
+        startTimer()
+        updatePlayPauseButton()
+        updateShuffleButton()
+        updateRepeatButton()
+        volumeSlider.doubleValue = Double(spotify.volume)
 
-        NotificationCenter.default.addObserver(
-            self,
-            selector: #selector(PlayerPopoverViewController.updateView),
-            name: Notification.Name("ShowPopupNotification"),
-            object: nil)
-        NotificationCenter.default.addObserver(
-            self,
-            selector: #selector(PlayerPopoverViewController.stopTimer),
-            name: Notification.Name("ClosePopupNotification"),
-            object: nil)
+        let trackingArea = NSTrackingArea(rect: coverImage.bounds,
+                                          options: [NSTrackingAreaOptions.mouseEnteredAndExited,
+                                                    NSTrackingAreaOptions.activeAlways],
+                                          owner: self,
+                                          userInfo: nil)
+        coverImage.addTrackingArea(trackingArea)
+    }
+
+    override func viewDidDisappear() {
+        super.viewDidDisappear()
+        updateTimer?.invalidate()
     }
 }

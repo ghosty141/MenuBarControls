@@ -43,15 +43,11 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSUserNotificationCenterDele
                 self.closePopover(event)
             }
         }
-
-        let storyboard = NSStoryboard(name: "Main", bundle: nil)
-
-        popover.contentViewController = storyboard.instantiateController(
-            withIdentifier: "PlayerPopover") as? NSViewController
-
     }
 
     func applicationWillTerminate(_ aNotification: Notification) {
+        eventMonitor?.stop()
+        NotificationCenter.default.removeObserver(self)
     }
 
     func userNotificationCenter(_ center: NSUserNotificationCenter,
@@ -64,6 +60,8 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSUserNotificationCenterDele
             if popover.isShown {
                 closePopover(sender)
             } else {
+                popover.contentViewController = NSStoryboard(name: "Main", bundle: nil).instantiateController(
+                    withIdentifier: "PlayerPopover") as? NSViewController
                 showPopover(sender)
             }
         } else {
@@ -80,12 +78,10 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSUserNotificationCenterDele
         if let button = statusItem.button {
             popover.show(relativeTo: button.bounds, of: button, preferredEdge: NSRectEdge.minY)
         }
-        NotificationCenter.default.post(name: Notification.Name("ShowPopupNotification"), object: nil)
         eventMonitor?.start()
     }
 
     func closePopover(_ sender: AnyObject?) {
-        NotificationCenter.default.post(name: Notification.Name("ClosePopupNotification"), object: nil)
         popover.performClose(sender)
         eventMonitor?.stop()
     }

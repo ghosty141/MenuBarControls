@@ -9,8 +9,6 @@ import Cocoa
 
 class SettingsWindowViewController: NSViewController {
 
-    let onlyIntFormatter = TextFieldFormatter()
-
     // GENERAL
 
     @IBOutlet var updateRate: NSTextField!
@@ -105,19 +103,23 @@ class SettingsWindowViewController: NSViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+    }
 
-        // Sets the objects to the stored values
+    override func viewWillAppear() {
+        super.viewWillAppear()
 
-        blurValue.formatter = onlyIntFormatter
-        brightnessValue.formatter = onlyIntFormatter
-        trackInfoDelayValue.formatter = onlyIntFormatter
+        // Init stored preferences
+
+        blurValue.formatter = TextFieldFormatter()
+        brightnessValue.formatter = TextFieldFormatter()
+        trackInfoDelayValue.formatter = TextFieldFormatter()
 
         updateRate.integerValue = UserDefaults.standard.integer(forKey: "UpdateRate")
         updateRateStepperOutlet.integerValue = UserDefaults.standard.integer(forKey: "UpdateRate")
 
         blurValue.integerValue = UserDefaults.standard.integer(forKey: "blurValue")
         blurValueStepperOutlet.integerValue = UserDefaults.standard.integer(forKey: "blurValue")
-        
+
         brightnessValue.integerValue = UserDefaults.standard.integer(forKey: "brightnessValue")
         brightnessValueStepperOutlet.integerValue = UserDefaults.standard.integer(forKey: "brightnessValue")
 
