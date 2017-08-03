@@ -1054,6 +1054,17 @@
                                                         <action selector="openWebsite:" target="XfG-lQ-9wD" id="EwB-f1-NQH"/>
                                                     </connections>
                                                 </button>
+                                                <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8PL-vH-IKe">
+                                                    <rect key="frame" x="115" y="91" width="147" height="32"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                                    <buttonCell key="cell" type="push" title="Check for Update" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="r9R-8d-AFi">
+                                                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                                        <font key="font" metaFont="system"/>
+                                                    </buttonCell>
+                                                    <connections>
+                                                        <action selector="checkForUpdates:" target="XfG-lQ-9wD" id="hO2-Ew-f93"/>
+                                                    </connections>
+                                                </button>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="TLI-sX-uUo" firstAttribute="top" relation="lessThanOrEqual" secondItem="zbY-Hb-Tcv" secondAttribute="bottom" constant="20" id="45i-BT-MnT"/>

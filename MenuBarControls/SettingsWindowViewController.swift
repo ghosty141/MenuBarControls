@@ -6,6 +6,7 @@
 //
 
 import Cocoa
+import Sparkle
 
 class SettingsWindowViewController: NSViewController {
 
@@ -100,6 +101,12 @@ class SettingsWindowViewController: NSViewController {
     @IBAction func openWebsite(_ sender: NSButton) {
         NSWorkspace.shared().open(URL(string: "https://github.com/Ghosty141/MenuBarControls")!)
     }
+
+    @IBAction func checkForUpdates(_ sender: NSButton) {
+        SUUpdater.shared().checkForUpdates(self)
+    }
+
+    // Overrides
 
     override func viewDidLoad() {
         super.viewDidLoad()
