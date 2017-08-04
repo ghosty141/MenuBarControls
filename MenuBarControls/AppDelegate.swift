@@ -47,7 +47,6 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSUserNotificationCenterDele
 
     func applicationWillTerminate(_ aNotification: Notification) {
         eventMonitor?.stop()
-        NotificationCenter.default.removeObserver(self)
     }
 
     func userNotificationCenter(_ center: NSUserNotificationCenter,

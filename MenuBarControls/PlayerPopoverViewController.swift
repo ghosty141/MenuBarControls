@@ -18,7 +18,8 @@ class PlayerPopoverViewController: NSViewController {
     var spotify = Spotify()
     var mouseoverIsActive = false
     var window: NSWindowController?
-    let settingsController: NSWindowController = NSStoryboard(name: "Main", bundle: nil).instantiateController(withIdentifier: "SettingsWindow") as! NSWindowController
+    let settingsController: NSWindowController =
+        NSStoryboard(name: "Main", bundle: nil).instantiateController(withIdentifier: "SettingsWindow") as! NSWindowController
 
     @IBOutlet weak var coverImage: NSImageView!
     @IBOutlet weak var trackLabel: NSTextField!
@@ -213,6 +214,7 @@ class PlayerPopoverViewController: NSViewController {
         artist.stringValue = spotify.currentArtist
         trackTimeLabel.stringValue =
 "- \(formatTime(using: spotify.currentPlayerPosition)) / \(formatTime(using: spotify.currentTrackDuration)) -"
+
         trackLabel.isHidden = !Bool(UserDefaults.standard.integer(forKey: "displayTrackTitle") as NSNumber)
         albumLabel.isHidden = !Bool(UserDefaults.standard.integer(forKey: "displayAlbumTitle") as NSNumber)
         artistLabel.isHidden = !Bool(UserDefaults.standard.integer(forKey: "displayArtistName") as NSNumber)
@@ -242,7 +244,7 @@ class PlayerPopoverViewController: NSViewController {
         spotify.nextTrack()
         if UserDefaults.standard.integer(forKey: "trackInfoDelay") != 0 {
             mouseOverOn()
-            DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + UserDefaults.standard.double(forKey: "trackInfoDelay")) {
+                DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + UserDefaults.standard.double(forKey: "trackInfoDelay")) {
                 self.mouseOverOff()
             }
         }

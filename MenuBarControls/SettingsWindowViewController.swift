@@ -98,6 +98,8 @@ class SettingsWindowViewController: NSViewController {
 
     // ABOUT
 
+    @IBOutlet weak var versionLabel: NSTextField!
+
     @IBAction func openWebsite(_ sender: NSButton) {
         NSWorkspace.shared().open(URL(string: "https://github.com/Ghosty141/MenuBarControls")!)
     }
@@ -114,6 +116,8 @@ class SettingsWindowViewController: NSViewController {
 
     override func viewWillAppear() {
         super.viewWillAppear()
+
+        versionLabel.stringValue = Bundle.main.object(forInfoDictionaryKey: "CFBundleVersion") as! String
 
         // Init stored preferences
 
