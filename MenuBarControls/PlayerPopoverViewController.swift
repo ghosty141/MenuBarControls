@@ -167,24 +167,24 @@ class PlayerPopoverViewController: NSViewController {
         cropBlack!.setValue(image, forKey: "inputBackgroundImage")
         let croppedBlack = cropBlack!.outputImage
 
+        // Blurs the input
+
+        let blurFilter = CIFilter(name: "CIGaussianBlur")
+        blurFilter!.setValue(extendedImage, forKey: kCIInputImageKey)
+        blurFilter!.setValue(CGFloat(UserDefaults.standard.integer(forKey: "blurValue")), forKey: kCIInputRadiusKey)
+        let blurredImage = blurFilter!.outputImage
+        
         // Lays the black image ontop of the original
 
         let mixFilter = CIFilter(name: "CISourceAtopCompositing")
         mixFilter!.setValue(croppedBlack, forKey: "inputImage")
-        mixFilter!.setValue(extendedImage, forKey: "inputBackgroundImage") //input change
+        mixFilter!.setValue(blurredImage, forKey: "inputBackgroundImage") //input change
         let mixed = mixFilter!.outputImage
-
-        // Blurs the input
-
-        let blurFilter = CIFilter(name: "CIGaussianBlur")
-        blurFilter!.setValue(mixed, forKey: kCIInputImageKey)
-        blurFilter!.setValue(CGFloat(UserDefaults.standard.integer(forKey: "blurValue")), forKey: kCIInputRadiusKey)
-        let blurredImage = blurFilter!.outputImage
-
+    
         // Crops it again so there aren't any borders
 
         let cropFilter = CIFilter(name: "CICrop")
-        cropFilter!.setValue(blurredImage, forKey: kCIInputImageKey)
+        cropFilter!.setValue(mixed, forKey: kCIInputImageKey)
         cropFilter!.setValue(CIVector(cgRect: image!.extent), forKey: "inputRectangle")
         let cropped = cropFilter!.outputImage
 

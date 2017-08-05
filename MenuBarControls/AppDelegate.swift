@@ -41,7 +41,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSUserNotificationCenterDele
 
         eventMonitor = EventMonitor(
         mask: [NSEventMask.leftMouseDown, NSEventMask.rightMouseDown]) { [unowned self] event in
-            if (self.popover?.isShown)! {
+            if self.popover?.isShown != nil {
                 self.closePopover(event)
             }
         }
@@ -97,7 +97,6 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSUserNotificationCenterDele
         popover?.performClose(sender)
         eventMonitor?.stop()
         popover = nil
-        print(popover ?? "test")
     }
 
 }
