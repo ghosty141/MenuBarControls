@@ -8,18 +8,14 @@
 import Cocoa
 import CoreImage
 
-var imageGroup = ImageMemory(originalImage: nil, processedImage: nil)
-
 class PlayerPopoverViewController: NSViewController {
 
     let appDel = NSApplication.shared().delegate as? AppDelegate
-    var updateTimer: Timer?
     var lastURL: URL?
-    var spotify = Spotify()
+    let spotify = Spotify()
     var mouseoverIsActive = false
-    var window: NSWindowController?
-    let settingsController: NSWindowController =
-        NSStoryboard(name: "Main", bundle: nil).instantiateController(withIdentifier: "SettingsWindow") as! NSWindowController
+    weak var updateTimer: Timer?
+    var settingsController: NSWindowController?
 
     @IBOutlet weak var coverImage: NSImageView!
     @IBOutlet weak var trackLabel: NSTextField!
@@ -72,7 +68,7 @@ class PlayerPopoverViewController: NSViewController {
                 volumeSlider.doubleValue = spotify.volume
             } else {
                 updatePlayPauseButton()
-                if appDel?.popover.isShown == false {
+                if appDel?.popover?.isShown == false {
                     stopTimer()
                 }
             }
@@ -263,7 +259,8 @@ class PlayerPopoverViewController: NSViewController {
     }
 
     @IBAction func openSettings(_ sender: NSButton) {
-        settingsController.showWindow(self)
+        settingsController = NSStoryboard(name: "Main", bundle: nil).instantiateController(withIdentifier: "SettingsWindow") as? NSWindowController
+        settingsController?.showWindow(self)
     }
 
     // Overrides
@@ -297,5 +294,9 @@ class PlayerPopoverViewController: NSViewController {
     override func viewDidDisappear() {
         super.viewDidDisappear()
         updateTimer?.invalidate()
+        updateTimer = nil
+        settingsController = nil
+        imageGroup = ImageMemory(originalImage: nil, processedImage: nil)
+        lastURL = nil
     }
 }

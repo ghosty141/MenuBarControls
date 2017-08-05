@@ -5,8 +5,9 @@
 //  Copyright © 2017 Ghostly. All rights reserved.
 //
 
-import Foundation
 import Cocoa
+
+var imageGroup = ImageMemory(originalImage: nil, processedImage: nil)
 
 struct ImageMemory {
     var original: NSImage?

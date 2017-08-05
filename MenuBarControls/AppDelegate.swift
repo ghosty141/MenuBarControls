@@ -7,7 +7,7 @@
 
 import Cocoa
 
-var startedAtLogin = false
+var startedAtLogin = false  // Global var since the settings have to access it
 
 @NSApplicationMain
 class AppDelegate: NSObject, NSApplicationDelegate, NSUserNotificationCenterDelegate {
@@ -15,7 +15,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSUserNotificationCenterDele
     let launchedBefore = UserDefaults.standard.bool(forKey: "launchedBefore")
 
     let statusItem = NSStatusBar.system().statusItem(withLength: NSSquareStatusItemLength)
-    let popover = NSPopover()
+    var popover: NSPopover?
     let spotify = Spotify()
     var eventMonitor: EventMonitor?
 
@@ -41,7 +41,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSUserNotificationCenterDele
 
         eventMonitor = EventMonitor(
         mask: [NSEventMask.leftMouseDown, NSEventMask.rightMouseDown]) { [unowned self] event in
-            if self.popover.isShown {
+            if (self.popover?.isShown)! {
                 self.closePopover(event)
             }
         }
@@ -68,12 +68,13 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSUserNotificationCenterDele
 
     func togglePopover(_ sender: AnyObject?) {
         if spotify.isRunning() == true {
-            if popover.isShown {
-                closePopover(sender)
-            } else {
-                popover.contentViewController = NSStoryboard(name: "Main", bundle: nil).instantiateController(
+            if popover == nil || popover?.isShown == false{
+                popover = NSPopover()
+                popover?.contentViewController = NSStoryboard(name: "Main", bundle: nil).instantiateController(
                     withIdentifier: "PlayerPopover") as? NSViewController
                 showPopover(sender)
+            } else {
+                popover?.close()
             }
         } else {
             let notification = NSUserNotification()
@@ -87,14 +88,16 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSUserNotificationCenterDele
 
     func showPopover(_ sender: AnyObject?) {
         if let button = statusItem.button {
-            popover.show(relativeTo: button.bounds, of: button, preferredEdge: NSRectEdge.minY)
+            popover?.show(relativeTo: button.bounds, of: button, preferredEdge: NSRectEdge.minY)
         }
         eventMonitor?.start()
     }
 
     func closePopover(_ sender: AnyObject?) {
-        popover.performClose(sender)
+        popover?.performClose(sender)
         eventMonitor?.stop()
+        popover = nil
+        print(popover ?? "test")
     }
 
 }
