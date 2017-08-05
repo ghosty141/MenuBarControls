@@ -7,6 +7,8 @@
 
 import Cocoa
 
+var startedAtLogin = false
+
 @NSApplicationMain
 class AppDelegate: NSObject, NSApplicationDelegate, NSUserNotificationCenterDelegate {
 
@@ -42,6 +44,16 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSUserNotificationCenterDele
             if self.popover.isShown {
                 self.closePopover(event)
             }
+        }
+
+        for app in NSWorkspace.shared().runningApplications {
+            if app.bundleIdentifier == "com.Ghostly.MBCLauncher" {
+                startedAtLogin = true
+            }
+        }
+
+        if startedAtLogin {
+            DistributedNotificationCenter.default().post(name: Notification.Name("killme"), object: Bundle.main.bundleIdentifier!)
         }
     }
 

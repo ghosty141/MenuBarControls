@@ -7,6 +7,7 @@
 
 import Cocoa
 import Sparkle
+import ServiceManagement
 
 class SettingsWindowViewController: NSViewController {
 
@@ -15,10 +16,15 @@ class SettingsWindowViewController: NSViewController {
     @IBOutlet var updateRate: NSTextField!
 
     @IBOutlet weak var updateRateStepperOutlet: NSStepperCell!
+    @IBOutlet weak var startAtLoginOutlet: NSButton!
 
     @IBAction func updateRateStepper(_ sender: NSStepper) {
         updateRate.integerValue = sender.integerValue
         UserDefaults.standard.set(updateRate.integerValue, forKey: "UpdateRate")
+    }
+
+    @IBAction func startAtLogin(_ sender: NSButton) {
+        SMLoginItemSetEnabled("com.Ghostly.MBCLauncher" as CFString, Bool(sender.state as NSNumber))
     }
 
     @IBAction func quitApplication(_ sender: NSButtonCell) {
@@ -118,6 +124,8 @@ class SettingsWindowViewController: NSViewController {
         super.viewWillAppear()
 
         versionLabel.stringValue = Bundle.main.object(forInfoDictionaryKey: "CFBundleVersion") as! String
+
+        startAtLoginOutlet.state = Int(NSNumber(value: startedAtLogin))
 
         // Init stored preferences
 

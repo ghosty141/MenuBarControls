@@ -758,10 +758,23 @@
                                                         </connections>
                                                     </buttonCell>
                                                 </button>
+                                                <button translatesAutoresizingMaskIntoConstraints="NO" id="iNO-ca-BIF">
+                                                    <rect key="frame" x="8" y="175" width="156" height="18"/>
+                                                    <buttonCell key="cell" type="check" title="Start the App at Login" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="2Ob-oI-UzQ">
+                                                        <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                                        <font key="font" metaFont="system"/>
+                                                    </buttonCell>
+                                                    <connections>
+                                                        <action selector="startAtLogin:" target="XfG-lQ-9wD" id="nmY-93-oye"/>
+                                                    </connections>
+                                                </button>
                                             </subviews>
                                             <constraints>
+                                                <constraint firstItem="iNO-ca-BIF" firstAttribute="top" secondItem="STF-QR-Kol" secondAttribute="bottom" constant="8" symbolic="YES" id="4vP-Zb-Mn5"/>
                                                 <constraint firstItem="STF-QR-Kol" firstAttribute="top" secondItem="Id3-js-7Vu" secondAttribute="top" id="65a-jb-Xrt"/>
-                                                <constraint firstItem="1AS-F6-ZH9" firstAttribute="top" relation="greaterThanOrEqual" secondItem="STF-QR-Kol" secondAttribute="bottom" constant="20" symbolic="YES" id="Iwp-SA-6ha"/>
+                                                <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="iNO-ca-BIF" secondAttribute="trailing" constant="20" symbolic="YES" id="9UG-qH-aFj"/>
+                                                <constraint firstItem="1AS-F6-ZH9" firstAttribute="top" relation="greaterThanOrEqual" secondItem="iNO-ca-BIF" secondAttribute="bottom" constant="20" symbolic="YES" id="Dpl-dw-yDF"/>
+                                                <constraint firstItem="iNO-ca-BIF" firstAttribute="leading" secondItem="Id3-js-7Vu" secondAttribute="leading" constant="10" id="K50-eH-4wP"/>
                                                 <constraint firstAttribute="trailing" secondItem="STF-QR-Kol" secondAttribute="trailing" constant="10" id="Lzh-ra-3cs"/>
                                                 <constraint firstItem="STF-QR-Kol" firstAttribute="leading" secondItem="Id3-js-7Vu" secondAttribute="leading" constant="10" id="MQX-fM-xN7"/>
                                                 <constraint firstAttribute="bottom" secondItem="1AS-F6-ZH9" secondAttribute="bottom" constant="10" id="qqa-FH-xeN"/>
@@ -1107,6 +1120,7 @@
                         <outlet property="displayArtistNameOutlet" destination="8ZY-re-GwQ" id="H4d-vh-SzY"/>
                         <outlet property="displayTrackTimeOutlet" destination="Zr6-nj-fNs" id="mNR-AG-gD1"/>
                         <outlet property="displayTrackTitleOutlet" destination="FfW-4C-M4m" id="VCE-Zo-m6s"/>
+                        <outlet property="startAtLoginOutlet" destination="iNO-ca-BIF" id="bv4-bH-jAS"/>
                         <outlet property="trackInfoDelayValue" destination="N5e-f1-Mjb" id="QNX-GE-guK"/>
                         <outlet property="trackInfoDelayValueStepperOutlet" destination="6oy-rO-rrc" id="cWM-fS-HNo"/>
                         <outlet property="updateRate" destination="aKy-Na-1Se" id="BJS-3T-FMF"/>

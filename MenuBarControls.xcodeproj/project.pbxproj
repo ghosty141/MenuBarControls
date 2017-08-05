@@ -18,7 +18,27 @@
 		D63A6D911F20D6B900028B14 /* TextFieldFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D63A6D901F20D6B900028B14 /* TextFieldFormatter.swift */; };
 		D63A6D951F20DA2800028B14 /* SettingsWindowViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D63A6D941F20DA2800028B14 /* SettingsWindowViewController.swift */; };
 		D681140E1F29B5B7007070E0 /* dsa_pub.pem in Resources */ = {isa = PBXBuildFile; fileRef = D681140D1F29B5B7007070E0 /* dsa_pub.pem */; };
+		D6A712621F3625780074FBBF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6A712611F3625780074FBBF /* AppDelegate.swift */; };
+		D6A712661F3625780074FBBF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D6A712651F3625780074FBBF /* Assets.xcassets */; };
+		D6A712691F3625780074FBBF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D6A712671F3625780074FBBF /* Main.storyboard */; };
+		D6A7126F1F3626490074FBBF /* MBCHelper.app in Copy Files */ = {isa = PBXBuildFile; fileRef = D6A7125F1F3625780074FBBF /* MBCHelper.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		D6A712711F36269F0074FBBF /* ServiceManagement.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D6A712701F36269F0074FBBF /* ServiceManagement.framework */; };
+		D6B0CBE71F362AE40098B33F /* ServiceManagement.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D6A712701F36269F0074FBBF /* ServiceManagement.framework */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		D6A7126E1F36262C0074FBBF /* Copy Files */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = Contents/Library/LoginItems;
+			dstSubfolderSpec = 1;
+			files = (
+				D6A7126F1F3626490074FBBF /* MBCHelper.app in Copy Files */,
+			);
+			name = "Copy Files";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		2627885CA596E7F3F67674DC /* Pods-MenuBarControls.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MenuBarControls.release.xcconfig"; path = "Pods/Target Support Files/Pods-MenuBarControls/Pods-MenuBarControls.release.xcconfig"; sourceTree = "<group>"; };
@@ -34,6 +54,13 @@
 		D63A6D921F20D8D100028B14 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D63A6D941F20DA2800028B14 /* SettingsWindowViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsWindowViewController.swift; sourceTree = "<group>"; };
 		D681140D1F29B5B7007070E0 /* dsa_pub.pem */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = dsa_pub.pem; sourceTree = "<group>"; };
+		D6A7125F1F3625780074FBBF /* MBCHelper.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MBCHelper.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		D6A712611F3625780074FBBF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		D6A712651F3625780074FBBF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		D6A712681F3625780074FBBF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		D6A7126A1F3625780074FBBF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D6A712701F36269F0074FBBF /* ServiceManagement.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ServiceManagement.framework; path = System/Library/Frameworks/ServiceManagement.framework; sourceTree = SDKROOT; };
+		D6B0CBE51F362A550098B33F /* MBCHelper.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = MBCHelper.entitlements; sourceTree = "<group>"; };
 		F4A10F810616D467ADBE6EB0 /* Pods_MenuBarControls.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MenuBarControls.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		FB393304AEC3412010B6CBA9 /* Pods-MenuBarControls.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MenuBarControls.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MenuBarControls/Pods-MenuBarControls.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -43,7 +70,16 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D6A712711F36269F0074FBBF /* ServiceManagement.framework in Frameworks */,
 				C09416F4BBBE3C0ABC431540 /* Pods_MenuBarControls.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D6A7125C1F3625780074FBBF /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D6B0CBE71F362AE40098B33F /* ServiceManagement.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -63,6 +99,7 @@
 			isa = PBXGroup;
 			children = (
 				D63A6D721F20D43800028B14 /* MenuBarControls */,
+				D6A712601F3625780074FBBF /* MBCHelper */,
 				D63A6D711F20D43800028B14 /* Products */,
 				1339DB32219043FE626D9E62 /* Pods */,
 				FE08AC116B0243FC39AAA0DE /* Frameworks */,
@@ -74,6 +111,7 @@
 			isa = PBXGroup;
 			children = (
 				D63A6D701F20D43800028B14 /* MenuBarControls.app */,
+				D6A7125F1F3625780074FBBF /* MBCHelper.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -136,9 +174,22 @@
 			path = MenuBarControls;
 			sourceTree = "<group>";
 		};
+		D6A712601F3625780074FBBF /* MBCHelper */ = {
+			isa = PBXGroup;
+			children = (
+				D6B0CBE51F362A550098B33F /* MBCHelper.entitlements */,
+				D6A712611F3625780074FBBF /* AppDelegate.swift */,
+				D6A712651F3625780074FBBF /* Assets.xcassets */,
+				D6A712671F3625780074FBBF /* Main.storyboard */,
+				D6A7126A1F3625780074FBBF /* Info.plist */,
+			);
+			path = MBCHelper;
+			sourceTree = "<group>";
+		};
 		FE08AC116B0243FC39AAA0DE /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				D6A712701F36269F0074FBBF /* ServiceManagement.framework */,
 				F4A10F810616D467ADBE6EB0 /* Pods_MenuBarControls.framework */,
 			);
 			name = Frameworks;
@@ -158,6 +209,7 @@
 				D63A6D961F21DB1F00028B14 /* ShellScript */,
 				7764019AD2E970BFD4BF9A00 /* [CP] Embed Pods Frameworks */,
 				2A4F148CECE1FDEB8A53DADC /* [CP] Copy Pods Resources */,
+				D6A7126E1F36262C0074FBBF /* Copy Files */,
 			);
 			buildRules = (
 			);
@@ -166,6 +218,23 @@
 			name = MenuBarControls;
 			productName = MenuBarControls;
 			productReference = D63A6D701F20D43800028B14 /* MenuBarControls.app */;
+			productType = "com.apple.product-type.application";
+		};
+		D6A7125E1F3625780074FBBF /* MBCHelper */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D6A7126D1F3625780074FBBF /* Build configuration list for PBXNativeTarget "MBCHelper" */;
+			buildPhases = (
+				D6A7125B1F3625780074FBBF /* Sources */,
+				D6A7125C1F3625780074FBBF /* Frameworks */,
+				D6A7125D1F3625780074FBBF /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = MBCHelper;
+			productName = MBCHelper;
+			productReference = D6A7125F1F3625780074FBBF /* MBCHelper.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -180,7 +249,22 @@
 				TargetAttributes = {
 					D63A6D6F1F20D43800028B14 = {
 						CreatedOnToolsVersion = 8.3.3;
+						ProvisioningStyle = Manual;
+						SystemCapabilities = {
+							com.apple.Sandbox = {
+								enabled = 0;
+							};
+						};
+					};
+					D6A7125E1F3625780074FBBF = {
+						CreatedOnToolsVersion = 8.3.3;
+						DevelopmentTeam = 59UH2C9S7L;
 						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.Sandbox = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -198,6 +282,7 @@
 			projectRoot = "";
 			targets = (
 				D63A6D6F1F20D43800028B14 /* MenuBarControls */,
+				D6A7125E1F3625780074FBBF /* MBCHelper */,
 			);
 		};
 /* End PBXProject section */
@@ -210,6 +295,15 @@
 				D63A6D8A1F20D4CC00028B14 /* Assets.xcassets in Resources */,
 				D681140E1F29B5B7007070E0 /* dsa_pub.pem in Resources */,
 				D63A6D7B1F20D43800028B14 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D6A7125D1F3625780074FBBF /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D6A712661F3625780074FBBF /* Assets.xcassets in Resources */,
+				D6A712691F3625780074FBBF /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -291,6 +385,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		D6A7125B1F3625780074FBBF /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D6A712621F3625780074FBBF /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
@@ -298,6 +400,14 @@
 			isa = PBXVariantGroup;
 			children = (
 				D63A6D7A1F20D43800028B14 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		D6A712671F3625780074FBBF /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				D6A712681F3625780074FBBF /* Base */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
@@ -402,11 +512,15 @@
 			baseConfigurationReference = FB393304AEC3412010B6CBA9 /* Pods-MenuBarControls.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "";
 				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = MenuBarControls/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.12;
 				PRODUCT_BUNDLE_IDENTIFIER = com.Ghostly.MenuBarControls;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
@@ -416,11 +530,51 @@
 			baseConfigurationReference = 2627885CA596E7F3F67674DC /* Pods-MenuBarControls.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "";
 				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = MenuBarControls/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.12;
 				PRODUCT_BUNDLE_IDENTIFIER = com.Ghostly.MenuBarControls;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Release;
+		};
+		D6A7126B1F3625780074FBBF /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = MBCHelper/MBCHelper.entitlements;
+				CODE_SIGN_IDENTITY = "Mac Developer";
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = 59UH2C9S7L;
+				INFOPLIST_FILE = MBCHelper/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.Ghostly.MBCLauncher;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 3.0;
+			};
+			name = Debug;
+		};
+		D6A7126C1F3625780074FBBF /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = MBCHelper/MBCHelper.entitlements;
+				CODE_SIGN_IDENTITY = "Mac Developer";
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = 59UH2C9S7L;
+				INFOPLIST_FILE = MBCHelper/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.Ghostly.MBCLauncher;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
@@ -442,6 +596,15 @@
 			buildConfigurations = (
 				D63A6D801F20D43800028B14 /* Debug */,
 				D63A6D811F20D43800028B14 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		D6A7126D1F3625780074FBBF /* Build configuration list for PBXNativeTarget "MBCHelper" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D6A7126B1F3625780074FBBF /* Debug */,
+				D6A7126C1F3625780074FBBF /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
