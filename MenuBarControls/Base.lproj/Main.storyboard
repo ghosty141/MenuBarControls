@@ -718,7 +718,7 @@
                 <viewController title="General" storyboardIdentifier="General" showSeguePresentationStyle="single" id="pGK-kC-kB0" customClass="General" customModule="MenuBarControls" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" id="fYs-yT-Chz">
                         <rect key="frame" x="0.0" y="0.0" width="450" height="257"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView distribution="fill" orientation="horizontal" alignment="top" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="eos-71-VBf" userLabel="UpdateRate Setting">
                                 <rect key="frame" x="10" y="218" width="430" height="19"/>
@@ -807,14 +807,14 @@
             <objects>
                 <viewController title="Cover Art" storyboardIdentifier="CoverArt" showSeguePresentationStyle="single" id="XfG-lQ-9wD" customClass="CoverArt" customModule="MenuBarControls" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" id="2Xi-9w-kSW">
-                        <rect key="frame" x="0.0" y="0.0" width="440" height="257"/>
+                        <rect key="frame" x="0.0" y="0.0" width="430" height="257"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView distribution="fill" orientation="horizontal" alignment="top" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="3Qb-uQ-JPC" userLabel="Blur Setting">
-                                <rect key="frame" x="10" y="218" width="420" height="19"/>
+                                <rect key="frame" x="10" y="218" width="410" height="19"/>
                                 <subviews>
                                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yPN-0r-Lki" userLabel="Blur on mouseover Label">
-                                        <rect key="frame" x="-2" y="2" width="363" height="17"/>
+                                        <rect key="frame" x="-2" y="2" width="353" height="17"/>
                                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Blur on mouseover" id="v93-Bt-stP">
                                             <font key="font" metaFont="system"/>
                                             <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -822,7 +822,7 @@
                                         </textFieldCell>
                                     </textField>
                                     <stackView distribution="fillProportionally" orientation="horizontal" alignment="top" spacing="2" horizontalStackHuggingPriority="250" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="3y2-8L-Oti" userLabel="Blur Input">
-                                        <rect key="frame" x="367" y="0.0" width="53" height="19"/>
+                                        <rect key="frame" x="357" y="0.0" width="53" height="19"/>
                                         <subviews>
                                             <textField verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="NO" preferredMaxLayoutWidth="30" textCompletion="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TtW-q2-5nv" userLabel="Show Rate">
                                                 <rect key="frame" x="0.0" y="0.0" width="40" height="19"/>
@@ -868,10 +868,10 @@
                                 </customSpacing>
                             </stackView>
                             <stackView distribution="fill" orientation="horizontal" alignment="centerY" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ach-KQ-uN5" userLabel="Brightness Setting">
-                                <rect key="frame" x="10" y="191" width="420" height="19"/>
+                                <rect key="frame" x="10" y="191" width="410" height="19"/>
                                 <subviews>
                                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0Mz-2O-mmp" userLabel="Brightness on mouseover Label">
-                                        <rect key="frame" x="-2" y="1" width="363" height="17"/>
+                                        <rect key="frame" x="-2" y="1" width="353" height="17"/>
                                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Brightness on mouseover" id="ae3-at-yW6">
                                             <font key="font" metaFont="system"/>
                                             <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -879,7 +879,7 @@
                                         </textFieldCell>
                                     </textField>
                                     <stackView distribution="fillProportionally" orientation="horizontal" alignment="top" spacing="2" horizontalStackHuggingPriority="250" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="WeY-Fw-Ltr" userLabel="Brightness Input">
-                                        <rect key="frame" x="367" y="0.0" width="53" height="19"/>
+                                        <rect key="frame" x="357" y="0.0" width="53" height="19"/>
                                         <subviews>
                                             <textField verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="NO" preferredMaxLayoutWidth="30" textCompletion="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ADI-fH-3V9" userLabel="Show Rate">
                                                 <rect key="frame" x="0.0" y="0.0" width="40" height="19"/>
@@ -925,10 +925,10 @@
                                 </customSpacing>
                             </stackView>
                             <stackView distribution="fill" orientation="horizontal" alignment="centerY" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Xys-Hn-Hjr" userLabel="TrackInfoDelay Setting">
-                                <rect key="frame" x="10" y="164" width="420" height="19"/>
+                                <rect key="frame" x="10" y="164" width="410" height="19"/>
                                 <subviews>
                                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xuy-g1-PJy" userLabel="TrackInfoDelay">
-                                        <rect key="frame" x="-2" y="1" width="363" height="17"/>
+                                        <rect key="frame" x="-2" y="1" width="353" height="17"/>
                                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Show track information after skipping (0 = off)" id="9Tc-Td-SL1" userLabel="Show track information after skipping">
                                             <font key="font" metaFont="system"/>
                                             <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -936,7 +936,7 @@
                                         </textFieldCell>
                                     </textField>
                                     <stackView distribution="fillProportionally" orientation="horizontal" alignment="top" spacing="2" horizontalStackHuggingPriority="250" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="BzO-r1-FZv" userLabel="Seconds Input">
-                                        <rect key="frame" x="367" y="0.0" width="53" height="19"/>
+                                        <rect key="frame" x="357" y="0.0" width="53" height="19"/>
                                         <subviews>
                                             <textField verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="NO" preferredMaxLayoutWidth="30" textCompletion="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ilk-Gv-WBP" userLabel="Input Value">
                                                 <rect key="frame" x="0.0" y="0.0" width="40" height="19"/>
@@ -982,7 +982,7 @@
                                 </customSpacing>
                             </stackView>
                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="X1Y-iX-eZz" userLabel="Update Cover Art Button">
-                                <rect key="frame" x="147" y="3" width="146" height="32"/>
+                                <rect key="frame" x="142" y="3" width="146" height="32"/>
                                 <buttonCell key="cell" type="push" title="Update Cover Art" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Vaw-Am-fu5">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
@@ -1081,7 +1081,7 @@
                 </viewController>
                 <customObject id="rPt-NT-nkU" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-22" y="796.5"/>
+            <point key="canvasLocation" x="-27" y="796.5"/>
         </scene>
         <!--About-->
         <scene sceneID="dI6-Se-iLQ">

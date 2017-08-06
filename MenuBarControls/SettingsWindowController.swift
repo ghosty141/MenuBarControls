@@ -15,33 +15,41 @@ class SettingsWindowController: NSWindowController, NSWindowDelegate {
     var aboutTab: NSViewController?
 
     @IBAction func General(_ sender: NSToolbarItem) {
-        window?.contentViewController = generalTab
+        window?.contentView = generalTab?.view
     }
 
     @IBAction func CoverArt(_ sender: NSToolbarItem) {
-        window?.contentViewController = coverArtTab
+        window?.contentView = coverArtTab?.view
     }
 
     @IBAction func About(_ sender: NSToolbarItem) {
-        window?.contentViewController = aboutTab
+        window?.contentView = aboutTab?.view
     }
 
     @IBAction func Quit(_ sender: NSToolbarItem) {
         NSApplication.shared().terminate(self)
     }
+
+    func windowShouldClose(_ sender: Any) -> Bool {
+        print(generalTab ?? "nil")
+        print(coverArtTab ?? "nil")
+        print(aboutTab ?? "nil")
+        generalTab = nil
+        coverArtTab = nil
+        aboutTab = nil
+        print(generalTab ?? "nil")
+        print(coverArtTab ?? "nil")
+        print(aboutTab ?? "nil")
+        return true
+    }
     
-    override func windowWillLoad() {
-        super.windowWillLoad()
+    override func windowDidLoad() {
+        super.windowDidLoad()
+
+        window?.delegate = self
 
         generalTab = mainStoryboard.instantiateController(withIdentifier: "General") as? NSViewController
         coverArtTab = mainStoryboard.instantiateController(withIdentifier: "CoverArt") as? NSViewController
         aboutTab = mainStoryboard.instantiateController(withIdentifier: "About") as? NSViewController
-    }
-    
-    func windowWillClose(_ notification: Notification) {
-        window?.contentViewController = nil
-        generalTab = nil
-        coverArtTab = nil
-        aboutTab = nil
     }
 }

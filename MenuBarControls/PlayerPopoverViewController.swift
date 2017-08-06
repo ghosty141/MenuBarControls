@@ -14,7 +14,7 @@ class PlayerPopoverViewController: NSViewController {
     var lastURL: URL?
     let spotify = Spotify()
     var mouseoverIsActive = false
-    weak var updateTimer: Timer?
+    var updateTimer: Timer?
     var settingsController: NSWindowController?
 
     @IBOutlet weak var coverImage: NSImageView!
@@ -260,8 +260,7 @@ class PlayerPopoverViewController: NSViewController {
     }
 
     @IBAction func openSettings(_ sender: NSButton) {
-        settingsController = NSStoryboard(name: "Main", bundle: nil).instantiateController(
-            withIdentifier: "SettingsWindow") as? NSWindowController
+        settingsController = NSStoryboard(name: "Main", bundle: nil).instantiateController(withIdentifier: "SettingsWindow") as? NSWindowController
         settingsController?.showWindow(self)
     }
 

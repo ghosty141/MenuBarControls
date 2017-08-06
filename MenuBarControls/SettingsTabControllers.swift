@@ -127,10 +127,6 @@ class CoverArt: NSViewController {
         displayArtistNameOutlet.state = UserDefaults.standard.integer(forKey: "displayArtistName")
         displayTrackTimeOutlet.state = UserDefaults.standard.integer(forKey: "displayTrackTime")
     }
-
-    deinit {
-        print("rip")
-    }
 }
 
 class About: NSViewController {
