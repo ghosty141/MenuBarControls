@@ -6,8 +6,7 @@
 //
 
 import Cocoa
-
-let spotify = Spotify()
+import ScriptingBridge
 
 var imageGroup = ImageMemory(originalImage: nil, processedImage: nil)
 var startedAtLogin = false
@@ -20,6 +19,8 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSUserNotificationCenterDele
     let statusItem = NSStatusBar.system().statusItem(withLength: NSSquareStatusItemLength)
     var popover: NSPopover?
     var eventMonitor: EventMonitor?
+    
+    var spotify = SBApplication(bundleIdentifier: "com.spotify.client")! as SpotifyApplication
 
     func applicationDidFinishLaunching(_ aNotification: Notification) {
         if launchedBefore  == false {
@@ -69,7 +70,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSUserNotificationCenterDele
     }
 
     func togglePopover(_ sender: AnyObject?) {
-        if spotify.isRunning() == true {
+        if spotify.running == true {
             if popover == nil || popover?.isShown == false {
                 popover = NSPopover()
                 popover?.contentViewController = NSStoryboard(name: "Main", bundle: nil).instantiateController(

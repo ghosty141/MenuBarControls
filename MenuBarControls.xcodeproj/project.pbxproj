@@ -12,7 +12,6 @@
 		D63A6D741F20D43800028B14 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D63A6D731F20D43800028B14 /* AppDelegate.swift */; };
 		D63A6D7B1F20D43800028B14 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D63A6D791F20D43800028B14 /* Main.storyboard */; };
 		D63A6D841F20D46900028B14 /* Spotify.swift in Sources */ = {isa = PBXBuildFile; fileRef = D63A6D821F20D46900028B14 /* Spotify.swift */; };
-		D63A6D851F20D46900028B14 /* ImageMemory.swift in Sources */ = {isa = PBXBuildFile; fileRef = D63A6D831F20D46900028B14 /* ImageMemory.swift */; };
 		D63A6D871F20D47600028B14 /* EventMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = D63A6D861F20D47600028B14 /* EventMonitor.swift */; };
 		D63A6D8A1F20D4CC00028B14 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D63A6D891F20D4CC00028B14 /* Assets.xcassets */; };
 		D63A6D8E1F20D69900028B14 /* PlayerPopoverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D63A6D8D1F20D69900028B14 /* PlayerPopoverViewController.swift */; };
@@ -24,6 +23,7 @@
 		D6A712691F3625780074FBBF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D6A712671F3625780074FBBF /* Main.storyboard */; };
 		D6A7126F1F3626490074FBBF /* MBCHelper.app in Copy Files */ = {isa = PBXBuildFile; fileRef = D6A7125F1F3625780074FBBF /* MBCHelper.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		D6B0CBE71F362AE40098B33F /* ServiceManagement.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D6A712701F36269F0074FBBF /* ServiceManagement.framework */; };
+		D6EA0C381F37DE6800679D3C /* ImageMemory.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6EA0C371F37DE6800679D3C /* ImageMemory.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -47,7 +47,6 @@
 		D63A6D731F20D43800028B14 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D63A6D7A1F20D43800028B14 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		D63A6D821F20D46900028B14 /* Spotify.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Spotify.swift; sourceTree = "<group>"; };
-		D63A6D831F20D46900028B14 /* ImageMemory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageMemory.swift; sourceTree = "<group>"; };
 		D63A6D861F20D47600028B14 /* EventMonitor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventMonitor.swift; sourceTree = "<group>"; };
 		D63A6D891F20D4CC00028B14 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D63A6D8D1F20D69900028B14 /* PlayerPopoverViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayerPopoverViewController.swift; sourceTree = "<group>"; };
@@ -62,6 +61,7 @@
 		D6A7126A1F3625780074FBBF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D6A712701F36269F0074FBBF /* ServiceManagement.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ServiceManagement.framework; path = System/Library/Frameworks/ServiceManagement.framework; sourceTree = SDKROOT; };
 		D6B0CBE51F362A550098B33F /* MBCHelper.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = MBCHelper.entitlements; sourceTree = "<group>"; };
+		D6EA0C371F37DE6800679D3C /* ImageMemory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageMemory.swift; sourceTree = "<group>"; };
 		F4A10F810616D467ADBE6EB0 /* Pods_MenuBarControls.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MenuBarControls.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		FB393304AEC3412010B6CBA9 /* Pods-MenuBarControls.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MenuBarControls.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MenuBarControls/Pods-MenuBarControls.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -131,9 +131,9 @@
 			isa = PBXGroup;
 			children = (
 				D63A6D731F20D43800028B14 /* AppDelegate.swift */,
-				D63A6D831F20D46900028B14 /* ImageMemory.swift */,
 				D63A6D861F20D47600028B14 /* EventMonitor.swift */,
 				D63A6D901F20D6B900028B14 /* TextFieldFormatter.swift */,
+				D6EA0C371F37DE6800679D3C /* ImageMemory.swift */,
 				D63A6D891F20D4CC00028B14 /* Assets.xcassets */,
 				D63A6D921F20D8D100028B14 /* Info.plist */,
 			);
@@ -376,8 +376,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D6EA0C381F37DE6800679D3C /* ImageMemory.swift in Sources */,
 				D63A6D951F20DA2800028B14 /* SettingsTabControllers.swift in Sources */,
-				D63A6D851F20D46900028B14 /* ImageMemory.swift in Sources */,
 				D63A6D871F20D47600028B14 /* EventMonitor.swift in Sources */,
 				D63A6D911F20D6B900028B14 /* TextFieldFormatter.swift in Sources */,
 				D63A6D841F20D46900028B14 /* Spotify.swift in Sources */,
