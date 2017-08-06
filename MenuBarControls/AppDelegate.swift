@@ -7,7 +7,10 @@
 
 import Cocoa
 
-var startedAtLogin = false  // Global var since the settings have to access it
+let spotify = Spotify()
+
+var imageGroup = ImageMemory(originalImage: nil, processedImage: nil)
+var startedAtLogin = false
 
 @NSApplicationMain
 class AppDelegate: NSObject, NSApplicationDelegate, NSUserNotificationCenterDelegate {
@@ -15,7 +18,6 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSUserNotificationCenterDele
     let launchedBefore = UserDefaults.standard.bool(forKey: "launchedBefore")
 
     let statusItem = NSStatusBar.system().statusItem(withLength: NSSquareStatusItemLength)
-    let spotify = Spotify()
     var popover: NSPopover?
     var eventMonitor: EventMonitor?
 
@@ -40,9 +42,9 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSUserNotificationCenterDele
         }
 
         eventMonitor = EventMonitor(
-        mask: [NSEventMask.leftMouseDown, NSEventMask.rightMouseDown]) { [unowned self] event in
-            if self.popover?.isShown != nil {
-                self.closePopover(event)
+        mask: [NSEventMask.leftMouseDown, NSEventMask.rightMouseDown]) { [weak weakself = self] event in
+            if weakself?.popover?.isShown != nil {
+                weakself?.closePopover(event)
             }
         }
 
@@ -68,7 +70,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSUserNotificationCenterDele
 
     func togglePopover(_ sender: AnyObject?) {
         if spotify.isRunning() == true {
-            if popover == nil {
+            if popover == nil || popover?.isShown == false {
                 popover = NSPopover()
                 popover?.contentViewController = NSStoryboard(name: "Main", bundle: nil).instantiateController(
                     withIdentifier: "PlayerPopover") as? NSViewController

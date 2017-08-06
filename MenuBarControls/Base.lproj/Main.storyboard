@@ -668,7 +668,7 @@
                 <windowController storyboardIdentifier="SettingsWindow" showSeguePresentationStyle="single" id="B8D-0N-5wS" customClass="SettingsWindowController" customModule="MenuBarControls" customModuleProvider="target" sceneMemberID="viewController">
                     <window key="window" title="Settings" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" showsToolbarButton="NO" visibleAtLaunch="NO" animationBehavior="default" id="IQv-IB-iLA">
                         <windowStyleMask key="styleMask" titled="YES" closable="YES" resizable="YES"/>
-                        <rect key="contentRect" x="604" y="419" width="480" height="270"/>
+                        <rect key="contentRect" x="604" y="419" width="206" height="179"/>
                         <rect key="screenRect" x="0.0" y="0.0" width="1680" height="1027"/>
                         <toolbar key="toolbar" implicitIdentifier="0E82BB7E-A006-45AA-B023-94586D50020D" autosavesConfiguration="NO" displayMode="iconAndLabel" sizeMode="regular" id="6Y5-Yg-T0F">
                             <allowedToolbarItems>
@@ -705,12 +705,12 @@
                         </toolbar>
                     </window>
                     <connections>
-                        <segue destination="pGK-kC-kB0" kind="relationship" relationship="window.shadowedContentViewController" id="hOB-Cc-Fv5"/>
+                        <segue destination="pGK-kC-kB0" kind="relationship" relationship="window.shadowedContentViewController" id="0bi-XE-zIx"/>
                     </connections>
                 </windowController>
                 <customObject id="Oky-zY-oP4" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-27" y="332"/>
+            <point key="canvasLocation" x="-166" y="286.5"/>
         </scene>
         <!--General-->
         <scene sceneID="sJo-0u-ibg">
@@ -800,7 +800,7 @@
                 </viewController>
                 <customObject id="QVg-ff-zhw" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-491" y="796.5"/>
+            <point key="canvasLocation" x="-490" y="797"/>
         </scene>
         <!--Cover Art-->
         <scene sceneID="hIz-AP-VOD">

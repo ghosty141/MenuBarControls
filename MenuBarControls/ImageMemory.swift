@@ -7,8 +7,6 @@
 
 import Cocoa
 
-var imageGroup = ImageMemory(originalImage: nil, processedImage: nil)
-
 struct ImageMemory {
     var original: NSImage?
     var processed: NSImage?

@@ -7,49 +7,26 @@
 
 import Cocoa
 
-class SettingsWindowController: NSWindowController, NSWindowDelegate {
+class SettingsWindowController: NSWindowController {
 
-    let mainStoryboard = NSStoryboard(name: "Main", bundle: nil)
-    var generalTab: NSViewController?
-    var coverArtTab: NSViewController?
-    var aboutTab: NSViewController?
+    weak var visibleTab: NSViewController?
 
     @IBAction func General(_ sender: NSToolbarItem) {
-        window?.contentView = generalTab?.view
+        visibleTab = NSStoryboard(name: "Main", bundle: nil).instantiateController(withIdentifier: "General") as? NSViewController
+        window?.contentView = visibleTab?.view
     }
 
     @IBAction func CoverArt(_ sender: NSToolbarItem) {
-        window?.contentView = coverArtTab?.view
+        visibleTab = NSStoryboard(name: "Main", bundle: nil).instantiateController(withIdentifier: "CoverArt") as? NSViewController
+        window?.contentView = visibleTab?.view
     }
 
     @IBAction func About(_ sender: NSToolbarItem) {
-        window?.contentView = aboutTab?.view
+        visibleTab = NSStoryboard(name: "Main", bundle: nil).instantiateController(withIdentifier: "About") as? NSViewController
+        window?.contentView = visibleTab?.view
     }
 
     @IBAction func Quit(_ sender: NSToolbarItem) {
         NSApplication.shared().terminate(self)
-    }
-
-    func windowShouldClose(_ sender: Any) -> Bool {
-        print(generalTab ?? "nil")
-        print(coverArtTab ?? "nil")
-        print(aboutTab ?? "nil")
-        generalTab = nil
-        coverArtTab = nil
-        aboutTab = nil
-        print(generalTab ?? "nil")
-        print(coverArtTab ?? "nil")
-        print(aboutTab ?? "nil")
-        return true
-    }
-    
-    override func windowDidLoad() {
-        super.windowDidLoad()
-
-        window?.delegate = self
-
-        generalTab = mainStoryboard.instantiateController(withIdentifier: "General") as? NSViewController
-        coverArtTab = mainStoryboard.instantiateController(withIdentifier: "CoverArt") as? NSViewController
-        aboutTab = mainStoryboard.instantiateController(withIdentifier: "About") as? NSViewController
     }
 }

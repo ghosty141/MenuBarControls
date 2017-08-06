@@ -65,6 +65,15 @@ class Spotify {
         return "Error: No Album Information found"
     }
 
+    var currentCoverArt: NSImage {
+        let urlContent = try? Data(contentsOf: spotify.getCoverURL())
+        if let coverArt = urlContent {
+            return NSImage(data: coverArt)!
+        } else {
+            return NSImage(named: "CoverError")!
+        }
+    }
+
     var volume: Double {
         get {
             let getVolumeScript = "tell application \"Spotify\"\n get sound volume \n end tell"

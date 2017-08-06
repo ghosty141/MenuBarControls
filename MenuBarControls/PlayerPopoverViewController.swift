@@ -12,7 +12,6 @@ class PlayerPopoverViewController: NSViewController {
 
     let appDel = NSApplication.shared().delegate as? AppDelegate
     var lastURL: URL?
-    let spotify = Spotify()
     var mouseoverIsActive = false
     var updateTimer: Timer?
     var settingsController: NSWindowController?
@@ -99,43 +98,23 @@ class PlayerPopoverViewController: NSViewController {
         }
     }
 
-    /*
-     updateArtwork is more or less temporary (Controller should not handle this, should be moved to Model/Spotify)
-     NEVER call updateArtwork too quickly, it WILL cause a memory leak
-     (reason being finishTasksAndInvalidate() might not be called)
-     */
-
     private func updateCover() {
         if spotify.getCoverURL() == URL(string: "error") {
             imageGroup = ImageMemory(originalImage: NSImage(named: "CoverError"),
                                      processedImage: self.blurImage(NSImage(named: "CoverError")!))
         } else {
-            let session = URLSession(configuration: URLSessionConfiguration.default)
-            let downloadArtwork =
-                session.dataTask(with: spotify.getCoverURL()) { [unowned self] (data, _, error) in
-                    if error != nil {
-                        self.cover.image = NSImage(named: "CoverError")
-                    } else {
-                        if let imageData = data {
-                            imageGroup = ImageMemory(originalImage: NSImage(data: imageData),
-                                                     processedImage: self.blurImage(NSImage(data: imageData)!))
-                            if self.mouseoverIsActive == false {
-                                self.cover.image = imageGroup.original
-                            } else {
-                                self.mouseOverOn()
-                            }
-                        } else {
-                            self.cover.image = NSImage(named: "CoverError")
-                        }
-                    }
-            }
             lastURL = spotify.getCoverURL()
-            downloadArtwork.resume()
-            session.finishTasksAndInvalidate()
+            imageGroup.original = spotify.currentCoverArt
+            imageGroup.processed = blurImage(imageGroup.original!)
+            if mouseoverIsActive == false {
+                cover.image = imageGroup.original
+            } else {
+                mouseOverOn()
+            }
         }
     }
 
-    // CABasicAnimation / Core Animation might be more suited for this
+    // CABasicAnimation / Core Animation is suited for this TODO
 
     func blurImage(_ inputImage: NSImage) -> NSImage {
         let context = CIContext(options: nil)
@@ -296,7 +275,6 @@ class PlayerPopoverViewController: NSViewController {
         super.viewDidDisappear()
         updateTimer?.invalidate()
         updateTimer = nil
-        settingsController = nil
         imageGroup = ImageMemory(originalImage: nil, processedImage: nil)
         lastURL = nil
     }
