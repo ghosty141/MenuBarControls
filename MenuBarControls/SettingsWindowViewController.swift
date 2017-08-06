@@ -116,25 +116,25 @@ class SettingsWindowViewController: NSViewController {
 
     func initPreferences() {
         versionLabel.stringValue = Bundle.main.object(forInfoDictionaryKey: "CFBundleVersion") as! String
-        
+
         startAtLoginOutlet.state = Int(NSNumber(value: startedAtLogin))
-        
+
         blurValue.formatter = TextFieldFormatter()
         brightnessValue.formatter = TextFieldFormatter()
         trackInfoDelayValue.formatter = TextFieldFormatter()
-        
+
         updateRate.integerValue = UserDefaults.standard.integer(forKey: "UpdateRate")
         updateRateStepperOutlet.integerValue = UserDefaults.standard.integer(forKey: "UpdateRate")
-        
+
         blurValue.integerValue = UserDefaults.standard.integer(forKey: "blurValue")
         blurValueStepperOutlet.integerValue = UserDefaults.standard.integer(forKey: "blurValue")
-        
+
         brightnessValue.integerValue = UserDefaults.standard.integer(forKey: "brightnessValue")
         brightnessValueStepperOutlet.integerValue = UserDefaults.standard.integer(forKey: "brightnessValue")
-        
+
         trackInfoDelayValue.integerValue = UserDefaults.standard.integer(forKey: "trackInfoDelay")
         trackInfoDelayValueStepperOutlet.integerValue = UserDefaults.standard.integer(forKey: "trackInfoDelay")
-        
+
         displayTrackTitleOutlet.state = UserDefaults.standard.integer(forKey: "displayTrackTitle")
         displayAlbumTitleOutlet.state = UserDefaults.standard.integer(forKey: "displayAlbumTitle")
         displayArtistNameOutlet.state = UserDefaults.standard.integer(forKey: "displayArtistName")

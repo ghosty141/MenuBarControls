@@ -15,8 +15,8 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSUserNotificationCenterDele
     let launchedBefore = UserDefaults.standard.bool(forKey: "launchedBefore")
 
     let statusItem = NSStatusBar.system().statusItem(withLength: NSSquareStatusItemLength)
-    var popover: NSPopover?
     let spotify = Spotify()
+    var popover: NSPopover?
     var eventMonitor: EventMonitor?
 
     func applicationDidFinishLaunching(_ aNotification: Notification) {
@@ -46,14 +46,14 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSUserNotificationCenterDele
             }
         }
 
-        for app in NSWorkspace.shared().runningApplications {
-            if app.bundleIdentifier == "com.Ghostly.MBCLauncher" {
-                startedAtLogin = true
-            }
+        for app in NSWorkspace.shared().runningApplications where app.bundleIdentifier == "com.Ghostly.MBCLauncher" {
+            startedAtLogin = true
         }
 
         if startedAtLogin {
-            DistributedNotificationCenter.default().post(name: Notification.Name("killme"), object: Bundle.main.bundleIdentifier!)
+            DistributedNotificationCenter.default().post(
+                name: Notification.Name("killme"),
+                object: Bundle.main.bundleIdentifier!)
         }
     }
 
@@ -68,7 +68,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSUserNotificationCenterDele
 
     func togglePopover(_ sender: AnyObject?) {
         if spotify.isRunning() == true {
-            if popover == nil || popover?.isShown == false{
+            if popover == nil {
                 popover = NSPopover()
                 popover?.contentViewController = NSStoryboard(name: "Main", bundle: nil).instantiateController(
                     withIdentifier: "PlayerPopover") as? NSViewController

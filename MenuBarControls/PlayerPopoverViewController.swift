@@ -173,14 +173,14 @@ class PlayerPopoverViewController: NSViewController {
         blurFilter!.setValue(extendedImage, forKey: kCIInputImageKey)
         blurFilter!.setValue(CGFloat(UserDefaults.standard.integer(forKey: "blurValue")), forKey: kCIInputRadiusKey)
         let blurredImage = blurFilter!.outputImage
-        
+
         // Lays the black image ontop of the original
 
         let mixFilter = CIFilter(name: "CISourceAtopCompositing")
         mixFilter!.setValue(croppedBlack, forKey: "inputImage")
         mixFilter!.setValue(blurredImage, forKey: "inputBackgroundImage") //input change
         let mixed = mixFilter!.outputImage
-    
+
         // Crops it again so there aren't any borders
 
         let cropFilter = CIFilter(name: "CICrop")
@@ -240,7 +240,8 @@ class PlayerPopoverViewController: NSViewController {
         spotify.nextTrack()
         if UserDefaults.standard.integer(forKey: "trackInfoDelay") != 0 {
             mouseOverOn()
-                DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + UserDefaults.standard.double(forKey: "trackInfoDelay")) {
+            DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() +
+            UserDefaults.standard.double(forKey: "trackInfoDelay")) {
                 self.mouseOverOff()
             }
         }
@@ -259,7 +260,8 @@ class PlayerPopoverViewController: NSViewController {
     }
 
     @IBAction func openSettings(_ sender: NSButton) {
-        settingsController = NSStoryboard(name: "Main", bundle: nil).instantiateController(withIdentifier: "SettingsWindow") as? NSWindowController
+        settingsController = NSStoryboard(name: "Main", bundle: nil).instantiateController(
+            withIdentifier: "SettingsWindow") as? NSWindowController
         settingsController?.showWindow(self)
     }
 
