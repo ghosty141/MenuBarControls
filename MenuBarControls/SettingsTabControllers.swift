@@ -1,5 +1,5 @@
 //
-//  SettingsWindowViewController.swift
+//  SettingsTabControllers.swift
 //  MenuBarControls
 //
 //  Copyright © 2017 Ghostly. All rights reserved.
@@ -9,9 +9,7 @@ import Cocoa
 import Sparkle
 import ServiceManagement
 
-class SettingsWindowViewController: NSViewController {
-
-    // GENERAL
+class General: NSViewController {
 
     @IBOutlet weak var updateRate: NSTextField!
 
@@ -27,11 +25,17 @@ class SettingsWindowViewController: NSViewController {
         SMLoginItemSetEnabled("com.Ghostly.MBCLauncher" as CFString, Bool(sender.state as NSNumber))
     }
 
-    @IBAction func quitApplication(_ sender: NSButtonCell) {
-        NSApplication.shared().terminate(self)
-    }
+    override func viewWillAppear() {
+        super.viewWillAppear()
 
-    // COVER ART
+        updateRate.integerValue = UserDefaults.standard.integer(forKey: "UpdateRate")
+        updateRateStepperOutlet.integerValue = UserDefaults.standard.integer(forKey: "UpdateRate")
+
+        startAtLoginOutlet.state = Int(NSNumber(value: startedAtLogin))
+    }
+}
+
+class CoverArt: NSViewController {
 
     @IBOutlet weak var blurValue: NSTextField!
     @IBOutlet weak var brightnessValue: NSTextField!
@@ -102,29 +106,12 @@ class SettingsWindowViewController: NSViewController {
         UserDefaults.standard.set(sender.state, forKey: "displayTrackTime")
     }
 
-    // ABOUT
-
-    @IBOutlet weak var versionLabel: NSTextField!
-
-    @IBAction func openWebsite(_ sender: NSButton) {
-        NSWorkspace.shared().open(URL(string: "https://github.com/Ghosty141/MenuBarControls")!)
-    }
-
-    @IBAction func checkForUpdates(_ sender: NSButton) {
-        SUUpdater.shared().checkForUpdates(self)
-    }
-
-    func initPreferences() {
-        versionLabel.stringValue = Bundle.main.object(forInfoDictionaryKey: "CFBundleVersion") as! String
-
-        startAtLoginOutlet.state = Int(NSNumber(value: startedAtLogin))
+    override func viewWillAppear() {
+        super.viewWillAppear()
 
         blurValue.formatter = TextFieldFormatter()
         brightnessValue.formatter = TextFieldFormatter()
         trackInfoDelayValue.formatter = TextFieldFormatter()
-
-        updateRate.integerValue = UserDefaults.standard.integer(forKey: "UpdateRate")
-        updateRateStepperOutlet.integerValue = UserDefaults.standard.integer(forKey: "UpdateRate")
 
         blurValue.integerValue = UserDefaults.standard.integer(forKey: "blurValue")
         blurValueStepperOutlet.integerValue = UserDefaults.standard.integer(forKey: "blurValue")
@@ -141,14 +128,26 @@ class SettingsWindowViewController: NSViewController {
         displayTrackTimeOutlet.state = UserDefaults.standard.integer(forKey: "displayTrackTime")
     }
 
-    // Overrides
+    deinit {
+        print("rip")
+    }
+}
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
+class About: NSViewController {
+
+    @IBOutlet weak var versionLabel: NSTextField!
+
+    @IBAction func openWebsite(_ sender: NSButton) {
+        NSWorkspace.shared().open(URL(string: "https://github.com/Ghosty141/MenuBarControls")!)
+    }
+
+    @IBAction func checkForUpdates(_ sender: NSButton) {
+        SUUpdater.shared().checkForUpdates(self)
     }
 
     override func viewWillAppear() {
         super.viewWillAppear()
-        initPreferences()
+
+        versionLabel.stringValue = Bundle.main.object(forInfoDictionaryKey: "CFBundleVersion") as! String
     }
 }

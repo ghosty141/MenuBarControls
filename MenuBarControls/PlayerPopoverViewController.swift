@@ -54,11 +54,11 @@ class PlayerPopoverViewController: NSViewController {
         if spotify.isRunning() == false {
             appDel?.closePopover(self)
         } else {
-            if spotify.isPlaying() == true {
+            if spotify.isPlaying() {
                 if lastURL != spotify.getCoverURL() {
                     updateCover()
                 }
-                if mouseoverIsActive == true {
+                if mouseoverIsActive {
                     trackTimeLabel.stringValue =
 "- \(formatTime(using: spotify.currentPlayerPosition)) / \(formatTime(using: spotify.currentTrackDuration)) -"
                 }
