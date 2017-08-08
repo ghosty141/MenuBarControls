@@ -13,7 +13,6 @@
 		D63A6D7B1F20D43800028B14 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D63A6D791F20D43800028B14 /* Main.storyboard */; };
 		D63A6D841F20D46900028B14 /* Spotify.swift in Sources */ = {isa = PBXBuildFile; fileRef = D63A6D821F20D46900028B14 /* Spotify.swift */; };
 		D63A6D871F20D47600028B14 /* EventMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = D63A6D861F20D47600028B14 /* EventMonitor.swift */; };
-		D63A6D8A1F20D4CC00028B14 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D63A6D891F20D4CC00028B14 /* Assets.xcassets */; };
 		D63A6D8E1F20D69900028B14 /* PlayerPopoverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D63A6D8D1F20D69900028B14 /* PlayerPopoverViewController.swift */; };
 		D63A6D911F20D6B900028B14 /* TextFieldFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D63A6D901F20D6B900028B14 /* TextFieldFormatter.swift */; };
 		D63A6D951F20DA2800028B14 /* SettingsTabControllers.swift in Sources */ = {isa = PBXBuildFile; fileRef = D63A6D941F20DA2800028B14 /* SettingsTabControllers.swift */; };
@@ -22,6 +21,7 @@
 		D6A712661F3625780074FBBF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D6A712651F3625780074FBBF /* Assets.xcassets */; };
 		D6A712691F3625780074FBBF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D6A712671F3625780074FBBF /* Main.storyboard */; };
 		D6A7126F1F3626490074FBBF /* MBCHelper.app in Copy Files */ = {isa = PBXBuildFile; fileRef = D6A7125F1F3625780074FBBF /* MBCHelper.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		D6AE6A501F393E1300A85AB5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D6AE6A4F1F393E1300A85AB5 /* Assets.xcassets */; };
 		D6B0CBE71F362AE40098B33F /* ServiceManagement.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D6A712701F36269F0074FBBF /* ServiceManagement.framework */; };
 		D6EA0C381F37DE6800679D3C /* ImageMemory.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6EA0C371F37DE6800679D3C /* ImageMemory.swift */; };
 /* End PBXBuildFile section */
@@ -48,7 +48,6 @@
 		D63A6D7A1F20D43800028B14 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		D63A6D821F20D46900028B14 /* Spotify.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Spotify.swift; sourceTree = "<group>"; };
 		D63A6D861F20D47600028B14 /* EventMonitor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventMonitor.swift; sourceTree = "<group>"; };
-		D63A6D891F20D4CC00028B14 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D63A6D8D1F20D69900028B14 /* PlayerPopoverViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayerPopoverViewController.swift; sourceTree = "<group>"; };
 		D63A6D901F20D6B900028B14 /* TextFieldFormatter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextFieldFormatter.swift; sourceTree = "<group>"; };
 		D63A6D921F20D8D100028B14 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -60,6 +59,7 @@
 		D6A712681F3625780074FBBF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		D6A7126A1F3625780074FBBF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D6A712701F36269F0074FBBF /* ServiceManagement.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ServiceManagement.framework; path = System/Library/Frameworks/ServiceManagement.framework; sourceTree = SDKROOT; };
+		D6AE6A4F1F393E1300A85AB5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D6B0CBE51F362A550098B33F /* MBCHelper.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = MBCHelper.entitlements; sourceTree = "<group>"; };
 		D6EA0C371F37DE6800679D3C /* ImageMemory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageMemory.swift; sourceTree = "<group>"; };
 		F4A10F810616D467ADBE6EB0 /* Pods_MenuBarControls.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MenuBarControls.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -134,7 +134,7 @@
 				D63A6D861F20D47600028B14 /* EventMonitor.swift */,
 				D63A6D901F20D6B900028B14 /* TextFieldFormatter.swift */,
 				D6EA0C371F37DE6800679D3C /* ImageMemory.swift */,
-				D63A6D891F20D4CC00028B14 /* Assets.xcassets */,
+				D6AE6A4F1F393E1300A85AB5 /* Assets.xcassets */,
 				D63A6D921F20D8D100028B14 /* Info.plist */,
 			);
 			name = Support;
@@ -293,8 +293,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D63A6D8A1F20D4CC00028B14 /* Assets.xcassets in Resources */,
 				D681140E1F29B5B7007070E0 /* dsa_pub.pem in Resources */,
+				D6AE6A501F393E1300A85AB5 /* Assets.xcassets in Resources */,
 				D63A6D7B1F20D43800028B14 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

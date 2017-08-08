@@ -668,8 +668,9 @@
                 <windowController storyboardIdentifier="SettingsWindow" showSeguePresentationStyle="single" id="B8D-0N-5wS" customClass="SettingsWindowController" customModule="MenuBarControls" customModuleProvider="target" sceneMemberID="viewController">
                     <window key="window" title="Settings" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" showsToolbarButton="NO" visibleAtLaunch="NO" animationBehavior="default" id="IQv-IB-iLA">
                         <windowStyleMask key="styleMask" titled="YES" closable="YES" resizable="YES"/>
-                        <rect key="contentRect" x="604" y="419" width="206" height="179"/>
+                        <rect key="contentRect" x="366" y="373" width="444" height="225"/>
                         <rect key="screenRect" x="0.0" y="0.0" width="1680" height="1027"/>
+                        <value key="minSize" type="size" width="210" height="210"/>
                         <toolbar key="toolbar" implicitIdentifier="0E82BB7E-A006-45AA-B023-94586D50020D" autosavesConfiguration="NO" displayMode="iconAndLabel" sizeMode="regular" id="6Y5-Yg-T0F">
                             <allowedToolbarItems>
                                 <toolbarItem implicitItemIdentifier="NSToolbarSpaceItem" id="Vu8-Zx-udJ"/>
@@ -679,7 +680,7 @@
                                         <action selector="General:" target="B8D-0N-5wS" id="3Rx-fz-lgk"/>
                                     </connections>
                                 </toolbarItem>
-                                <toolbarItem implicitItemIdentifier="CDFA26ED-7D4F-4285-B60B-7733B86CA10C" label="Cover Art" paletteLabel="Cover Art" tag="-1" image="NSApplicationIcon" selectable="YES" id="EMv-hC-4Dc">
+                                <toolbarItem implicitItemIdentifier="CDFA26ED-7D4F-4285-B60B-7733B86CA10C" label="Cover Art" paletteLabel="Cover Art" tag="-1" image="CoverArt" selectable="YES" id="EMv-hC-4Dc">
                                     <connections>
                                         <action selector="CoverArt:" target="B8D-0N-5wS" id="ITU-Ia-QZi"/>
                                     </connections>
@@ -710,7 +711,7 @@
                 </windowController>
                 <customObject id="Oky-zY-oP4" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-166" y="286.5"/>
+            <point key="canvasLocation" x="-27" y="333"/>
         </scene>
         <!--General-->
         <scene sceneID="sJo-0u-ibg">
@@ -1297,7 +1298,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="NSApplicationIcon" width="128" height="128"/>
+        <image name="CoverArt" width="64" height="64"/>
         <image name="NSCaution" width="32" height="32"/>
         <image name="NSInfo" width="32" height="32"/>
         <image name="NSPreferencesGeneral" width="32" height="32"/>

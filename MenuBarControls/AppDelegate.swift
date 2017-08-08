@@ -57,6 +57,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSUserNotificationCenterDele
             DistributedNotificationCenter.default().post(
                 name: Notification.Name("killme"),
                 object: Bundle.main.bundleIdentifier!)
+            DistributedNotificationCenter.default().removeObserver(self)
         }
     }
 

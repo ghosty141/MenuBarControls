@@ -9,7 +9,7 @@ import Cocoa
 
 class SettingsWindowController: NSWindowController {
 
-    weak var visibleTab: NSViewController?
+    var visibleTab: NSViewController?
 
     @IBAction func General(_ sender: NSToolbarItem) {
         visibleTab = NSStoryboard(name: "Main", bundle: nil).instantiateController(withIdentifier: "General") as? NSViewController
@@ -29,4 +29,5 @@ class SettingsWindowController: NSWindowController {
     @IBAction func Quit(_ sender: NSToolbarItem) {
         NSApplication.shared().terminate(self)
     }
+
 }
