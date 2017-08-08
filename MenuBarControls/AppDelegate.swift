@@ -8,6 +8,8 @@
 import Cocoa
 import ScriptingBridge
 
+// Global vards
+
 var imageGroup = ImageMemory(originalImage: nil, processedImage: nil)
 var startedAtLogin = false
 
@@ -17,10 +19,8 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSUserNotificationCenterDele
     let launchedBefore = UserDefaults.standard.bool(forKey: "launchedBefore")
 
     let statusItem = NSStatusBar.system.statusItem(withLength: NSStatusItem.squareLength)
-    var popover: NSPopover?
+    let popover = NSPopover()
     var eventMonitor: EventMonitor?
-    
-    var spotify = SBApplication(bundleIdentifier: "com.spotify.client")! as SpotifyApplication
 
     func applicationDidFinishLaunching(_ aNotification: Notification) {
         if launchedBefore  == false {
@@ -43,9 +43,9 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSUserNotificationCenterDele
         }
 
         eventMonitor = EventMonitor(
-        mask: [NSEvent.EventTypeMask.leftMouseDown, NSEvent.EventTypeMask.rightMouseDown]) { [weak weakself = self] event in
-            if weakself?.popover?.isShown != nil {
-                weakself?.closePopover(event)
+        mask: [NSEvent.EventTypeMask.leftMouseDown, NSEvent.EventTypeMask.rightMouseDown]) { [weak self] event in
+            if self?.popover.isShown != nil {
+                self?.closePopover(event)
             }
         }
 
@@ -80,13 +80,15 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSUserNotificationCenterDele
 
     @objc func togglePopover(_ sender: AnyObject?) {
         if isSpotifyRunning() {
-            if popover == nil || popover?.isShown == false {
-                popover = NSPopover()
-                popover?.contentViewController = NSStoryboard(name: NSStoryboard.Name(rawValue: "Main"), bundle: nil).instantiateController(
-                    withIdentifier: NSStoryboard.SceneIdentifier(rawValue: "PlayerPopover")) as? NSViewController
+            if popover.isShown == false {
+                popover.contentViewController = NSStoryboard(
+                    name: NSStoryboard.Name(rawValue: "Main"),
+                    bundle: nil)
+                    .instantiateController(
+                        withIdentifier: NSStoryboard.SceneIdentifier(rawValue: "PlayerPopover")) as? NSViewController
                 showPopover(sender)
             } else {
-                popover?.close()
+                popover.close()
             }
         } else {
             let notification = NSUserNotification()
@@ -100,15 +102,14 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSUserNotificationCenterDele
 
     func showPopover(_ sender: AnyObject?) {
         if let button = statusItem.button {
-            popover?.show(relativeTo: button.bounds, of: button, preferredEdge: NSRectEdge.minY)
+            popover.show(relativeTo: button.bounds, of: button, preferredEdge: NSRectEdge.minY)
         }
         eventMonitor?.start()
     }
 
     func closePopover(_ sender: AnyObject?) {
-        popover?.performClose(sender)
+        popover.performClose(sender)
         eventMonitor?.stop()
-        popover = nil
     }
 
 }

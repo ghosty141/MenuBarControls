@@ -11,23 +11,34 @@ class SettingsWindowController: NSWindowController {
 
     var visibleTab: NSViewController?
 
-    @IBAction func General(_ sender: NSToolbarItem) {
-        visibleTab = NSStoryboard(name: NSStoryboard.Name(rawValue: "Main"), bundle: nil).instantiateController(withIdentifier: NSStoryboard.SceneIdentifier(rawValue: "General")) as? NSViewController
+    @IBAction func general(_ sender: NSToolbarItem) {
+         visibleTab = NSStoryboard(
+            name: NSStoryboard.Name(rawValue: "Main"),
+            bundle: nil)
+            .instantiateController(
+                withIdentifier: NSStoryboard.SceneIdentifier(rawValue: "General")) as? NSViewController
         window?.contentView = visibleTab?.view
     }
 
-    @IBAction func CoverArt(_ sender: NSToolbarItem) {
-        visibleTab = NSStoryboard(name: NSStoryboard.Name(rawValue: "Main"), bundle: nil).instantiateController(withIdentifier: NSStoryboard.SceneIdentifier(rawValue: "CoverArt")) as? NSViewController
+    @IBAction func coverArt(_ sender: NSToolbarItem) {
+        visibleTab = NSStoryboard(
+            name: NSStoryboard.Name(rawValue: "Main"),
+            bundle: nil)
+            .instantiateController(
+                withIdentifier: NSStoryboard.SceneIdentifier(rawValue: "CoverArt")) as? NSViewController
         window?.contentView = visibleTab?.view
     }
 
-    @IBAction func About(_ sender: NSToolbarItem) {
-        visibleTab = NSStoryboard(name: NSStoryboard.Name(rawValue: "Main"), bundle: nil).instantiateController(withIdentifier: NSStoryboard.SceneIdentifier(rawValue: "About")) as? NSViewController
+    @IBAction func about(_ sender: NSToolbarItem) {
+        visibleTab = NSStoryboard(
+            name: NSStoryboard.Name(rawValue: "Main"),
+            bundle: nil)
+            .instantiateController(
+                withIdentifier: NSStoryboard.SceneIdentifier(rawValue: "About")) as? NSViewController
         window?.contentView = visibleTab?.view
     }
 
-    @IBAction func Quit(_ sender: NSToolbarItem) {
+    @IBAction func quit(_ sender: NSToolbarItem) {
         NSApplication.shared.terminate(self)
     }
-
 }

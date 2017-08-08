@@ -17,7 +17,7 @@ class PlayerPopoverViewController: NSViewController {
     var updateTimer: Timer?
     var settingsController: NSWindowController?
 
-    var spotify = SBApplication(bundleIdentifier: "com.spotify.client")! as SpotifyApplication
+    let spotify = SBApplication(bundleIdentifier: "com.spotify.client")! as SpotifyApplication
 
     @IBOutlet weak var coverImage: NSImageView!
     @IBOutlet weak var trackLabel: NSTextField!
@@ -62,7 +62,7 @@ class PlayerPopoverViewController: NSViewController {
                 }
                 if mouseoverIsActive {
                     trackTimeLabel.stringValue =
-                    "- \(formatTime(using: Int32(spotify.playerPosition!))) / \(formatTime(using: Int32((spotify.currentTrack?.duration)!/1000))) -"
+"- \(formatTime(using: Int32(spotify.playerPosition!))) / \(formatTime(using: Int32((spotify.currentTrack?.duration)!/1000))) -"
                 }
                 updateShuffleButton()
                 updateRepeatButton()
@@ -70,7 +70,7 @@ class PlayerPopoverViewController: NSViewController {
                 volumeSlider.integerValue = spotify.soundVolume!
             } else {
                 updatePlayPauseButton()
-                if appDel?.popover?.isShown == false {
+                if appDel?.popover.isShown == false {
                     stopTimer()
                 }
             }
@@ -80,7 +80,7 @@ class PlayerPopoverViewController: NSViewController {
     func updatePlayPauseButton() {
         if playPauseButton.state == NSControl.StateValue.offState && spotify.playerState == .playing {
             playPauseButton.state = NSControl.StateValue.onState
-        } else if playPauseButton.state == NSControl.StateValue.onState && spotify.playerState == .paused || spotify.playerState == .stopped {
+        } else if playPauseButton.state == NSControl.StateValue.onState && spotify.playerState == .paused {
             playPauseButton.state = NSControl.StateValue.offState
         }
     }
@@ -117,7 +117,7 @@ class PlayerPopoverViewController: NSViewController {
         lastURL = spotify.currentTrack?.artworkUrl
     }
 
-    // CABasicAnimation / Core Animation is suited for this TODO
+    // CABasicAnimation / Core Animation is suited for this
 
     func blurImage(_ inputImage: NSImage) -> NSImage {
         let context = CIContext(options: nil)
@@ -242,7 +242,11 @@ class PlayerPopoverViewController: NSViewController {
     }
 
     @IBAction func openSettings(_ sender: NSButton) {
-        settingsController = NSStoryboard(name: NSStoryboard.Name(rawValue: "Main"), bundle: nil).instantiateController(withIdentifier: NSStoryboard.SceneIdentifier(rawValue: "SettingsWindow")) as? NSWindowController
+        settingsController = NSStoryboard(
+            name: NSStoryboard.Name(rawValue: "Main"),
+            bundle: nil)
+            .instantiateController(
+                withIdentifier: NSStoryboard.SceneIdentifier(rawValue: "SettingsWindow")) as? NSWindowController
         settingsController?.showWindow(self)
     }
 
@@ -277,8 +281,6 @@ class PlayerPopoverViewController: NSViewController {
     override func viewDidDisappear() {
         super.viewDidDisappear()
         updateTimer?.invalidate()
-        updateTimer = nil
         imageGroup = ImageMemory(originalImage: nil, processedImage: nil)
-        lastURL = nil
     }
 }

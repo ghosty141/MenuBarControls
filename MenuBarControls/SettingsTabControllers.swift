@@ -109,9 +109,11 @@ class CoverArt: NSViewController {
     override func viewWillAppear() {
         super.viewWillAppear()
 
-        blurValue.formatter = TextFieldFormatter()
-        brightnessValue.formatter = TextFieldFormatter()
-        trackInfoDelayValue.formatter = TextFieldFormatter()
+        let onlyIntFormatter = TextFieldFormatter()
+
+        blurValue.formatter = onlyIntFormatter
+        brightnessValue.formatter = onlyIntFormatter
+        trackInfoDelayValue.formatter = onlyIntFormatter
 
         blurValue.integerValue = UserDefaults.standard.integer(forKey: "blurValue")
         blurValueStepperOutlet.integerValue = UserDefaults.standard.integer(forKey: "blurValue")
@@ -122,10 +124,14 @@ class CoverArt: NSViewController {
         trackInfoDelayValue.integerValue = UserDefaults.standard.integer(forKey: "trackInfoDelay")
         trackInfoDelayValueStepperOutlet.integerValue = UserDefaults.standard.integer(forKey: "trackInfoDelay")
 
-        displayTrackTitleOutlet.state = NSControl.StateValue(rawValue: UserDefaults.standard.integer(forKey: "displayTrackTitle"))
-        displayAlbumTitleOutlet.state = NSControl.StateValue(rawValue: UserDefaults.standard.integer(forKey: "displayAlbumTitle"))
-        displayArtistNameOutlet.state = NSControl.StateValue(rawValue: UserDefaults.standard.integer(forKey: "displayArtistName"))
-        displayTrackTimeOutlet.state = NSControl.StateValue(rawValue: UserDefaults.standard.integer(forKey: "displayTrackTime"))
+        displayTrackTitleOutlet.state =
+            NSControl.StateValue(rawValue: UserDefaults.standard.integer(forKey: "displayTrackTitle"))
+        displayAlbumTitleOutlet.state =
+            NSControl.StateValue(rawValue: UserDefaults.standard.integer(forKey: "displayAlbumTitle"))
+        displayArtistNameOutlet.state =
+            NSControl.StateValue(rawValue: UserDefaults.standard.integer(forKey: "displayArtistName"))
+        displayTrackTimeOutlet.state =
+            NSControl.StateValue(rawValue: UserDefaults.standard.integer(forKey: "displayTrackTime"))
     }
 }
 

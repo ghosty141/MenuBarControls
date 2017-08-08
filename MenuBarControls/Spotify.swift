@@ -8,7 +8,6 @@
 import AppKit
 import ScriptingBridge
 
-
 @objc public protocol SBObjectProtocol: NSObjectProtocol {
     func get() -> Any!
 }
@@ -20,7 +19,7 @@ import ScriptingBridge
 }
 
 // MARK: SpotifyEPlS
-@objc public enum SpotifyEPlS : AEKeyword {
+@objc public enum SpotifyEPlS: AEKeyword {
     case stopped = 0x6b505353 /* 'kPSS' */
     case playing = 0x6b505350 /* 'kPSP' */
     case paused = 0x6b505370 /* 'kPSp' */
