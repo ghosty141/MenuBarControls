@@ -16,7 +16,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSUserNotificationCenterDele
 
     let launchedBefore = UserDefaults.standard.bool(forKey: "launchedBefore")
 
-    let statusItem = NSStatusBar.system().statusItem(withLength: NSSquareStatusItemLength)
+    let statusItem = NSStatusBar.system.statusItem(withLength: NSStatusItem.squareLength)
     var popover: NSPopover?
     var eventMonitor: EventMonitor?
     
@@ -38,18 +38,18 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSUserNotificationCenterDele
         NSUserNotificationCenter.default.delegate = self
 
         if let button = statusItem.button {
-            button.image = NSImage(named: "StatusBarIcon")
+            button.image = NSImage(named: NSImage.Name(rawValue: "StatusBarIcon"))
             button.action = #selector(AppDelegate.togglePopover(_:))
         }
 
         eventMonitor = EventMonitor(
-        mask: [NSEventMask.leftMouseDown, NSEventMask.rightMouseDown]) { [weak weakself = self] event in
+        mask: [NSEvent.EventTypeMask.leftMouseDown, NSEvent.EventTypeMask.rightMouseDown]) { [weak weakself = self] event in
             if weakself?.popover?.isShown != nil {
                 weakself?.closePopover(event)
             }
         }
 
-        for app in NSWorkspace.shared().runningApplications where app.bundleIdentifier == "com.Ghostly.MBCLauncher" {
+        for app in NSWorkspace.shared.runningApplications where app.bundleIdentifier == "com.Ghostly.MBCLauncher" {
             startedAtLogin = true
         }
 
@@ -70,12 +70,20 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSUserNotificationCenterDele
         return true
     }
 
-    func togglePopover(_ sender: AnyObject?) {
-        if spotify.running == true {
+    func isSpotifyRunning() -> Bool {
+        let applications = NSWorkspace.shared.runningApplications
+        for i in applications where i.localizedName! == "Spotify" {
+            return true
+        }
+        return false
+    }
+
+    @objc func togglePopover(_ sender: AnyObject?) {
+        if isSpotifyRunning() {
             if popover == nil || popover?.isShown == false {
                 popover = NSPopover()
-                popover?.contentViewController = NSStoryboard(name: "Main", bundle: nil).instantiateController(
-                    withIdentifier: "PlayerPopover") as? NSViewController
+                popover?.contentViewController = NSStoryboard(name: NSStoryboard.Name(rawValue: "Main"), bundle: nil).instantiateController(
+                    withIdentifier: NSStoryboard.SceneIdentifier(rawValue: "PlayerPopover")) as? NSViewController
                 showPopover(sender)
             } else {
                 popover?.close()

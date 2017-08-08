@@ -13,7 +13,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     func applicationDidFinishLaunching(_ aNotification: Notification) {
 
         let mainAppIdentifier = "com.Ghostly.MenuBarControls"
-        let running           = NSWorkspace.shared().runningApplications
+        let running           = NSWorkspace.shared.runningApplications
         var alreadyRunning    = false
 
         for app in running where app.bundleIdentifier == mainAppIdentifier {
@@ -36,13 +36,13 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             components.append("MenuBarControls")
             let newPath = NSString.path(withComponents: components)
 
-            NSWorkspace.shared().launchApplication(newPath)
+            NSWorkspace.shared.launchApplication(newPath)
         } else {
             self.terminate()
         }
     }
 
-    func terminate() {
+    @objc func terminate() {
         NSApp.terminate(nil)
     }
 

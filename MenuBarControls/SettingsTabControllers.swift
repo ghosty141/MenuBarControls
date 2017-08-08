@@ -22,7 +22,7 @@ class General: NSViewController {
     }
 
     @IBAction func startAtLogin(_ sender: NSButton) {
-        SMLoginItemSetEnabled("com.Ghostly.MBCLauncher" as CFString, Bool(sender.state as NSNumber))
+        SMLoginItemSetEnabled("com.Ghostly.MBCLauncher" as CFString, Bool(exactly: sender.state.rawValue as NSNumber)!)
     }
 
     override func viewWillAppear() {
@@ -31,7 +31,7 @@ class General: NSViewController {
         updateRate.integerValue = UserDefaults.standard.integer(forKey: "UpdateRate")
         updateRateStepperOutlet.integerValue = UserDefaults.standard.integer(forKey: "UpdateRate")
 
-        startAtLoginOutlet.state = Int(NSNumber(value: startedAtLogin))
+        startAtLoginOutlet.state = NSControl.StateValue(Int(truncating: NSNumber(value: startedAtLogin)))
     }
 }
 
@@ -122,10 +122,10 @@ class CoverArt: NSViewController {
         trackInfoDelayValue.integerValue = UserDefaults.standard.integer(forKey: "trackInfoDelay")
         trackInfoDelayValueStepperOutlet.integerValue = UserDefaults.standard.integer(forKey: "trackInfoDelay")
 
-        displayTrackTitleOutlet.state = UserDefaults.standard.integer(forKey: "displayTrackTitle")
-        displayAlbumTitleOutlet.state = UserDefaults.standard.integer(forKey: "displayAlbumTitle")
-        displayArtistNameOutlet.state = UserDefaults.standard.integer(forKey: "displayArtistName")
-        displayTrackTimeOutlet.state = UserDefaults.standard.integer(forKey: "displayTrackTime")
+        displayTrackTitleOutlet.state = NSControl.StateValue(rawValue: UserDefaults.standard.integer(forKey: "displayTrackTitle"))
+        displayAlbumTitleOutlet.state = NSControl.StateValue(rawValue: UserDefaults.standard.integer(forKey: "displayAlbumTitle"))
+        displayArtistNameOutlet.state = NSControl.StateValue(rawValue: UserDefaults.standard.integer(forKey: "displayArtistName"))
+        displayTrackTimeOutlet.state = NSControl.StateValue(rawValue: UserDefaults.standard.integer(forKey: "displayTrackTime"))
     }
 }
 
@@ -134,7 +134,7 @@ class About: NSViewController {
     @IBOutlet weak var versionLabel: NSTextField!
 
     @IBAction func openWebsite(_ sender: NSButton) {
-        NSWorkspace.shared().open(URL(string: "https://github.com/Ghosty141/MenuBarControls")!)
+        NSWorkspace.shared.open(URL(string: "https://github.com/Ghosty141/MenuBarControls")!)
     }
 
     @IBAction func checkForUpdates(_ sender: NSButton) {

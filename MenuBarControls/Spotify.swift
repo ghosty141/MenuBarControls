@@ -16,7 +16,7 @@ import ScriptingBridge
 @objc public protocol SBApplicationProtocol: SBObjectProtocol {
     func activate()
     var delegate: SBApplicationDelegate! { get set }
-    var running: Bool { @objc(isRunning) get }
+    //var running: Bool { @objc(isRunning) get } // No idea why this is broken in Swift 4, for now I'll just use my own function for "running"
 }
 
 // MARK: SpotifyEPlS
