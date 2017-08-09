@@ -2,9 +2,18 @@
 <channel>
 <title>MenuBarControls</title>
 <item>
+<title>1.1.0</title>
+<pubDate>Wed, 09 Aug 2017 20:49:32 +0200</pubDate>
+<sparkle:minimumSystemVersion>10.12</sparkle:minimumSystemVersion>
+<enclosure url="https://github.com/Ghosty141/MenuBarControls/releases/download/v1.1.0/MenuBarControls_v1.1.0.dmg" sparkle:version="1.1.0" sparkle:shortVersionString="1.1.0" length="8539193" type="application/octet-stream" sparkle:dsaSignature="MCwCFDuMdlLOd3/AuTflaAaT1jLLemqXAhQ/0sX1fvCEXnhq+2c4gjQ5S57NRw=="/>
+<sparkle:deltas>
+<enclosure url="https://ghosty141.github.io/MenuBarControls/MenuBarControls1.1.0-1.0.2.delta" sparkle:version="1.1.0" sparkle:shortVersionString="1.1.0" sparkle:deltaFrom="1.0.2" length="7170962" type="application/octet-stream" sparkle:dsaSignature="MCwCFE9eQlCfY1xS6oKNPHBZJvR5NUCLAhQMiKSUJ6P4sKcdAflJUL92npYYUg=="/></sparkle:deltas>
+</item>
+
+<item>
 <title>1.0.2</title>
 <pubDate>Thu, 27 Jul 2017 09:20:31 +0200</pubDate>
 <sparkle:minimumSystemVersion>10.12</sparkle:minimumSystemVersion>
-<enclosure url="https://github.com/Ghosty141/MenuBarControls/releases/download/v1.0.2/MenuBarControls_v1.0.2.dmg" sparkle:version="1.0.2" sparkle:shortVersionString="1.0.2" length="4642337" type="application/octet-stream" sparkle:dsaSignature="MCwCFCjZ2eV+uc+BCMjRM89IjhwSlsqgAhQ/6c4YooQTQl21ZIOYDbL60gkuBw=="/>
+<enclosure url="https://github.com/Ghosty141/MenuBarControls/releases/download/v1.0.2/MenuBarControls_v1.0.2.dmg" sparkle:version="1.0.2" sparkle:shortVersionString="1.0.2" length="4642337" type="application/octet-stream" sparkle:dsaSignature="MC0CFQCDa007XpEQLBo7ZdECBqeuwW55QwIUAyhkI2Bz3VD9i4+BbnyTFUvp9HA="/>
 </item>
 </channel></rss>
