@@ -8,7 +8,7 @@
 import Cocoa
 import ScriptingBridge
 
-// Global vards
+// Global vars
 
 var imageGroup = ImageMemory(originalImage: nil, processedImage: nil)
 var startedAtLogin = false
