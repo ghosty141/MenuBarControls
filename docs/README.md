@@ -8,9 +8,9 @@ A simple app that lets you control Spotify from the menubar. Completely written 
 
 ## Installing
 
-Just download the app from [here](https://github.com/Ghosty141/MenuBarControls/releases/) and place it into your Applications Folder. Done!
+Just download the App from [here](https://github.com/Ghosty141/MenuBarControls/releases/latest) and place it into your Applications Folder. Done!
 
-In case it tells you that this app "can't be opened because it is from an unidentified developer.", just right-click the app and click on "Open".
+In case it tells you that this App "can't be opened because it is from an unidentified developer.", just right-click the app and click on "Open".
 
 ## Usage Information
 
