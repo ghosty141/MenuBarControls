@@ -5,172 +5,70 @@
 //  Copyright © 2017 Ghostly. All rights reserved.
 //
 
-import Cocoa
+import AppKit
+import ScriptingBridge
 
-class Spotify {
-
-    //Properties
-
-    var currentPlayerPosition: Int32 {
-        get {
-            let getCurrentPlayerPositionScript = "tell application \"Spotify\"\n player position \n end tell"
-            if let scriptObject = NSAppleScript(source: getCurrentPlayerPositionScript) {
-                let getCurrentPlayerPosition = scriptObject.executeAndReturnError(nil).int32Value
-                return getCurrentPlayerPosition
-            }
-            return 0
-        }
-        set(time) {
-            let setCurrentPlayerPositionScript =
-                "tell application \"Spotify\"\n set player position to \(time) \n end tell"
-            if let scriptObject = NSAppleScript(source: setCurrentPlayerPositionScript) {
-                scriptObject.executeAndReturnError(nil)
-            }
-        }
-    }
-
-    var currentTrackDuration: Int32 {
-        let getCurrentTrackDurationScript = "tell application \"Spotify\"\n duration of current track \n end tell"
-        if let scriptObject = NSAppleScript(source: getCurrentTrackDurationScript) {
-            let getCurrentTrackDuration = scriptObject.executeAndReturnError(nil).int32Value / 1000
-            return getCurrentTrackDuration
-        }
-        return 0
-    }
-
-    var currentArtist: String {
-        let getArtistScript = "tell application \"Spotify\"\n artist of current track \n end tell"
-        if let scriptObject = NSAppleScript(source: getArtistScript) {
-            let getArtist = scriptObject.executeAndReturnError(nil).stringValue ?? "error"
-            return getArtist
-        }
-        return "Error: No Artist Information found"
-    }
-
-    var currentTrack: String {
-        let getTrackScript = "tell application \"Spotify\"\n name of current track \n end tell"
-        if let scriptObject = NSAppleScript(source: getTrackScript) {
-            let getTrack = scriptObject.executeAndReturnError(nil).stringValue ?? "error"
-            return getTrack
-        }
-        return "Error: No Track Information found"
-    }
-
-    var currentAlbum: String {
-        let getAlbumScript = "tell application \"Spotify\"\n album of current track \n end tell"
-        if let scriptObject = NSAppleScript(source: getAlbumScript) {
-            let getAlbum = scriptObject.executeAndReturnError(nil).stringValue ?? "error"
-            return getAlbum
-        }
-        return "Error: No Album Information found"
-    }
-
-    var volume: Double {
-        get {
-            let getVolumeScript = "tell application \"Spotify\"\n get sound volume \n end tell"
-            if let scriptObject = NSAppleScript(source: getVolumeScript) {
-                let currentVolume = scriptObject.executeAndReturnError(nil).doubleValue
-                return currentVolume
-            }
-            return 0
-        }
-        set(value) {
-            let setVolumeScript = "tell application \"Spotify\"\n set sound volume to \(value) \n end tell"
-            if let scriptObject = NSAppleScript(source: setVolumeScript) {
-                scriptObject.executeAndReturnError(nil)
-            }
-        }
-    }
-
-    var repeating: Bool {
-        get {
-            let repeatScript = "tell application \"Spotify\"\n repeating \n end tell"
-            if let scriptObject = NSAppleScript(source: repeatScript) {
-                return scriptObject.executeAndReturnError(nil).booleanValue
-            }
-            return false
-        }
-        set(isRepeating) {
-            let repeatScript = "tell application \"Spotify\"\n set repeating to \(isRepeating) \n end tell"
-            if let scriptObject = NSAppleScript(source: repeatScript) {
-                scriptObject.executeAndReturnError(nil)
-            }
-        }
-    }
-
-    var shuffling: Bool {
-        get {
-            let shuffleScript = "tell application \"Spotify\"\n shuffling \n end tell"
-            if let scriptObject = NSAppleScript(source: shuffleScript) {
-                return scriptObject.executeAndReturnError(nil).booleanValue
-            }
-            return false
-        }
-        set(isShuffling) {
-            let shuffleScript = "tell application \"Spotify\"\n set shuffling to \(isShuffling) \n end tell"
-            if let scriptObject = NSAppleScript(source: shuffleScript) {
-                scriptObject.executeAndReturnError(nil)
-            }
-        }
-    }
-
-    //Get functions
-
-    func isRunning() -> Bool {
-        let applications = NSWorkspace.shared().runningApplications
-        for i in applications where i.localizedName! == "Spotify" {
-            return true
-        }
-        return false
-    }
-
-    func isPlaying() -> Bool {
-        if isRunning() == true {
-            let isPlayingScript = "tell application \"Spotify\"\n return player state as text \n end tell"
-            if let scriptObject = NSAppleScript(source: isPlayingScript) {
-                if let playState = scriptObject.executeAndReturnError(nil).stringValue {
-                    switch playState {
-                    case "playing":
-                        return true
-                    case "paused":
-                        return false
-                    default:
-                        return false
-                    }
-                }
-            }
-            return false
-        }
-        return false
-    }
-
-    func getCoverURL() -> URL {
-        let ArtworkScript = "tell application \"Spotify\"\n artwork url of current track \n end tell"
-        let ArtworkString = NSAppleScript(source: ArtworkScript)?.executeAndReturnError(nil)
-        let ArtworkURL = URL(string: (ArtworkString?.stringValue ?? "error")!)
-        return ArtworkURL!
-    }
-
-    //Actions
-
-    func playPause() {
-        let PlayPauseScript = "tell application \"Spotify\"\n playpause\n end tell"
-        if let scriptObject = NSAppleScript(source: PlayPauseScript) {
-            scriptObject.executeAndReturnError(nil)
-        }
-    }
-
-    func nextTrack() {
-        let nextTrackScript = "tell application \"Spotify\"\n next track \n end tell"
-        if let scriptObject = NSAppleScript(source: nextTrackScript) {
-            scriptObject.executeAndReturnError(nil)
-        }
-    }
-
-    func previousTrack() {
-        let previousTrackScript = "tell application \"Spotify\"\n previous track \n end tell"
-        if let scriptObject = NSAppleScript(source: previousTrackScript) {
-            scriptObject.executeAndReturnError(nil)
-        }
-    }
+@objc public protocol SBObjectProtocol: NSObjectProtocol {
+    func get() -> Any!
 }
+
+@objc public protocol SBApplicationProtocol: SBObjectProtocol {
+    func activate()
+    var delegate: SBApplicationDelegate! { get set }
+    //var running: Bool { @objc(isRunning) get } // No idea why this is broken in Swift 4, for now I'll just use my own function for "running"
+}
+
+// MARK: SpotifyEPlS
+@objc public enum SpotifyEPlS: AEKeyword {
+    case stopped = 0x6b505353 /* 'kPSS' */
+    case playing = 0x6b505350 /* 'kPSP' */
+    case paused = 0x6b505370 /* 'kPSp' */
+}
+
+// MARK: SpotifyApplication
+@objc public protocol SpotifyApplication: SBApplicationProtocol {
+    @objc optional var currentTrack: SpotifyTrack { get } // The current playing track.
+    @objc optional var soundVolume: Int { get } // The sound output volume (0 = minimum, 100 = maximum)
+    @objc optional var playerState: SpotifyEPlS { get } // Is Spotify stopped, paused, or playing?
+    @objc optional var playerPosition: Double { get } // The player’s position within the currently playing track in seconds.
+    @objc optional var repeatingEnabled: Bool { get } // Is repeating enabled in the current playback context?
+    @objc optional var repeating: Bool { get } // Is repeating on or off?
+    @objc optional var shufflingEnabled: Bool { get } // Is shuffling enabled in the current playback context?
+    @objc optional var shuffling: Bool { get } // Is shuffling on or off?
+    @objc optional func nextTrack() // Skip to the next track.
+    @objc optional func previousTrack() // Skip to the previous track.
+    @objc optional func playpause() // Toggle play/pause.
+    @objc optional func pause() // Pause playback.
+    @objc optional func play() // Resume playback.
+    @objc optional func playTrack(_ x: String!, inContext: String!) // Start playback of a track in the given context.
+    @objc optional func setSoundVolume(_ soundVolume: Int) // The sound output volume (0 = minimum, 100 = maximum)
+    @objc optional func setPlayerPosition(_ playerPosition: Double) // The player’s position within the currently playing track in seconds.
+    @objc optional func setRepeating(_ repeating: Bool) // Is repeating on or off?
+    @objc optional func setShuffling(_ shuffling: Bool) // Is shuffling on or off?
+    @objc optional var name: String { get } // The name of the application.
+    @objc optional var frontmost: Bool { get } // Is this the frontmost (active) application?
+    @objc optional var version: String { get } // The version of the application.
+}
+
+extension SBApplication: SpotifyApplication {}
+
+// MARK: SpotifyTrack
+@objc public protocol SpotifyTrack: SBObjectProtocol {
+    @objc optional var artist: String { get } // The artist of the track.
+    @objc optional var album: String { get } // The album of the track.
+    @objc optional var discNumber: Int { get } // The disc number of the track.
+    @objc optional var duration: Int { get } // The length of the track in seconds.
+    @objc optional var playedCount: Int { get } // The number of times this track has been played.
+    @objc optional var trackNumber: Int { get } // The index of the track in its album.
+    @objc optional var starred: Bool { get } // Is the track starred?
+    @objc optional var popularity: Int { get } // How popular is this track? 0-100
+    @objc optional func id() -> String // The ID of the item.
+    @objc optional var name: String { get } // The name of the track.
+    @objc optional var artworkUrl: String { get } // The URL of the track%apos;s album cover.
+    @objc optional var artwork: NSImage { get } // The property is deprecated and will never be set. Use the 'artwork url' instead.
+    @objc optional var albumArtist: String { get } // That album artist of the track.
+    @objc optional var spotifyUrl: String { get } // The URL of the track.
+    @objc optional func setSpotifyUrl(_ spotifyUrl: String!) // The URL of the track.
+}
+
+extension SBObject: SpotifyTrack {}

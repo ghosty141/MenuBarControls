@@ -6,7 +6,11 @@
 //
 
 import Cocoa
+import ScriptingBridge
 
+// Global vars
+
+var imageGroup = ImageMemory(originalImage: nil, processedImage: nil)
 var startedAtLogin = false
 
 @NSApplicationMain
@@ -14,9 +18,8 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSUserNotificationCenterDele
 
     let launchedBefore = UserDefaults.standard.bool(forKey: "launchedBefore")
 
-    let statusItem = NSStatusBar.system().statusItem(withLength: NSSquareStatusItemLength)
+    let statusItem = NSStatusBar.system.statusItem(withLength: NSStatusItem.squareLength)
     let popover = NSPopover()
-    let spotify = Spotify()
     var eventMonitor: EventMonitor?
 
     func applicationDidFinishLaunching(_ aNotification: Notification) {
@@ -35,25 +38,26 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSUserNotificationCenterDele
         NSUserNotificationCenter.default.delegate = self
 
         if let button = statusItem.button {
-            button.image = NSImage(named: "StatusBarIcon")
+            button.image = NSImage(named: NSImage.Name(rawValue: "StatusBarIcon"))
             button.action = #selector(AppDelegate.togglePopover(_:))
         }
 
         eventMonitor = EventMonitor(
-        mask: [NSEventMask.leftMouseDown, NSEventMask.rightMouseDown]) { [unowned self] event in
-            if self.popover.isShown {
-                self.closePopover(event)
+        mask: [NSEvent.EventTypeMask.leftMouseDown, NSEvent.EventTypeMask.rightMouseDown]) { [weak self] event in
+            if self?.popover.isShown != nil {
+                self?.closePopover(event)
             }
         }
 
-        for app in NSWorkspace.shared().runningApplications {
-            if app.bundleIdentifier == "com.Ghostly.MBCLauncher" {
-                startedAtLogin = true
-            }
+        for app in NSWorkspace.shared.runningApplications where app.bundleIdentifier == "com.Ghostly.MBCLauncher" {
+            startedAtLogin = true
         }
 
         if startedAtLogin {
-            DistributedNotificationCenter.default().post(name: Notification.Name("killme"), object: Bundle.main.bundleIdentifier!)
+            DistributedNotificationCenter.default().post(
+                name: Notification.Name("killme"),
+                object: Bundle.main.bundleIdentifier!)
+            DistributedNotificationCenter.default().removeObserver(self)
         }
     }
 
@@ -66,14 +70,25 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSUserNotificationCenterDele
         return true
     }
 
-    func togglePopover(_ sender: AnyObject?) {
-        if spotify.isRunning() == true {
-            if popover.isShown {
-                closePopover(sender)
-            } else {
-                popover.contentViewController = NSStoryboard(name: "Main", bundle: nil).instantiateController(
-                    withIdentifier: "PlayerPopover") as? NSViewController
+    func isSpotifyRunning() -> Bool {
+        let applications = NSWorkspace.shared.runningApplications
+        for i in applications where i.localizedName! == "Spotify" {
+            return true
+        }
+        return false
+    }
+
+    @objc func togglePopover(_ sender: AnyObject?) {
+        if isSpotifyRunning() {
+            if popover.isShown == false {
+                popover.contentViewController = NSStoryboard(
+                    name: NSStoryboard.Name(rawValue: "Main"),
+                    bundle: nil)
+                    .instantiateController(
+                        withIdentifier: NSStoryboard.SceneIdentifier(rawValue: "PlayerPopover")) as? NSViewController
                 showPopover(sender)
+            } else {
+                popover.close()
             }
         } else {
             let notification = NSUserNotification()

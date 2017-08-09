@@ -1,5 +1,5 @@
 //
-//  SettingsWindowViewController.swift
+//  SettingsTabControllers.swift
 //  MenuBarControls
 //
 //  Copyright © 2017 Ghostly. All rights reserved.
@@ -9,11 +9,9 @@ import Cocoa
 import Sparkle
 import ServiceManagement
 
-class SettingsWindowViewController: NSViewController {
+class General: NSViewController {
 
-    // GENERAL
-
-    @IBOutlet var updateRate: NSTextField!
+    @IBOutlet weak var updateRate: NSTextField!
 
     @IBOutlet weak var updateRateStepperOutlet: NSStepperCell!
     @IBOutlet weak var startAtLoginOutlet: NSButton!
@@ -24,14 +22,20 @@ class SettingsWindowViewController: NSViewController {
     }
 
     @IBAction func startAtLogin(_ sender: NSButton) {
-        SMLoginItemSetEnabled("com.Ghostly.MBCLauncher" as CFString, Bool(sender.state as NSNumber))
+        SMLoginItemSetEnabled("com.Ghostly.MBCLauncher" as CFString, Bool(exactly: sender.state.rawValue as NSNumber)!)
     }
 
-    @IBAction func quitApplication(_ sender: NSButtonCell) {
-        NSApplication.shared().terminate(self)
-    }
+    override func viewWillAppear() {
+        super.viewWillAppear()
 
-    // COVER ART
+        updateRate.integerValue = UserDefaults.standard.integer(forKey: "UpdateRate")
+        updateRateStepperOutlet.integerValue = UserDefaults.standard.integer(forKey: "UpdateRate")
+
+        startAtLoginOutlet.state = NSControl.StateValue(Int(truncating: NSNumber(value: startedAtLogin)))
+    }
+}
+
+class CoverArt: NSViewController {
 
     @IBOutlet weak var blurValue: NSTextField!
     @IBOutlet weak var brightnessValue: NSTextField!
@@ -102,39 +106,14 @@ class SettingsWindowViewController: NSViewController {
         UserDefaults.standard.set(sender.state, forKey: "displayTrackTime")
     }
 
-    // ABOUT
-
-    @IBOutlet weak var versionLabel: NSTextField!
-
-    @IBAction func openWebsite(_ sender: NSButton) {
-        NSWorkspace.shared().open(URL(string: "https://github.com/Ghosty141/MenuBarControls")!)
-    }
-
-    @IBAction func checkForUpdates(_ sender: NSButton) {
-        SUUpdater.shared().checkForUpdates(self)
-    }
-
-    // Overrides
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-    }
-
     override func viewWillAppear() {
         super.viewWillAppear()
 
-        versionLabel.stringValue = Bundle.main.object(forInfoDictionaryKey: "CFBundleVersion") as! String
+        let onlyIntFormatter = TextFieldFormatter()
 
-        startAtLoginOutlet.state = Int(NSNumber(value: startedAtLogin))
-
-        // Init stored preferences
-
-        blurValue.formatter = TextFieldFormatter()
-        brightnessValue.formatter = TextFieldFormatter()
-        trackInfoDelayValue.formatter = TextFieldFormatter()
-
-        updateRate.integerValue = UserDefaults.standard.integer(forKey: "UpdateRate")
-        updateRateStepperOutlet.integerValue = UserDefaults.standard.integer(forKey: "UpdateRate")
+        blurValue.formatter = onlyIntFormatter
+        brightnessValue.formatter = onlyIntFormatter
+        trackInfoDelayValue.formatter = onlyIntFormatter
 
         blurValue.integerValue = UserDefaults.standard.integer(forKey: "blurValue")
         blurValueStepperOutlet.integerValue = UserDefaults.standard.integer(forKey: "blurValue")
@@ -145,9 +124,32 @@ class SettingsWindowViewController: NSViewController {
         trackInfoDelayValue.integerValue = UserDefaults.standard.integer(forKey: "trackInfoDelay")
         trackInfoDelayValueStepperOutlet.integerValue = UserDefaults.standard.integer(forKey: "trackInfoDelay")
 
-        displayTrackTitleOutlet.state = UserDefaults.standard.integer(forKey: "displayTrackTitle")
-        displayAlbumTitleOutlet.state = UserDefaults.standard.integer(forKey: "displayAlbumTitle")
-        displayArtistNameOutlet.state = UserDefaults.standard.integer(forKey: "displayArtistName")
-        displayTrackTimeOutlet.state = UserDefaults.standard.integer(forKey: "displayTrackTime")
+        displayTrackTitleOutlet.state =
+            NSControl.StateValue(rawValue: UserDefaults.standard.integer(forKey: "displayTrackTitle"))
+        displayAlbumTitleOutlet.state =
+            NSControl.StateValue(rawValue: UserDefaults.standard.integer(forKey: "displayAlbumTitle"))
+        displayArtistNameOutlet.state =
+            NSControl.StateValue(rawValue: UserDefaults.standard.integer(forKey: "displayArtistName"))
+        displayTrackTimeOutlet.state =
+            NSControl.StateValue(rawValue: UserDefaults.standard.integer(forKey: "displayTrackTime"))
+    }
+}
+
+class About: NSViewController {
+
+    @IBOutlet weak var versionLabel: NSTextField!
+
+    @IBAction func openWebsite(_ sender: NSButton) {
+        NSWorkspace.shared.open(URL(string: "https://github.com/Ghosty141/MenuBarControls")!)
+    }
+
+    @IBAction func checkForUpdates(_ sender: NSButton) {
+        SUUpdater.shared().checkForUpdates(self)
+    }
+
+    override func viewWillAppear() {
+        super.viewWillAppear()
+
+        versionLabel.stringValue = Bundle.main.object(forInfoDictionaryKey: "CFBundleVersion") as! String
     }
 }

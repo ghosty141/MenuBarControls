@@ -11,21 +11,22 @@ import Cocoa
 class AppDelegate: NSObject, NSApplicationDelegate {
 
     func applicationDidFinishLaunching(_ aNotification: Notification) {
-        
+
         let mainAppIdentifier = "com.Ghostly.MenuBarControls"
-        let running           = NSWorkspace.shared().runningApplications
+        let running           = NSWorkspace.shared.runningApplications
         var alreadyRunning    = false
-        
-        for app in running {
-            if app.bundleIdentifier == mainAppIdentifier {
-                alreadyRunning = true
-                break
-            }
+
+        for app in running where app.bundleIdentifier == mainAppIdentifier {
+            alreadyRunning = true
+            break
         }
-        
+
         if !alreadyRunning {
-            DistributedNotificationCenter.default().addObserver(self, selector: #selector(self.terminate), name: Notification.Name("killme"), object: mainAppIdentifier)
-            
+            DistributedNotificationCenter.default().addObserver(self,
+                                                                selector: #selector(self.terminate),
+                                                                name: Notification.Name("killme"),
+                                                                object: mainAppIdentifier)
+
             let path = Bundle.main.bundlePath as NSString
             var components = path.pathComponents
             components.removeLast()
@@ -34,15 +35,14 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             components.append("MacOS")
             components.append("MenuBarControls")
             let newPath = NSString.path(withComponents: components)
-            
-            NSWorkspace.shared().launchApplication(newPath)
-        }
-        else {
+
+            NSWorkspace.shared.launchApplication(newPath)
+        } else {
             self.terminate()
         }
     }
-    
-    func terminate() {
+
+    @objc func terminate() {
         NSApp.terminate(nil)
     }
 

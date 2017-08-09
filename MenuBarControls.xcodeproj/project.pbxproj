@@ -8,22 +8,22 @@
 
 /* Begin PBXBuildFile section */
 		C09416F4BBBE3C0ABC431540 /* Pods_MenuBarControls.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F4A10F810616D467ADBE6EB0 /* Pods_MenuBarControls.framework */; };
+		D620095F1F377EA300955303 /* SettingsWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D620095E1F377EA300955303 /* SettingsWindowController.swift */; };
 		D63A6D741F20D43800028B14 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D63A6D731F20D43800028B14 /* AppDelegate.swift */; };
 		D63A6D7B1F20D43800028B14 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D63A6D791F20D43800028B14 /* Main.storyboard */; };
 		D63A6D841F20D46900028B14 /* Spotify.swift in Sources */ = {isa = PBXBuildFile; fileRef = D63A6D821F20D46900028B14 /* Spotify.swift */; };
-		D63A6D851F20D46900028B14 /* ImageMemory.swift in Sources */ = {isa = PBXBuildFile; fileRef = D63A6D831F20D46900028B14 /* ImageMemory.swift */; };
 		D63A6D871F20D47600028B14 /* EventMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = D63A6D861F20D47600028B14 /* EventMonitor.swift */; };
-		D63A6D8A1F20D4CC00028B14 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D63A6D891F20D4CC00028B14 /* Assets.xcassets */; };
 		D63A6D8E1F20D69900028B14 /* PlayerPopoverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D63A6D8D1F20D69900028B14 /* PlayerPopoverViewController.swift */; };
 		D63A6D911F20D6B900028B14 /* TextFieldFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D63A6D901F20D6B900028B14 /* TextFieldFormatter.swift */; };
-		D63A6D951F20DA2800028B14 /* SettingsWindowViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D63A6D941F20DA2800028B14 /* SettingsWindowViewController.swift */; };
+		D63A6D951F20DA2800028B14 /* SettingsTabControllers.swift in Sources */ = {isa = PBXBuildFile; fileRef = D63A6D941F20DA2800028B14 /* SettingsTabControllers.swift */; };
 		D681140E1F29B5B7007070E0 /* dsa_pub.pem in Resources */ = {isa = PBXBuildFile; fileRef = D681140D1F29B5B7007070E0 /* dsa_pub.pem */; };
 		D6A712621F3625780074FBBF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6A712611F3625780074FBBF /* AppDelegate.swift */; };
 		D6A712661F3625780074FBBF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D6A712651F3625780074FBBF /* Assets.xcassets */; };
 		D6A712691F3625780074FBBF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D6A712671F3625780074FBBF /* Main.storyboard */; };
 		D6A7126F1F3626490074FBBF /* MBCHelper.app in Copy Files */ = {isa = PBXBuildFile; fileRef = D6A7125F1F3625780074FBBF /* MBCHelper.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
-		D6A712711F36269F0074FBBF /* ServiceManagement.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D6A712701F36269F0074FBBF /* ServiceManagement.framework */; };
+		D6AE6A501F393E1300A85AB5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D6AE6A4F1F393E1300A85AB5 /* Assets.xcassets */; };
 		D6B0CBE71F362AE40098B33F /* ServiceManagement.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D6A712701F36269F0074FBBF /* ServiceManagement.framework */; };
+		D6EA0C381F37DE6800679D3C /* ImageMemory.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6EA0C371F37DE6800679D3C /* ImageMemory.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -42,17 +42,16 @@
 
 /* Begin PBXFileReference section */
 		2627885CA596E7F3F67674DC /* Pods-MenuBarControls.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MenuBarControls.release.xcconfig"; path = "Pods/Target Support Files/Pods-MenuBarControls/Pods-MenuBarControls.release.xcconfig"; sourceTree = "<group>"; };
+		D620095E1F377EA300955303 /* SettingsWindowController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsWindowController.swift; sourceTree = "<group>"; };
 		D63A6D701F20D43800028B14 /* MenuBarControls.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MenuBarControls.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D63A6D731F20D43800028B14 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D63A6D7A1F20D43800028B14 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		D63A6D821F20D46900028B14 /* Spotify.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Spotify.swift; sourceTree = "<group>"; };
-		D63A6D831F20D46900028B14 /* ImageMemory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageMemory.swift; sourceTree = "<group>"; };
 		D63A6D861F20D47600028B14 /* EventMonitor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventMonitor.swift; sourceTree = "<group>"; };
-		D63A6D891F20D4CC00028B14 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D63A6D8D1F20D69900028B14 /* PlayerPopoverViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayerPopoverViewController.swift; sourceTree = "<group>"; };
 		D63A6D901F20D6B900028B14 /* TextFieldFormatter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextFieldFormatter.swift; sourceTree = "<group>"; };
 		D63A6D921F20D8D100028B14 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		D63A6D941F20DA2800028B14 /* SettingsWindowViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsWindowViewController.swift; sourceTree = "<group>"; };
+		D63A6D941F20DA2800028B14 /* SettingsTabControllers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsTabControllers.swift; sourceTree = "<group>"; };
 		D681140D1F29B5B7007070E0 /* dsa_pub.pem */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = dsa_pub.pem; sourceTree = "<group>"; };
 		D6A7125F1F3625780074FBBF /* MBCHelper.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MBCHelper.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D6A712611F3625780074FBBF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -60,7 +59,9 @@
 		D6A712681F3625780074FBBF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		D6A7126A1F3625780074FBBF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D6A712701F36269F0074FBBF /* ServiceManagement.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ServiceManagement.framework; path = System/Library/Frameworks/ServiceManagement.framework; sourceTree = SDKROOT; };
+		D6AE6A4F1F393E1300A85AB5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D6B0CBE51F362A550098B33F /* MBCHelper.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = MBCHelper.entitlements; sourceTree = "<group>"; };
+		D6EA0C371F37DE6800679D3C /* ImageMemory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageMemory.swift; sourceTree = "<group>"; };
 		F4A10F810616D467ADBE6EB0 /* Pods_MenuBarControls.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MenuBarControls.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		FB393304AEC3412010B6CBA9 /* Pods-MenuBarControls.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MenuBarControls.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MenuBarControls/Pods-MenuBarControls.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -70,7 +71,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D6A712711F36269F0074FBBF /* ServiceManagement.framework in Frameworks */,
 				C09416F4BBBE3C0ABC431540 /* Pods_MenuBarControls.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -131,10 +131,10 @@
 			isa = PBXGroup;
 			children = (
 				D63A6D731F20D43800028B14 /* AppDelegate.swift */,
-				D63A6D831F20D46900028B14 /* ImageMemory.swift */,
 				D63A6D861F20D47600028B14 /* EventMonitor.swift */,
 				D63A6D901F20D6B900028B14 /* TextFieldFormatter.swift */,
-				D63A6D891F20D4CC00028B14 /* Assets.xcassets */,
+				D6EA0C371F37DE6800679D3C /* ImageMemory.swift */,
+				D6AE6A4F1F393E1300A85AB5 /* Assets.xcassets */,
 				D63A6D921F20D8D100028B14 /* Info.plist */,
 			);
 			name = Support;
@@ -160,7 +160,8 @@
 			isa = PBXGroup;
 			children = (
 				D63A6D8D1F20D69900028B14 /* PlayerPopoverViewController.swift */,
-				D63A6D941F20DA2800028B14 /* SettingsWindowViewController.swift */,
+				D620095E1F377EA300955303 /* SettingsWindowController.swift */,
+				D63A6D941F20DA2800028B14 /* SettingsTabControllers.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -244,11 +245,12 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0830;
-				LastUpgradeCheck = 0830;
+				LastUpgradeCheck = 0900;
 				ORGANIZATIONNAME = Ghostly;
 				TargetAttributes = {
 					D63A6D6F1F20D43800028B14 = {
 						CreatedOnToolsVersion = 8.3.3;
+						LastSwiftMigration = 0900;
 						ProvisioningStyle = Manual;
 						SystemCapabilities = {
 							com.apple.Sandbox = {
@@ -259,6 +261,7 @@
 					D6A7125E1F3625780074FBBF = {
 						CreatedOnToolsVersion = 8.3.3;
 						DevelopmentTeam = 59UH2C9S7L;
+						LastSwiftMigration = 0900;
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
 							com.apple.Sandbox = {
@@ -292,8 +295,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D63A6D8A1F20D4CC00028B14 /* Assets.xcassets in Resources */,
 				D681140E1F29B5B7007070E0 /* dsa_pub.pem in Resources */,
+				D6AE6A501F393E1300A85AB5 /* Assets.xcassets in Resources */,
 				D63A6D7B1F20D43800028B14 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -375,12 +378,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D63A6D951F20DA2800028B14 /* SettingsWindowViewController.swift in Sources */,
-				D63A6D851F20D46900028B14 /* ImageMemory.swift in Sources */,
+				D6EA0C381F37DE6800679D3C /* ImageMemory.swift in Sources */,
+				D63A6D951F20DA2800028B14 /* SettingsTabControllers.swift in Sources */,
 				D63A6D871F20D47600028B14 /* EventMonitor.swift in Sources */,
 				D63A6D911F20D6B900028B14 /* TextFieldFormatter.swift in Sources */,
 				D63A6D841F20D46900028B14 /* Spotify.swift in Sources */,
 				D63A6D741F20D43800028B14 /* AppDelegate.swift in Sources */,
+				D620095F1F377EA300955303 /* SettingsWindowController.swift in Sources */,
 				D63A6D8E1F20D69900028B14 /* PlayerPopoverViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -425,7 +429,9 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
@@ -433,7 +439,11 @@
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -475,7 +485,9 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
@@ -483,7 +495,11 @@
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -521,7 +537,8 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.Ghostly.MenuBarControls;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = Off;
+				SWIFT_VERSION = 4.0;
 			};
 			name = Debug;
 		};
@@ -539,7 +556,8 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.Ghostly.MenuBarControls;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = Off;
+				SWIFT_VERSION = 4.0;
 			};
 			name = Release;
 		};
@@ -557,7 +575,8 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = Off;
+				SWIFT_VERSION = 4.0;
 			};
 			name = Debug;
 		};
@@ -575,7 +594,8 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = Off;
+				SWIFT_VERSION = 4.0;
 			};
 			name = Release;
 		};

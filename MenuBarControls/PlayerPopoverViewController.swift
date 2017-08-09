@@ -7,19 +7,17 @@
 
 import Cocoa
 import CoreImage
-
-var imageGroup = ImageMemory(originalImage: nil, processedImage: nil)
+import ScriptingBridge
 
 class PlayerPopoverViewController: NSViewController {
 
-    let appDel = NSApplication.shared().delegate as? AppDelegate
-    var updateTimer: Timer?
-    var lastURL: URL?
-    var spotify = Spotify()
+    let appDel = NSApplication.shared.delegate as? AppDelegate
+    var lastURL: String?
     var mouseoverIsActive = false
-    var window: NSWindowController?
-    let settingsController: NSWindowController =
-        NSStoryboard(name: "Main", bundle: nil).instantiateController(withIdentifier: "SettingsWindow") as! NSWindowController
+    var updateTimer: Timer?
+    var settingsController: NSWindowController?
+
+    let spotify = SBApplication(bundleIdentifier: "com.spotify.client")! as SpotifyApplication
 
     @IBOutlet weak var coverImage: NSImageView!
     @IBOutlet weak var trackLabel: NSTextField!
@@ -54,22 +52,22 @@ class PlayerPopoverViewController: NSViewController {
         }
     }
 
-    func checkAppStatus() {
-        if spotify.isRunning() == false {
+    @objc func checkAppStatus() {
+        if appDel?.isSpotifyRunning() == false {
             appDel?.closePopover(self)
         } else {
-            if spotify.isPlaying() == true {
-                if lastURL != spotify.getCoverURL() {
+            if spotify.playerState == .playing {
+                if lastURL != spotify.currentTrack?.artworkUrl {
                     updateCover()
                 }
-                if mouseoverIsActive == true {
+                if mouseoverIsActive {
                     trackTimeLabel.stringValue =
-"- \(formatTime(using: spotify.currentPlayerPosition)) / \(formatTime(using: spotify.currentTrackDuration)) -"
+"- \(formatTime(using: Int32(spotify.playerPosition!))) / \(formatTime(using: Int32((spotify.currentTrack?.duration)!/1000))) -"
                 }
                 updateShuffleButton()
                 updateRepeatButton()
                 updatePlayPauseButton()
-                volumeSlider.doubleValue = spotify.volume
+                volumeSlider.integerValue = spotify.soundVolume!
             } else {
                 updatePlayPauseButton()
                 if appDel?.popover.isShown == false {
@@ -80,66 +78,46 @@ class PlayerPopoverViewController: NSViewController {
     }
 
     func updatePlayPauseButton() {
-        if playPauseButton.state == NSOffState && spotify.isPlaying() == true {
-            playPauseButton.state = NSOnState
-        } else if playPauseButton.state == NSOnState && spotify.isPlaying() == false {
-            playPauseButton.state = NSOffState
+        if playPauseButton.state == NSControl.StateValue.offState && spotify.playerState == .playing {
+            playPauseButton.state = NSControl.StateValue.onState
+        } else if playPauseButton.state == NSControl.StateValue.onState && spotify.playerState == .paused {
+            playPauseButton.state = NSControl.StateValue.offState
         }
     }
 
     func updateShuffleButton() {
-        if shuffleButton.state == NSOffState && spotify.shuffling == true {
-            shuffleButton.state = NSOnState
-        } else if shuffleButton.state == NSOnState && spotify.shuffling == false {
-            shuffleButton.state = NSOffState
+        if shuffleButton.state == NSControl.StateValue.offState && spotify.shuffling == true {
+            shuffleButton.state = NSControl.StateValue.onState
+        } else if shuffleButton.state == NSControl.StateValue.onState && spotify.shuffling == false {
+            shuffleButton.state = NSControl.StateValue.offState
         }
     }
 
     func updateRepeatButton() {
-        if repeatButton.state == NSOffState && spotify.repeating == true {
-            repeatButton.state = NSOnState
-        } else if shuffleButton.state == NSOnState && spotify.repeating == false {
-            repeatButton.state = NSOffState
+        if repeatButton.state == NSControl.StateValue.offState && spotify.repeating == true {
+            repeatButton.state = NSControl.StateValue.onState
+        } else if shuffleButton.state == NSControl.StateValue.onState && spotify.repeating == false {
+            repeatButton.state = NSControl.StateValue.offState
         }
     }
-
-    /*
-     updateArtwork is more or less temporary (Controller should not handle this, should be moved to Model/Spotify)
-     NEVER call updateArtwork too quickly, it WILL cause a memory leak
-     (reason being finishTasksAndInvalidate() might not be called)
-     */
 
     private func updateCover() {
-        if spotify.getCoverURL() == URL(string: "error") {
-            imageGroup = ImageMemory(originalImage: NSImage(named: "CoverError"),
-                                     processedImage: self.blurImage(NSImage(named: "CoverError")!))
+        let urlContent = try? Data(contentsOf: URL(string: (spotify.currentTrack?.artworkUrl)!)!)
+        if let coverArt = urlContent {
+            imageGroup.original = NSImage(data: coverArt)
+            imageGroup.processed = blurImage(imageGroup.original!)
         } else {
-            let session = URLSession(configuration: URLSessionConfiguration.default)
-            let downloadArtwork =
-                session.dataTask(with: spotify.getCoverURL()) { [unowned self] (data, _, error) in
-                    if error != nil {
-                        self.cover.image = NSImage(named: "CoverError")
-                    } else {
-                        if let imageData = data {
-                            imageGroup = ImageMemory(originalImage: NSImage(data: imageData),
-                                                     processedImage: self.blurImage(NSImage(data: imageData)!))
-                            if self.mouseoverIsActive == false {
-                                self.cover.image = imageGroup.original
-                            } else {
-                                self.mouseOverOn()
-                            }
-                        } else {
-                            self.cover.image = NSImage(named: "CoverError")
-                        }
-                    }
-            }
-            lastURL = spotify.getCoverURL()
-            downloadArtwork.resume()
-            session.finishTasksAndInvalidate()
+            cover.image = NSImage(named: NSImage.Name(rawValue: "CoverError"))
         }
+        if mouseoverIsActive == false {
+            cover.image = imageGroup.original
+        } else {
+            mouseOverOn()
+        }
+        lastURL = spotify.currentTrack?.artworkUrl
     }
 
-    // CABasicAnimation / Core Animation might be more suited for this
+    // CABasicAnimation / Core Animation is suited for this
 
     func blurImage(_ inputImage: NSImage) -> NSImage {
         let context = CIContext(options: nil)
@@ -171,24 +149,24 @@ class PlayerPopoverViewController: NSViewController {
         cropBlack!.setValue(image, forKey: "inputBackgroundImage")
         let croppedBlack = cropBlack!.outputImage
 
+        // Blurs the input
+
+        let blurFilter = CIFilter(name: "CIGaussianBlur")
+        blurFilter!.setValue(extendedImage, forKey: kCIInputImageKey)
+        blurFilter!.setValue(CGFloat(UserDefaults.standard.integer(forKey: "blurValue")), forKey: kCIInputRadiusKey)
+        let blurredImage = blurFilter!.outputImage
+
         // Lays the black image ontop of the original
 
         let mixFilter = CIFilter(name: "CISourceAtopCompositing")
         mixFilter!.setValue(croppedBlack, forKey: "inputImage")
-        mixFilter!.setValue(extendedImage, forKey: "inputBackgroundImage") //input change
+        mixFilter!.setValue(blurredImage, forKey: "inputBackgroundImage") //input change
         let mixed = mixFilter!.outputImage
-
-        // Blurs the input
-
-        let blurFilter = CIFilter(name: "CIGaussianBlur")
-        blurFilter!.setValue(mixed, forKey: kCIInputImageKey)
-        blurFilter!.setValue(CGFloat(UserDefaults.standard.integer(forKey: "blurValue")), forKey: kCIInputRadiusKey)
-        let blurredImage = blurFilter!.outputImage
 
         // Crops it again so there aren't any borders
 
         let cropFilter = CIFilter(name: "CICrop")
-        cropFilter!.setValue(blurredImage, forKey: kCIInputImageKey)
+        cropFilter!.setValue(mixed, forKey: kCIInputImageKey)
         cropFilter!.setValue(CIVector(cgRect: image!.extent), forKey: "inputRectangle")
         let cropped = cropFilter!.outputImage
 
@@ -209,21 +187,21 @@ class PlayerPopoverViewController: NSViewController {
     func mouseOverOn() {
         mouseoverIsActive = true
         cover.image = imageGroup.processed
-        track.stringValue = spotify.currentTrack
-        album.stringValue = spotify.currentAlbum
-        artist.stringValue = spotify.currentArtist
+        track.stringValue = (spotify.currentTrack?.name)!
+        album.stringValue = (spotify.currentTrack?.album)!
+        artist.stringValue = (spotify.currentTrack?.artist)!
         trackTimeLabel.stringValue =
-"- \(formatTime(using: spotify.currentPlayerPosition)) / \(formatTime(using: spotify.currentTrackDuration)) -"
+"- \(formatTime(using: Int32(spotify.playerPosition!))) / \(formatTime(using: Int32((spotify.currentTrack?.duration)!/1000))) -"
 
-        trackLabel.isHidden = !Bool(UserDefaults.standard.integer(forKey: "displayTrackTitle") as NSNumber)
-        albumLabel.isHidden = !Bool(UserDefaults.standard.integer(forKey: "displayAlbumTitle") as NSNumber)
-        artistLabel.isHidden = !Bool(UserDefaults.standard.integer(forKey: "displayArtistName") as NSNumber)
-        trackTimeLabel.isHidden = !Bool(UserDefaults.standard.integer(forKey: "displayTrackTime") as NSNumber)
+        trackLabel.isHidden = !Bool(truncating: UserDefaults.standard.integer(forKey: "displayTrackTitle") as NSNumber)
+        albumLabel.isHidden = !Bool(truncating: UserDefaults.standard.integer(forKey: "displayAlbumTitle") as NSNumber)
+        artistLabel.isHidden = !Bool(truncating: UserDefaults.standard.integer(forKey: "displayArtistName") as NSNumber)
+        trackTimeLabel.isHidden = !Bool(truncating: UserDefaults.standard.integer(forKey: "displayTrackTime") as NSNumber)
     }
 
     func mouseOverOff() {
         mouseoverIsActive = false
-        coverImage.image = imageGroup.original ?? NSImage(named: "CoverError")
+        coverImage.image = imageGroup.original ?? NSImage(named: NSImage.Name("CoverError"))
         trackLabel.isHidden = true
         albumLabel.isHidden = true
         artistLabel.isHidden = true
@@ -233,37 +211,43 @@ class PlayerPopoverViewController: NSViewController {
     // IBActions for the player-popover
 
     @IBAction func playPause(_ sender: Any) {
-        spotify.playPause()
+        spotify.playpause!()
     }
 
     @IBAction func volumeSlider(_ sender: NSSlider) {
-        spotify.volume = sender.doubleValue
+        spotify.setSoundVolume!(sender.integerValue)
     }
 
     @IBAction func next(_ sender: NSButton) {
-        spotify.nextTrack()
+        spotify.nextTrack!()
         if UserDefaults.standard.integer(forKey: "trackInfoDelay") != 0 {
             mouseOverOn()
-                DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + UserDefaults.standard.double(forKey: "trackInfoDelay")) {
+            DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() +
+            UserDefaults.standard.double(forKey: "trackInfoDelay")) {
                 self.mouseOverOff()
             }
         }
     }
 
     @IBAction func previous(_ sender: NSButton) {
-        spotify.previousTrack()
+        spotify.previousTrack!()
     }
 
     @IBAction func repeats(_ sender: NSButtonCell) {
-        spotify.repeating = Bool(sender.intValue as NSNumber)
+        spotify.setRepeating!(Bool(truncating: sender.intValue as NSNumber))
     }
 
     @IBAction func shuffle(_ sender: NSButtonCell) {
-        spotify.shuffling = Bool(sender.intValue as NSNumber)
+        spotify.setShuffling!(Bool(truncating: sender.intValue as NSNumber))
     }
 
     @IBAction func openSettings(_ sender: NSButton) {
-        settingsController.showWindow(self)
+        settingsController = NSStoryboard(
+            name: NSStoryboard.Name(rawValue: "Main"),
+            bundle: nil)
+            .instantiateController(
+                withIdentifier: NSStoryboard.SceneIdentifier(rawValue: "SettingsWindow")) as? NSWindowController
+        settingsController?.showWindow(self)
     }
 
     // Overrides
@@ -279,16 +263,16 @@ class PlayerPopoverViewController: NSViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        updateCover()
         startTimer()
         updatePlayPauseButton()
         updateShuffleButton()
         updateRepeatButton()
-        volumeSlider.doubleValue = Double(spotify.volume)
+        updateCover()
+        volumeSlider.integerValue = spotify.soundVolume!
 
         let trackingArea = NSTrackingArea(rect: coverImage.bounds,
-                                          options: [NSTrackingAreaOptions.mouseEnteredAndExited,
-                                                    NSTrackingAreaOptions.activeAlways],
+                                          options: [NSTrackingArea.Options.mouseEnteredAndExited,
+                                                    NSTrackingArea.Options.activeAlways],
                                           owner: self,
                                           userInfo: nil)
         coverImage.addTrackingArea(trackingArea)
@@ -297,5 +281,6 @@ class PlayerPopoverViewController: NSViewController {
     override func viewDidDisappear() {
         super.viewDidDisappear()
         updateTimer?.invalidate()
+        imageGroup = ImageMemory(originalImage: nil, processedImage: nil)
     }
 }
