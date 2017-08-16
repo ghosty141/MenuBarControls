@@ -7,7 +7,7 @@
 
 import Cocoa
 
-class SettingsWindowController: NSWindowController {
+class SettingsWindowController: NSWindowController, NSWindowDelegate {
 
     var visibleTab: NSViewController?
 
@@ -40,5 +40,10 @@ class SettingsWindowController: NSWindowController {
 
     @IBAction func quit(_ sender: NSToolbarItem) {
         NSApplication.shared.terminate(self)
+    }
+
+    override func windowDidLoad() {
+        window?.level = NSWindow.Level(rawValue: NSWindow.Level.RawValue(kCGFloatingWindowLevel))
+        
     }
 }
