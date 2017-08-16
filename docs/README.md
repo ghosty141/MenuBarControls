@@ -1,6 +1,6 @@
 # MenuBarControls
 
-A simple app that lets you control Spotify from the menubar. Completely written in Swift using the Spotify Applescript API (for now).
+A simple app that lets you control Spotify from the menubar. Completely written in Swift using the Spotify Applescript API and Sparkle.
 
 <p align="center">
   <img width="381" height="340" src="https://user-images.githubusercontent.com/17564201/28537113-174007a2-70aa-11e7-9412-1e37894b273e.png">
