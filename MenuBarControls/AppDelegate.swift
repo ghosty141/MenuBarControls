@@ -6,7 +6,6 @@
 //
 
 import Cocoa
-import ScriptingBridge
 
 // Global vars
 
@@ -72,7 +71,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSUserNotificationCenterDele
 
     func isSpotifyRunning() -> Bool {
         let applications = NSWorkspace.shared.runningApplications
-        for i in applications where i.localizedName! == "Spotify" {
+        for i in applications where i.bundleIdentifier == "com.spotify.client" {
             return true
         }
         return false

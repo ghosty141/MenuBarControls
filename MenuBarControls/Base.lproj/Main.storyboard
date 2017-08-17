@@ -671,7 +671,7 @@
                         <rect key="contentRect" x="366" y="373" width="444" height="225"/>
                         <rect key="screenRect" x="0.0" y="0.0" width="1680" height="1027"/>
                         <value key="minSize" type="size" width="210" height="210"/>
-                        <toolbar key="toolbar" implicitIdentifier="0E82BB7E-A006-45AA-B023-94586D50020D" autosavesConfiguration="NO" displayMode="iconAndLabel" sizeMode="regular" id="6Y5-Yg-T0F">
+                        <toolbar key="toolbar" implicitIdentifier="0E82BB7E-A006-45AA-B023-94586D50020D" autosavesConfiguration="NO" allowsUserCustomization="NO" displayMode="iconAndLabel" sizeMode="regular" id="6Y5-Yg-T0F">
                             <allowedToolbarItems>
                                 <toolbarItem implicitItemIdentifier="NSToolbarSpaceItem" id="Vu8-Zx-udJ"/>
                                 <toolbarItem implicitItemIdentifier="NSToolbarFlexibleSpaceItem" id="UYN-pZ-NQo"/>
