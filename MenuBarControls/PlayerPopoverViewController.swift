@@ -78,26 +78,26 @@ class PlayerPopoverViewController: NSViewController {
     }
 
     func updatePlayPauseButton() {
-        if playPauseButton.state == NSControl.StateValue.offState && spotify.playerState == .playing {
-            playPauseButton.state = NSControl.StateValue.onState
-        } else if playPauseButton.state == NSControl.StateValue.onState && spotify.playerState == .paused {
-            playPauseButton.state = NSControl.StateValue.offState
+        if playPauseButton.state == NSControl.StateValue.off && spotify.playerState == .playing {
+            playPauseButton.state = NSControl.StateValue.on
+        } else if playPauseButton.state == NSControl.StateValue.on && spotify.playerState == .paused {
+            playPauseButton.state = NSControl.StateValue.off
         }
     }
 
     func updateShuffleButton() {
-        if shuffleButton.state == NSControl.StateValue.offState && spotify.shuffling == true {
-            shuffleButton.state = NSControl.StateValue.onState
-        } else if shuffleButton.state == NSControl.StateValue.onState && spotify.shuffling == false {
-            shuffleButton.state = NSControl.StateValue.offState
+        if shuffleButton.state == NSControl.StateValue.off && spotify.shuffling == true {
+            shuffleButton.state = NSControl.StateValue.on
+        } else if shuffleButton.state == NSControl.StateValue.on && spotify.shuffling == false {
+            shuffleButton.state = NSControl.StateValue.off
         }
     }
 
     func updateRepeatButton() {
-        if repeatButton.state == NSControl.StateValue.offState && spotify.repeating == true {
-            repeatButton.state = NSControl.StateValue.onState
-        } else if shuffleButton.state == NSControl.StateValue.onState && spotify.repeating == false {
-            repeatButton.state = NSControl.StateValue.offState
+        if repeatButton.state == NSControl.StateValue.off && spotify.repeating == true {
+            repeatButton.state = NSControl.StateValue.on
+        } else if shuffleButton.state == NSControl.StateValue.on && spotify.repeating == false {
+            repeatButton.state = NSControl.StateValue.off
         }
     }
 
