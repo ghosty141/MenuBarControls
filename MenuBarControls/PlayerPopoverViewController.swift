@@ -34,7 +34,7 @@ class PlayerPopoverViewController: NSViewController {
     @IBOutlet weak var album: NSTextFieldCell!
     @IBOutlet weak var artist: NSTextFieldCell!
 
-    func startTimer() {
+    private func startTimer() {
         if updateTimer == nil {
             updateTimer = Timer.scheduledTimer(
                 timeInterval: UserDefaults.standard.double(forKey: "UpdateRate"),
@@ -45,7 +45,7 @@ class PlayerPopoverViewController: NSViewController {
         }
     }
 
-    func stopTimer() {
+    private func stopTimer() {
         if updateTimer != nil {
             updateTimer?.invalidate()
             updateTimer = nil
@@ -53,7 +53,7 @@ class PlayerPopoverViewController: NSViewController {
     }
 
     @objc func checkAppStatus() {
-        if appDel?.isSpotifyRunning() == false {
+        if spotify.isRunning == false {
             appDel?.closePopover(self)
         } else {
             if spotify.playerState == .playing {

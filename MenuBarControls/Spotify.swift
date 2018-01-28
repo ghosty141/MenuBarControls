@@ -15,11 +15,11 @@ import ScriptingBridge
 @objc public protocol SBApplicationProtocol: SBObjectProtocol {
     func activate()
     var delegate: SBApplicationDelegate! { get set }
-    //var running: Bool { @objc(isRunning) get } // No idea why this is broken in Swift 4, for now I'll just use my own function for "running"
+    var isRunning: Bool { get }
 }
 
 // MARK: SpotifyEPlS
-@objc public enum SpotifyEPlS: AEKeyword {
+@objc public enum SpotifyEPlS : AEKeyword {
     case stopped = 0x6b505353 /* 'kPSS' */
     case playing = 0x6b505350 /* 'kPSP' */
     case paused = 0x6b505370 /* 'kPSp' */
@@ -49,7 +49,6 @@ import ScriptingBridge
     @objc optional var frontmost: Bool { get } // Is this the frontmost (active) application?
     @objc optional var version: String { get } // The version of the application.
 }
-
 extension SBApplication: SpotifyApplication {}
 
 // MARK: SpotifyTrack
@@ -70,5 +69,5 @@ extension SBApplication: SpotifyApplication {}
     @objc optional var spotifyUrl: String { get } // The URL of the track.
     @objc optional func setSpotifyUrl(_ spotifyUrl: String!) // The URL of the track.
 }
-
 extension SBObject: SpotifyTrack {}
+
