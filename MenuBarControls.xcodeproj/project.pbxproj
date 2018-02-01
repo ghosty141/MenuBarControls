@@ -50,8 +50,8 @@
 		2627885CA596E7F3F67674DC /* Pods-MenuBarControls.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MenuBarControls.release.xcconfig"; path = "Pods/Target Support Files/Pods-MenuBarControls/Pods-MenuBarControls.release.xcconfig"; sourceTree = "<group>"; };
 		D603F8B72020951A008DC225 /* Context.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Context.swift; sourceTree = "<group>"; };
 		D603F8BB20209556008DC225 /* Player.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
-		D603F8BD2021172A008DC225 /* Spotify.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Spotify.swift; path = States/Spotify.swift; sourceTree = "<group>"; };
-		D603F8C120211F42008DC225 /* Initial.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Initial.swift; path = States/Initial.swift; sourceTree = "<group>"; };
+		D603F8BD2021172A008DC225 /* Spotify.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Spotify.swift; sourceTree = "<group>"; };
+		D603F8C120211F42008DC225 /* Initial.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Initial.swift; sourceTree = "<group>"; };
 		D603F8C320239C1B008DC225 /* iTunesScripting.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = iTunesScripting.swift; sourceTree = "<group>"; };
 		D603F8C520239CF8008DC225 /* iTunes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iTunes.swift; sourceTree = "<group>"; };
 		D620095E1F377EA300955303 /* SettingsWindowController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsWindowController.swift; sourceTree = "<group>"; };
@@ -107,16 +107,23 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
-		D603F8B42020946E008DC225 /* States */ = {
+		D603F8D62023B199008DC225 /* ScriptingBridge */ = {
 			isa = PBXGroup;
 			children = (
-				D603F8BB20209556008DC225 /* Player.swift */,
-				D603F8B72020951A008DC225 /* Context.swift */,
+				D63A6D821F20D46900028B14 /* SpotifyScripting.swift */,
+				D603F8C320239C1B008DC225 /* iTunesScripting.swift */,
+			);
+			path = ScriptingBridge;
+			sourceTree = "<group>";
+		};
+		D603F8D82023B1C5008DC225 /* PlayerStates */ = {
+			isa = PBXGroup;
+			children = (
 				D603F8BD2021172A008DC225 /* Spotify.swift */,
 				D603F8C520239CF8008DC225 /* iTunes.swift */,
 				D603F8C120211F42008DC225 /* Initial.swift */,
 			);
-			name = States;
+			path = PlayerStates;
 			sourceTree = "<group>";
 		};
 		D63A6D671F20D43800028B14 = {
@@ -146,7 +153,6 @@
 				D63A6D8B1F20D67200028B14 /* Model */,
 				D63A6D8C1F20D67C00028B14 /* View */,
 				D63A6D8F1F20D69E00028B14 /* Controller */,
-				D603F8B42020946E008DC225 /* States */,
 				D63A6D881F20D47A00028B14 /* Support */,
 			);
 			path = MenuBarControls;
@@ -168,8 +174,10 @@
 		D63A6D8B1F20D67200028B14 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				D63A6D821F20D46900028B14 /* SpotifyScripting.swift */,
-				D603F8C320239C1B008DC225 /* iTunesScripting.swift */,
+				D603F8D82023B1C5008DC225 /* PlayerStates */,
+				D603F8D62023B199008DC225 /* ScriptingBridge */,
+				D603F8BB20209556008DC225 /* Player.swift */,
+				D603F8B72020951A008DC225 /* Context.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
