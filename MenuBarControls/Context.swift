@@ -44,5 +44,8 @@ class Context {
         return player = Spotify();
     }
     
+    func useiTunes() {
+        return player = iTunes();
+    }
 }
 
