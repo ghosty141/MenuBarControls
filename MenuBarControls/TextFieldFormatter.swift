@@ -16,9 +16,9 @@ class TextFieldFormatter: NumberFormatter {
             return true
         }
 
-        if String.init(partialString.characters) == "100" {
+        if String.init(partialString) == "100" {
             return true
-        } else if partialString.characters.count>2 {
+        } else if partialString.count>2 {
             return false
         }
 
