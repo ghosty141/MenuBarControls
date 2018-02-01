@@ -1,5 +1,5 @@
 //
-//  Spotify.swift
+//  SpotifyScripting.swift
 //  MenuBarControls
 //
 //  Copyright © 2017 Ghostly. All rights reserved.

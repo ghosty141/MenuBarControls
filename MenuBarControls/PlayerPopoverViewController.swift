@@ -17,6 +17,8 @@ class PlayerPopoverViewController: NSViewController {
     var updateTimer: Timer?
     var settingsController: NSWindowController?
 
+    let player = Context()
+    
     let spotify = SBApplication(bundleIdentifier: "com.spotify.client")! as SpotifyApplication
 
     @IBOutlet weak var coverImage: NSImageView!
@@ -212,15 +214,15 @@ class PlayerPopoverViewController: NSViewController {
     // IBActions for the player-popover
 
     @IBAction func playPause(_ sender: Any) {
-        spotify.playpause!()
+        player.playPause()
     }
 
     @IBAction func volumeSlider(_ sender: NSSlider) {
-        spotify.setSoundVolume!(sender.integerValue)
+        player.setVolume(value: sender.integerValue)
     }
 
     @IBAction func next(_ sender: NSButton) {
-        spotify.nextTrack!()
+        player.nextTrack()
         if UserDefaults.standard.integer(forKey: "trackInfoDelay") != 0 {
             mouseOverOn()
             DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() +
@@ -231,15 +233,15 @@ class PlayerPopoverViewController: NSViewController {
     }
 
     @IBAction func previous(_ sender: NSButton) {
-        spotify.previousTrack!()
+        player.previousTrack()
     }
 
     @IBAction func repeats(_ sender: NSButtonCell) {
-        spotify.setRepeating!(Bool(truncating: sender.intValue as NSNumber))
+        player.setRepeating(value: Bool(truncating: sender.intValue as NSNumber))
     }
 
     @IBAction func shuffle(_ sender: NSButtonCell) {
-        spotify.setShuffling!(Bool(truncating: sender.intValue as NSNumber))
+        player.setShuffle(value: Bool(truncating: sender.intValue as NSNumber))
     }
 
     @IBAction func openSettings(_ sender: NSButton) {

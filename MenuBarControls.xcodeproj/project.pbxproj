@@ -8,10 +8,14 @@
 
 /* Begin PBXBuildFile section */
 		C09416F4BBBE3C0ABC431540 /* Pods_MenuBarControls.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F4A10F810616D467ADBE6EB0 /* Pods_MenuBarControls.framework */; };
+		D603F8B82020951A008DC225 /* Context.swift in Sources */ = {isa = PBXBuildFile; fileRef = D603F8B72020951A008DC225 /* Context.swift */; };
+		D603F8BC20209556008DC225 /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = D603F8BB20209556008DC225 /* Player.swift */; };
+		D603F8BE2021172A008DC225 /* Spotify.swift in Sources */ = {isa = PBXBuildFile; fileRef = D603F8BD2021172A008DC225 /* Spotify.swift */; };
+		D603F8C220211F42008DC225 /* Initial.swift in Sources */ = {isa = PBXBuildFile; fileRef = D603F8C120211F42008DC225 /* Initial.swift */; };
 		D620095F1F377EA300955303 /* SettingsWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D620095E1F377EA300955303 /* SettingsWindowController.swift */; };
 		D63A6D741F20D43800028B14 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D63A6D731F20D43800028B14 /* AppDelegate.swift */; };
 		D63A6D7B1F20D43800028B14 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D63A6D791F20D43800028B14 /* Main.storyboard */; };
-		D63A6D841F20D46900028B14 /* Spotify.swift in Sources */ = {isa = PBXBuildFile; fileRef = D63A6D821F20D46900028B14 /* Spotify.swift */; };
+		D63A6D841F20D46900028B14 /* SpotifyScripting.swift in Sources */ = {isa = PBXBuildFile; fileRef = D63A6D821F20D46900028B14 /* SpotifyScripting.swift */; };
 		D63A6D871F20D47600028B14 /* EventMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = D63A6D861F20D47600028B14 /* EventMonitor.swift */; };
 		D63A6D8E1F20D69900028B14 /* PlayerPopoverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D63A6D8D1F20D69900028B14 /* PlayerPopoverViewController.swift */; };
 		D63A6D911F20D6B900028B14 /* TextFieldFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D63A6D901F20D6B900028B14 /* TextFieldFormatter.swift */; };
@@ -42,11 +46,15 @@
 
 /* Begin PBXFileReference section */
 		2627885CA596E7F3F67674DC /* Pods-MenuBarControls.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MenuBarControls.release.xcconfig"; path = "Pods/Target Support Files/Pods-MenuBarControls/Pods-MenuBarControls.release.xcconfig"; sourceTree = "<group>"; };
+		D603F8B72020951A008DC225 /* Context.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Context.swift; sourceTree = "<group>"; };
+		D603F8BB20209556008DC225 /* Player.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
+		D603F8BD2021172A008DC225 /* Spotify.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Spotify.swift; path = States/Spotify.swift; sourceTree = "<group>"; };
+		D603F8C120211F42008DC225 /* Initial.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Initial.swift; path = States/Initial.swift; sourceTree = "<group>"; };
 		D620095E1F377EA300955303 /* SettingsWindowController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsWindowController.swift; sourceTree = "<group>"; };
 		D63A6D701F20D43800028B14 /* MenuBarControls.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MenuBarControls.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D63A6D731F20D43800028B14 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D63A6D7A1F20D43800028B14 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		D63A6D821F20D46900028B14 /* Spotify.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Spotify.swift; sourceTree = "<group>"; };
+		D63A6D821F20D46900028B14 /* SpotifyScripting.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpotifyScripting.swift; sourceTree = "<group>"; };
 		D63A6D861F20D47600028B14 /* EventMonitor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventMonitor.swift; sourceTree = "<group>"; };
 		D63A6D8D1F20D69900028B14 /* PlayerPopoverViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayerPopoverViewController.swift; sourceTree = "<group>"; };
 		D63A6D901F20D6B900028B14 /* TextFieldFormatter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextFieldFormatter.swift; sourceTree = "<group>"; };
@@ -95,6 +103,17 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		D603F8B42020946E008DC225 /* States */ = {
+			isa = PBXGroup;
+			children = (
+				D603F8BB20209556008DC225 /* Player.swift */,
+				D603F8B72020951A008DC225 /* Context.swift */,
+				D603F8BD2021172A008DC225 /* Spotify.swift */,
+				D603F8C120211F42008DC225 /* Initial.swift */,
+			);
+			name = States;
+			sourceTree = "<group>";
+		};
 		D63A6D671F20D43800028B14 = {
 			isa = PBXGroup;
 			children = (
@@ -122,6 +141,7 @@
 				D63A6D8B1F20D67200028B14 /* Model */,
 				D63A6D8C1F20D67C00028B14 /* View */,
 				D63A6D8F1F20D69E00028B14 /* Controller */,
+				D603F8B42020946E008DC225 /* States */,
 				D63A6D881F20D47A00028B14 /* Support */,
 			);
 			path = MenuBarControls;
@@ -143,7 +163,7 @@
 		D63A6D8B1F20D67200028B14 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				D63A6D821F20D46900028B14 /* Spotify.swift */,
+				D63A6D821F20D46900028B14 /* SpotifyScripting.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -378,11 +398,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D603F8BC20209556008DC225 /* Player.swift in Sources */,
 				D6EA0C381F37DE6800679D3C /* ImageMemory.swift in Sources */,
+				D603F8C220211F42008DC225 /* Initial.swift in Sources */,
 				D63A6D951F20DA2800028B14 /* SettingsTabControllers.swift in Sources */,
+				D603F8B82020951A008DC225 /* Context.swift in Sources */,
 				D63A6D871F20D47600028B14 /* EventMonitor.swift in Sources */,
+				D603F8BE2021172A008DC225 /* Spotify.swift in Sources */,
 				D63A6D911F20D6B900028B14 /* TextFieldFormatter.swift in Sources */,
-				D63A6D841F20D46900028B14 /* Spotify.swift in Sources */,
+				D63A6D841F20D46900028B14 /* SpotifyScripting.swift in Sources */,
 				D63A6D741F20D43800028B14 /* AppDelegate.swift in Sources */,
 				D620095F1F377EA300955303 /* SettingsWindowController.swift in Sources */,
 				D63A6D8E1F20D69900028B14 /* PlayerPopoverViewController.swift in Sources */,
