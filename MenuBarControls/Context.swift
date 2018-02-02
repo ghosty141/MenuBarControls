@@ -10,14 +10,10 @@ import Foundation
 
 class Context {
     
-    private var player: Player = Initial()
+    private var player: Player = Spotify()
     
     func playPause() {
         return player.playPause()
-    }
-    
-    func setVolume(value: Int) {
-        return player.setVolume(value: value)
     }
     
     func nextTrack() {
@@ -28,24 +24,60 @@ class Context {
         return player.previousTrack()
     }
     
-    func setRepeating(value: Bool) {
-        return player.setRepeat(value: value)
+    var volume: Int {
+        get {
+            return player.volume
+        }
+        set(value) {
+            player.volume = value
+        }
     }
     
-    func setShuffle(value: Bool) {
-        return player.setShuffle(value: value)
+    var repeating: Bool {
+        get {
+            return player.repeating
+        }
+        set(value) {
+            player.repeating = value
+        }
     }
     
-    func useInitial() {
-        return player = Initial();
+    var shuffling: Bool {
+        get {
+            return player.shuffling
+        }
+        set(value) {
+            player.shuffling = value
+        }
+    }
+    
+    var playerPosition: Double {
+        get {
+            return player.playerPosition
+        }
+        set(value) {
+            player.playerPosition = value
+        }
+    }
+    
+    func isRunning() -> Bool {
+        return player.isRunning()
+    }
+    
+    func getPlayerState() -> String {
+        return player.getPlayerState()
+    }
+    
+    func getCurrentCoverData() -> Data {
+        return player.getCurrentCoverData()
     }
     
     func useSpotify() {
-        return player = Spotify();
+        return player = Spotify()
     }
     
     func useiTunes() {
-        return player = iTunes();
+        return player = iTunes()
     }
 }
 

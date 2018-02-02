@@ -63,7 +63,7 @@ extension SBApplication: SpotifyApplication {}
     @objc optional var popularity: Int { get } // How popular is this track? 0-100
     @objc optional func id() -> String // The ID of the item.
     @objc optional var name: String { get } // The name of the track.
-    @objc optional var artworkUrl: String { get } // The URL of the track%apos;s album cover.
+    @objc optional var artworkUrl: String { get } // The URL of the track's album cover.
     @objc optional var artwork: NSImage { get } // The property is deprecated and will never be set. Use the 'artwork url' instead.
     @objc optional var albumArtist: String { get } // That album artist of the track.
     @objc optional var spotifyUrl: String { get } // The URL of the track.

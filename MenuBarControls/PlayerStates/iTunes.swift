@@ -11,33 +11,82 @@ import ScriptingBridge
 
 class iTunes: Player {
     
-    let iTunes = SBApplication(bundleIdentifier: "com.apple.iTunes")! as iTunesApplication
+    let iTunesPlayer = SBApplication(bundleIdentifier: "com.apple.iTunes")! as iTunesApplication
     
     func playPause() {
-        iTunes.playpause!()
-    }
-    
-    func setVolume(value: Int) {
-        iTunes.setSoundVolume!(value)
+        iTunesPlayer.playpause!()
     }
     
     func nextTrack() {
-        iTunes.nextTrack!()
+        iTunesPlayer.nextTrack!()
     }
     
     func previousTrack() {
-        iTunes.previousTrack!()
+        iTunesPlayer.previousTrack!()
     }
     
-    func setRepeat(value: Bool) {
-        if (value) {
-            iTunes.setSongRepeat!(iTunesERpt.one)
-        } else {
-            iTunes.setSongRepeat!(iTunesERpt.off)
+    var volume: Int {
+        get {
+            return iTunesPlayer.soundVolume!
+        }
+        set(value) {
+            iTunesPlayer.setSoundVolume!(value)
         }
     }
     
-    func setShuffle(value: Bool) {
-        iTunes.setShuffleEnabled!(value)
+    var repeating: Bool {
+        get {
+            if iTunesPlayer.songRepeat != .off {
+                return true
+            } else {
+                return false
+            }
+        }
+        set(value) {
+            iTunesPlayer.setSongRepeat!(value ? .one : .off)
+        }
+    }
+    
+    var shuffling: Bool {
+        get {
+            return iTunesPlayer.shuffleEnabled!
+        }
+        set(value) {
+            iTunesPlayer.setShuffleEnabled!(value)
+        }
+    }
+    
+    var playerPosition: Double {
+        get {
+            return iTunesPlayer.playerPosition!
+        }
+        set (value) {
+            iTunesPlayer.setPlayerPosition!(value)
+        }
+    }
+
+    func isRunning() -> Bool {
+        return iTunesPlayer.isRunning
+    }
+    
+    func getPlayerState() -> String {
+        switch iTunesPlayer.playerState {
+        case .playing?:
+            return "playing"
+        case .paused?:
+            return "paused"
+        case .stopped?:
+            return "stopped"
+        case .fastForwarding?:
+            return "fastforwarding"
+        case .rewinding?:
+            return "rewinding"
+        default:
+            return "null"
+        }
+    }
+    
+    func getCurrentCoverData() -> Data {
+        return Data()
     }
 }

@@ -55,21 +55,21 @@ class PlayerPopoverViewController: NSViewController {
     }
 
     @objc func checkAppStatus() {
-        if spotify.isRunning == false {
+        if player.isRunning() == false {
             appDel?.closePopover(self)
         } else {
-            if spotify.playerState == .playing {
+            if player.getPlayerState() == "playing" {
                 if lastURL != spotify.currentTrack?.artworkUrl {
                     updateCover()
                 }
                 if mouseoverIsActive {
                     trackTimeLabel.stringValue =
-"- \(formatTime(using: Int32(spotify.playerPosition!))) / \(formatTime(using: Int32((spotify.currentTrack?.duration)!/1000))) -"
+"- \(formatTime(using: Int32(player.playerPosition))) / \(formatTime(using: Int32((spotify.currentTrack?.duration)!/1000))) -"
                 }
                 updateShuffleButton()
                 updateRepeatButton()
                 updatePlayPauseButton()
-                volumeSlider.integerValue = spotify.soundVolume!
+                volumeSlider.integerValue = player.volume
             } else {
                 updatePlayPauseButton()
                 if appDel?.popover.isShown == false {
@@ -80,25 +80,25 @@ class PlayerPopoverViewController: NSViewController {
     }
 
     func updatePlayPauseButton() {
-        if playPauseButton.state == NSControl.StateValue.off && spotify.playerState == .playing {
+        if playPauseButton.state == NSControl.StateValue.off && player.getPlayerState() == "playing" {
             playPauseButton.state = NSControl.StateValue.on
-        } else if playPauseButton.state == NSControl.StateValue.on && spotify.playerState == .paused {
+        } else if playPauseButton.state == NSControl.StateValue.on && player.getPlayerState() == "paused" {
             playPauseButton.state = NSControl.StateValue.off
         }
     }
 
     func updateShuffleButton() {
-        if shuffleButton.state == NSControl.StateValue.off && spotify.shuffling == true {
+        if shuffleButton.state == NSControl.StateValue.off && player.shuffling == true {
             shuffleButton.state = NSControl.StateValue.on
-        } else if shuffleButton.state == NSControl.StateValue.on && spotify.shuffling == false {
+        } else if shuffleButton.state == NSControl.StateValue.on && player.shuffling == false {
             shuffleButton.state = NSControl.StateValue.off
         }
     }
 
     func updateRepeatButton() {
-        if repeatButton.state == NSControl.StateValue.off && spotify.repeating == true {
+        if repeatButton.state == NSControl.StateValue.off && player.repeating == true {
             repeatButton.state = NSControl.StateValue.on
-        } else if shuffleButton.state == NSControl.StateValue.on && spotify.repeating == false {
+        } else if shuffleButton.state == NSControl.StateValue.on && player.repeating == false {
             repeatButton.state = NSControl.StateValue.off
         }
     }
@@ -194,7 +194,7 @@ class PlayerPopoverViewController: NSViewController {
         album.stringValue = (spotify.currentTrack?.album)!
         artist.stringValue = (spotify.currentTrack?.artist)!
         trackTimeLabel.stringValue =
-"- \(formatTime(using: Int32(spotify.playerPosition!))) / \(formatTime(using: Int32((spotify.currentTrack?.duration)!/1000))) -"
+"- \(formatTime(using: Int32(player.playerPosition))) / \(formatTime(using: Int32((spotify.currentTrack?.duration)!/1000))) -"
 
         trackLabel.isHidden = !Bool(truncating: UserDefaults.standard.integer(forKey: "displayTrackTitle") as NSNumber)
         albumLabel.isHidden = !Bool(truncating: UserDefaults.standard.integer(forKey: "displayAlbumTitle") as NSNumber)
@@ -218,7 +218,7 @@ class PlayerPopoverViewController: NSViewController {
     }
 
     @IBAction func volumeSlider(_ sender: NSSlider) {
-        player.setVolume(value: sender.integerValue)
+        player.volume = sender.integerValue
     }
 
     @IBAction func next(_ sender: NSButton) {
@@ -237,11 +237,11 @@ class PlayerPopoverViewController: NSViewController {
     }
 
     @IBAction func repeats(_ sender: NSButtonCell) {
-        player.setRepeating(value: Bool(truncating: sender.intValue as NSNumber))
+        player.repeating = Bool(truncating: sender.intValue as NSNumber)
     }
 
     @IBAction func shuffle(_ sender: NSButtonCell) {
-        player.setShuffle(value: Bool(truncating: sender.intValue as NSNumber))
+        player.shuffling = Bool(truncating: sender.intValue as NSNumber)
     }
 
     @IBAction func openSettings(_ sender: NSButton) {
@@ -271,7 +271,7 @@ class PlayerPopoverViewController: NSViewController {
         updateShuffleButton()
         updateRepeatButton()
         updateCover()
-        volumeSlider.integerValue = spotify.soundVolume!
+        volumeSlider.integerValue = player.volume
 
         let trackingArea = NSTrackingArea(rect: coverImage.bounds,
                                           options: [NSTrackingArea.Options.mouseEnteredAndExited,

@@ -11,7 +11,6 @@
 		D603F8B82020951A008DC225 /* Context.swift in Sources */ = {isa = PBXBuildFile; fileRef = D603F8B72020951A008DC225 /* Context.swift */; };
 		D603F8BC20209556008DC225 /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = D603F8BB20209556008DC225 /* Player.swift */; };
 		D603F8BE2021172A008DC225 /* Spotify.swift in Sources */ = {isa = PBXBuildFile; fileRef = D603F8BD2021172A008DC225 /* Spotify.swift */; };
-		D603F8C220211F42008DC225 /* Initial.swift in Sources */ = {isa = PBXBuildFile; fileRef = D603F8C120211F42008DC225 /* Initial.swift */; };
 		D603F8C420239C1B008DC225 /* iTunesScripting.swift in Sources */ = {isa = PBXBuildFile; fileRef = D603F8C320239C1B008DC225 /* iTunesScripting.swift */; };
 		D603F8C620239CF8008DC225 /* iTunes.swift in Sources */ = {isa = PBXBuildFile; fileRef = D603F8C520239CF8008DC225 /* iTunes.swift */; };
 		D620095F1F377EA300955303 /* SettingsWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D620095E1F377EA300955303 /* SettingsWindowController.swift */; };
@@ -51,7 +50,6 @@
 		D603F8B72020951A008DC225 /* Context.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Context.swift; sourceTree = "<group>"; };
 		D603F8BB20209556008DC225 /* Player.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
 		D603F8BD2021172A008DC225 /* Spotify.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Spotify.swift; sourceTree = "<group>"; };
-		D603F8C120211F42008DC225 /* Initial.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Initial.swift; sourceTree = "<group>"; };
 		D603F8C320239C1B008DC225 /* iTunesScripting.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = iTunesScripting.swift; sourceTree = "<group>"; };
 		D603F8C520239CF8008DC225 /* iTunes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iTunes.swift; sourceTree = "<group>"; };
 		D620095E1F377EA300955303 /* SettingsWindowController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsWindowController.swift; sourceTree = "<group>"; };
@@ -121,7 +119,6 @@
 			children = (
 				D603F8BD2021172A008DC225 /* Spotify.swift */,
 				D603F8C520239CF8008DC225 /* iTunes.swift */,
-				D603F8C120211F42008DC225 /* Initial.swift */,
 			);
 			path = PlayerStates;
 			sourceTree = "<group>";
@@ -414,7 +411,6 @@
 			files = (
 				D603F8BC20209556008DC225 /* Player.swift in Sources */,
 				D6EA0C381F37DE6800679D3C /* ImageMemory.swift in Sources */,
-				D603F8C220211F42008DC225 /* Initial.swift in Sources */,
 				D63A6D951F20DA2800028B14 /* SettingsTabControllers.swift in Sources */,
 				D603F8B82020951A008DC225 /* Context.swift in Sources */,
 				D63A6D871F20D47600028B14 /* EventMonitor.swift in Sources */,

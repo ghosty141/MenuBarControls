@@ -10,9 +10,15 @@ import Foundation
 
 protocol Player {
     func playPause()
-    func setVolume(value: Int)
     func nextTrack()
     func previousTrack()
-    func setRepeat(value: Bool)
-    func setShuffle(value: Bool)
+
+    func isRunning() -> Bool
+    func getPlayerState() -> String
+    func getCurrentCoverData() -> Data
+    
+    var volume: Int { get set }
+    var repeating: Bool { get set }
+    var shuffling: Bool { get set }
+    var playerPosition: Double { get set }
 }

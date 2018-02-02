@@ -11,29 +11,74 @@ import ScriptingBridge
 
 class Spotify: Player {
     
-    let spotify = SBApplication(bundleIdentifier: "com.spotify.client")! as SpotifyApplication
+    let spotifyPlayer = SBApplication(bundleIdentifier: "com.spotify.client")! as SpotifyApplication
     
     func playPause() {
-        spotify.playpause!()
-    }
-    
-    func setVolume(value: Int) {
-        spotify.setSoundVolume!(value)
+        spotifyPlayer.playpause!()
     }
     
     func nextTrack() {
-        spotify.nextTrack!()
+        spotifyPlayer.nextTrack!()
     }
     
     func previousTrack() {
-        spotify.previousTrack!()
+        spotifyPlayer.previousTrack!()
     }
     
-    func setRepeat(value: Bool) {
-        spotify.setRepeating!(value)
+    var volume: Int {
+        get {
+            return spotifyPlayer.soundVolume!
+        }
+        set(value) {
+            spotifyPlayer.setSoundVolume!(value)
+        }
     }
     
-    func setShuffle(value: Bool) {
-        spotify.setShuffling!(value)
+    var repeating: Bool {
+        get {
+            return spotifyPlayer.repeating!
+        }
+        set(value) {
+            spotifyPlayer.setRepeating!(value)
+        }
+    }
+
+    var shuffling: Bool {
+        get {
+            return spotifyPlayer.shuffling!
+        }
+        set(value) {
+            spotifyPlayer.setShuffling!(value)
+        }
+    }
+    
+    var playerPosition: Double {
+        get {
+            return spotifyPlayer.playerPosition!
+        }
+        set (value) {
+            spotifyPlayer.setPlayerPosition!(value)
+        }
+    }
+    
+    func isRunning() -> Bool {
+        return spotifyPlayer.isRunning
+    }
+    
+    func getPlayerState() -> String {
+        switch spotifyPlayer.playerState {
+        case .playing?:
+            return "playing"
+        case .paused?:
+            return "paused"
+        case .stopped?:
+            return "stopped"
+        default:
+            return "null"
+        }
+    }
+    
+    func getCurrentCoverData() -> Data {
+        return Data()
     }
 }
