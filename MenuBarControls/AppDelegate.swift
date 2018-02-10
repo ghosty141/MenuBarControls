@@ -32,6 +32,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSUserNotificationCenterDele
             UserDefaults.standard.set(0, forKey: "displayAlbumTitle")
             UserDefaults.standard.set(0, forKey: "displayArtistName")
             UserDefaults.standard.set(0, forKey: "displayTrackTime")
+            UserDefaults.standard.set(0, forKey: "displayPlayerSelection")
         }
 
         NSUserNotificationCenter.default.delegate = self

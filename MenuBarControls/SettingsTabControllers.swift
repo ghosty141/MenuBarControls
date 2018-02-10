@@ -49,7 +49,8 @@ class CoverArt: NSViewController {
     @IBOutlet weak var displayAlbumTitleOutlet: NSButton!
     @IBOutlet weak var displayArtistNameOutlet: NSButton!
     @IBOutlet weak var displayTrackTimeOutlet: NSButton!
-
+    @IBOutlet weak var displayPlayerSelection: NSButton!
+    
     @IBAction func blurStepper(_ sender: NSStepperCell) {
         blurValue.integerValue = sender.integerValue
         UserDefaults.standard.set(sender.integerValue, forKey: "blurValue")
@@ -106,6 +107,9 @@ class CoverArt: NSViewController {
         UserDefaults.standard.set(sender.state, forKey: "displayTrackTime")
     }
 
+    @IBAction func displayPlayerSelection(_ sender: NSButton) {
+        UserDefaults.standard.set(sender.state, forKey: "displayPlayerSelection")
+    }
     override func viewWillAppear() {
         super.viewWillAppear()
 

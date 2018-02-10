@@ -16,12 +16,12 @@
 		D603F8DE2026304D008DC225 /* CurrentTrack.swift in Sources */ = {isa = PBXBuildFile; fileRef = D603F8DD2026304D008DC225 /* CurrentTrack.swift */; };
 		D620095F1F377EA300955303 /* SettingsWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D620095E1F377EA300955303 /* SettingsWindowController.swift */; };
 		D63A6D741F20D43800028B14 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D63A6D731F20D43800028B14 /* AppDelegate.swift */; };
-		D63A6D7B1F20D43800028B14 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D63A6D791F20D43800028B14 /* Main.storyboard */; };
 		D63A6D841F20D46900028B14 /* SpotifyScripting.swift in Sources */ = {isa = PBXBuildFile; fileRef = D63A6D821F20D46900028B14 /* SpotifyScripting.swift */; };
 		D63A6D871F20D47600028B14 /* EventMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = D63A6D861F20D47600028B14 /* EventMonitor.swift */; };
 		D63A6D8E1F20D69900028B14 /* PlayerPopoverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D63A6D8D1F20D69900028B14 /* PlayerPopoverViewController.swift */; };
 		D63A6D911F20D6B900028B14 /* TextFieldFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D63A6D901F20D6B900028B14 /* TextFieldFormatter.swift */; };
 		D63A6D951F20DA2800028B14 /* SettingsTabControllers.swift in Sources */ = {isa = PBXBuildFile; fileRef = D63A6D941F20DA2800028B14 /* SettingsTabControllers.swift */; };
+		D6411AD4202F8B11004B4D24 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D6411AD3202F8B11004B4D24 /* Main.storyboard */; };
 		D681140E1F29B5B7007070E0 /* dsa_pub.pem in Resources */ = {isa = PBXBuildFile; fileRef = D681140D1F29B5B7007070E0 /* dsa_pub.pem */; };
 		D6A712621F3625780074FBBF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6A712611F3625780074FBBF /* AppDelegate.swift */; };
 		D6A712661F3625780074FBBF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D6A712651F3625780074FBBF /* Assets.xcassets */; };
@@ -57,13 +57,13 @@
 		D620095E1F377EA300955303 /* SettingsWindowController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsWindowController.swift; sourceTree = "<group>"; };
 		D63A6D701F20D43800028B14 /* MenuBarControls.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MenuBarControls.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D63A6D731F20D43800028B14 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		D63A6D7A1F20D43800028B14 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		D63A6D821F20D46900028B14 /* SpotifyScripting.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpotifyScripting.swift; sourceTree = "<group>"; };
 		D63A6D861F20D47600028B14 /* EventMonitor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventMonitor.swift; sourceTree = "<group>"; };
 		D63A6D8D1F20D69900028B14 /* PlayerPopoverViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayerPopoverViewController.swift; sourceTree = "<group>"; };
 		D63A6D901F20D6B900028B14 /* TextFieldFormatter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextFieldFormatter.swift; sourceTree = "<group>"; };
 		D63A6D921F20D8D100028B14 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D63A6D941F20DA2800028B14 /* SettingsTabControllers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsTabControllers.swift; sourceTree = "<group>"; };
+		D6411AD3202F8B11004B4D24 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		D681140D1F29B5B7007070E0 /* dsa_pub.pem */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = dsa_pub.pem; sourceTree = "<group>"; };
 		D6A7125F1F3625780074FBBF /* MBCHelper.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MBCHelper.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D6A712611F3625780074FBBF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -185,7 +185,7 @@
 		D63A6D8C1F20D67C00028B14 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				D63A6D791F20D43800028B14 /* Main.storyboard */,
+				D6411AD3202F8B11004B4D24 /* Main.storyboard */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -331,7 +331,7 @@
 			files = (
 				D681140E1F29B5B7007070E0 /* dsa_pub.pem in Resources */,
 				D6AE6A501F393E1300A85AB5 /* Assets.xcassets in Resources */,
-				D63A6D7B1F20D43800028B14 /* Main.storyboard in Resources */,
+				D6411AD4202F8B11004B4D24 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -440,14 +440,6 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		D63A6D791F20D43800028B14 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				D63A6D7A1F20D43800028B14 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		D6A712671F3625780074FBBF /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (

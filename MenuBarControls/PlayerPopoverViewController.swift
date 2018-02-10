@@ -35,7 +35,8 @@ class PlayerPopoverViewController: NSViewController {
     @IBOutlet weak var track: NSTextFieldCell!
     @IBOutlet weak var album: NSTextFieldCell!
     @IBOutlet weak var artist: NSTextFieldCell!
-
+    @IBOutlet weak var playerSelection: NSSegmentedControl!
+    
     private func startTimer() {
         if updateTimer == nil {
             updateTimer = Timer.scheduledTimer(
@@ -64,7 +65,7 @@ class PlayerPopoverViewController: NSViewController {
                 }
                 if mouseoverIsActive {
                     trackTimeLabel.stringValue =
-"- \(formatTime(using: Int32(player.playerPosition))) / \(formatTime(using: Int32((spotify.currentTrack?.duration)!/1000))) -"
+"- \(formatTime(using: Int32(player.playerPosition))) / \(formatTime(using: Int32((player.currentTrack.duration)/1000))) -"
                 }
                 updateShuffleButton()
                 updateRepeatButton()
@@ -183,16 +184,17 @@ class PlayerPopoverViewController: NSViewController {
     func mouseOverOn() {
         mouseoverIsActive = true
         cover.image = imageGroup.processed
-        track.stringValue = (spotify.currentTrack?.name)!
-        album.stringValue = (spotify.currentTrack?.album)!
-        artist.stringValue = (spotify.currentTrack?.artist)!
+        track.stringValue = player.currentTrack.name
+        album.stringValue = player.currentTrack.album
+        artist.stringValue = player.currentTrack.artist
         trackTimeLabel.stringValue =
-"- \(formatTime(using: Int32(player.playerPosition))) / \(formatTime(using: Int32((spotify.currentTrack?.duration)!/1000))) -"
+"- \(formatTime(using: Int32(player.playerPosition))) / \(formatTime(using: Int32((player.currentTrack.duration)/1000))) -"
 
         trackLabel.isHidden = !Bool(truncating: UserDefaults.standard.integer(forKey: "displayTrackTitle") as NSNumber)
         albumLabel.isHidden = !Bool(truncating: UserDefaults.standard.integer(forKey: "displayAlbumTitle") as NSNumber)
         artistLabel.isHidden = !Bool(truncating: UserDefaults.standard.integer(forKey: "displayArtistName") as NSNumber)
         trackTimeLabel.isHidden = !Bool(truncating: UserDefaults.standard.integer(forKey: "displayTrackTime") as NSNumber)
+        playerSelection.isHidden = !Bool(truncating: UserDefaults.standard.integer(forKey: "displayPlayerSelection") as NSNumber)
     }
 
     func mouseOverOff() {
@@ -236,7 +238,16 @@ class PlayerPopoverViewController: NSViewController {
     @IBAction func shuffle(_ sender: NSButtonCell) {
         player.shuffling = Bool(truncating: sender.intValue as NSNumber)
     }
-
+    
+    @IBAction func playerSelection(_ sender: NSSegmentedControl) {
+        if sender.intValue == 0 {
+            print(sender.intValue)
+            player.useiTunes()
+        } else if sender.intValue == 1 {
+            player.useSpotify()
+        }
+    }
+    
     @IBAction func openSettings(_ sender: NSButton) {
         settingsController = NSStoryboard(
             name: NSStoryboard.Name(rawValue: "Main"),

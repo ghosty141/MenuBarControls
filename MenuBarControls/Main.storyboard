@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="13178.6" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="13178.6"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="13771"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
         <capability name="stacking Non-gravity area distributions on NSStackView" minToolsVersion="7.0" minSystemVersion="10.11"/>
     </dependencies>
@@ -996,10 +996,10 @@
                                 </connections>
                             </button>
                             <stackView distribution="fill" orientation="vertical" alignment="leading" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9TF-kP-onz" userLabel="Display Options">
-                                <rect key="frame" x="10" y="74" width="219" height="80"/>
+                                <rect key="frame" x="10" y="52" width="214" height="102"/>
                                 <subviews>
                                     <button translatesAutoresizingMaskIntoConstraints="NO" id="pDY-Cv-hYd">
-                                        <rect key="frame" x="-2" y="64" width="134" height="18"/>
+                                        <rect key="frame" x="-2" y="86" width="133" height="18"/>
                                         <buttonCell key="cell" type="check" title="Display Track Title" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="72x-gI-V6H">
                                             <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                             <font key="font" metaFont="system"/>
@@ -1009,7 +1009,7 @@
                                         </connections>
                                     </button>
                                     <button translatesAutoresizingMaskIntoConstraints="NO" id="el0-Ix-FAc">
-                                        <rect key="frame" x="-2" y="42" width="139" height="18"/>
+                                        <rect key="frame" x="-2" y="64" width="139" height="18"/>
                                         <buttonCell key="cell" type="check" title="Display Album Title" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="axq-Tq-hDW">
                                             <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                             <font key="font" metaFont="system"/>
@@ -1019,7 +1019,7 @@
                                         </connections>
                                     </button>
                                     <button translatesAutoresizingMaskIntoConstraints="NO" id="Iu0-mI-ofx">
-                                        <rect key="frame" x="-2" y="20" width="142" height="18"/>
+                                        <rect key="frame" x="-2" y="42" width="142" height="18"/>
                                         <buttonCell key="cell" type="check" title="Display Artist Name" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="d2z-PM-IOX">
                                             <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                             <font key="font" metaFont="system"/>
@@ -1029,13 +1029,23 @@
                                         </connections>
                                     </button>
                                     <button translatesAutoresizingMaskIntoConstraints="NO" id="emK-dZ-1Xe">
-                                        <rect key="frame" x="-2" y="-2" width="223" height="18"/>
-                                        <buttonCell key="cell" type="check" title="Display Track Trime and Duration" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="rYh-be-rt6">
+                                        <rect key="frame" x="-2" y="20" width="218" height="18"/>
+                                        <buttonCell key="cell" type="check" title="Display Track Time and Duration" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="rYh-be-rt6">
                                             <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                             <font key="font" metaFont="system"/>
                                         </buttonCell>
                                         <connections>
                                             <action selector="displayTrackTimeButton:" target="XfG-lQ-9wD" id="MKK-A7-sVP"/>
+                                        </connections>
+                                    </button>
+                                    <button translatesAutoresizingMaskIntoConstraints="NO" id="Q8p-H9-wlZ">
+                                        <rect key="frame" x="-2" y="-2" width="167" height="18"/>
+                                        <buttonCell key="cell" type="check" title="Display Player Selection" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="D1C-pw-OuS">
+                                            <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                            <font key="font" metaFont="system"/>
+                                        </buttonCell>
+                                        <connections>
+                                            <action selector="displayPlayerSelection:" target="XfG-lQ-9wD" id="c5M-eg-3oM"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -1044,8 +1054,10 @@
                                     <integer value="1000"/>
                                     <integer value="1000"/>
                                     <integer value="1000"/>
+                                    <integer value="1000"/>
                                 </visibilityPriorities>
                                 <customSpacing>
+                                    <real value="3.4028234663852886e+38"/>
                                     <real value="3.4028234663852886e+38"/>
                                     <real value="3.4028234663852886e+38"/>
                                     <real value="3.4028234663852886e+38"/>
@@ -1077,6 +1089,7 @@
                         <outlet property="brightnessValueStepperOutlet" destination="twU-yU-2d2" id="2x7-Ah-I0Z"/>
                         <outlet property="displayAlbumTitleOutlet" destination="el0-Ix-FAc" id="Xcf-xD-1ah"/>
                         <outlet property="displayArtistNameOutlet" destination="Iu0-mI-ofx" id="uEz-qc-pny"/>
+                        <outlet property="displayPlayerSelection" destination="Q8p-H9-wlZ" id="To3-OY-wOw"/>
                         <outlet property="displayTrackTimeOutlet" destination="emK-dZ-1Xe" id="rJg-EQ-DKl"/>
                         <outlet property="displayTrackTitleOutlet" destination="pDY-Cv-hYd" id="uiP-JA-8fj"/>
                         <outlet property="trackInfoDelayValue" destination="Ilk-Gv-WBP" id="vt6-qF-3py"/>
@@ -1231,8 +1244,8 @@
                                 </buttonCell>
                             </button>
                             <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ckv-MQ-Znm" userLabel="Settings">
-                                <rect key="frame" x="162" y="48" width="11" height="11"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                                <rect key="frame" x="162" y="49" width="11" height="11"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="settings" imagePosition="only" alignment="center" imageScaling="proportionallyUpOrDown" inset="2" id="nkS-ze-FDl">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
@@ -1243,17 +1256,8 @@
                             </button>
                             <textField hidden="YES" horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" textCompletion="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7oY-Sn-hrb" userLabel="Track">
                                 <rect key="frame" x="-2" y="163" width="181" height="17"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <textFieldCell key="cell" lineBreakMode="truncatingTail" allowsUndo="NO" alignment="center" placeholderString="Track Name" usesSingleLineMode="YES" id="Ocb-jm-0Wp" userLabel="Track">
-                                    <font key="font" size="13" name="Avenir-Light"/>
-                                    <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                    <color key="backgroundColor" white="1" alpha="0.0" colorSpace="calibratedWhite"/>
-                                </textFieldCell>
-                            </textField>
-                            <textField hidden="YES" horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" textCompletion="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2PE-PT-ksH" userLabel="Artist">
-                                <rect key="frame" x="-2" y="129" width="181" height="17"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
-                                <textFieldCell key="cell" lineBreakMode="truncatingTail" allowsUndo="NO" alignment="center" placeholderString="Artist" usesSingleLineMode="YES" id="63R-JV-cjb" userLabel="Artist">
                                     <font key="font" size="13" name="Avenir-Light"/>
                                     <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <color key="backgroundColor" white="1" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -1261,8 +1265,17 @@
                             </textField>
                             <textField hidden="YES" horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" textCompletion="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7g9-nR-y6l" userLabel="Album">
                                 <rect key="frame" x="-2" y="146" width="181" height="17"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <textFieldCell key="cell" lineBreakMode="truncatingTail" allowsUndo="NO" alignment="center" placeholderString="Album" usesSingleLineMode="YES" id="sEo-5u-Apt" userLabel="Album">
+                                    <font key="font" size="13" name="Avenir-Light"/>
+                                    <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <color key="backgroundColor" white="1" alpha="0.0" colorSpace="calibratedWhite"/>
+                                </textFieldCell>
+                            </textField>
+                            <textField hidden="YES" horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" textCompletion="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2PE-PT-ksH" userLabel="Artist">
+                                <rect key="frame" x="-2" y="129" width="181" height="17"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <textFieldCell key="cell" lineBreakMode="truncatingTail" allowsUndo="NO" alignment="center" placeholderString="Artist" usesSingleLineMode="YES" id="63R-JV-cjb" userLabel="Artist">
                                     <font key="font" size="13" name="Avenir-Light"/>
                                     <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <color key="backgroundColor" white="1" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -1270,13 +1283,27 @@
                             </textField>
                             <textField hidden="YES" horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" textCompletion="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gCe-bZ-uBH" userLabel="Track Time">
                                 <rect key="frame" x="-2" y="78" width="181" height="23"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <textFieldCell key="cell" lineBreakMode="truncatingTail" allowsUndo="NO" alignment="center" placeholderString="Track Time" usesSingleLineMode="YES" id="Z83-by-XCe" userLabel="Track Time">
                                     <font key="font" size="13" name="Avenir-Light"/>
                                     <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <color key="backgroundColor" white="1" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </textFieldCell>
                             </textField>
+                            <segmentedControl hidden="YES" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ymH-R9-9D1">
+                                <rect key="frame" x="44" y="203" width="88" height="16"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <segmentedCell key="cell" controlSize="mini" borderStyle="border" alignment="left" style="texturedSquare" trackingMode="selectOne" id="Al1-S4-cHH">
+                                    <font key="font" metaFont="miniSystem"/>
+                                    <segments>
+                                        <segment label="iTunes"/>
+                                        <segment label="Spotify" tag="1"/>
+                                    </segments>
+                                </segmentedCell>
+                                <connections>
+                                    <action selector="playerSelection:" target="hq0-jV-W65" id="aeD-1o-oMa"/>
+                                </connections>
+                            </segmentedControl>
                         </subviews>
                     </customView>
                     <connections>
@@ -1287,6 +1314,7 @@
                         <outlet property="cover" destination="v8y-lv-dVo" id="IPu-f2-kPz"/>
                         <outlet property="coverImage" destination="cfH-yt-zgs" id="J4Q-6x-1nb"/>
                         <outlet property="playPauseButton" destination="XQW-py-KXE" id="xds-an-NtK"/>
+                        <outlet property="playerSelection" destination="ymH-R9-9D1" id="ua1-cO-UfT"/>
                         <outlet property="repeatButton" destination="226-NX-QFP" id="rpn-Bg-Zv2"/>
                         <outlet property="shuffleButton" destination="Doi-8x-GI4" id="USn-XP-xmI"/>
                         <outlet property="track" destination="Ocb-jm-0Wp" id="3Vs-nF-7cV"/>
@@ -1297,7 +1325,7 @@
                 </viewController>
                 <customObject id="SWv-Yu-7bG" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="471" y="333"/>
+            <point key="canvasLocation" x="470.5" y="332.5"/>
         </scene>
     </scenes>
     <resources>
