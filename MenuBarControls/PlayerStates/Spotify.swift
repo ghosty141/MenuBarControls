@@ -9,9 +9,11 @@
 import Foundation
 import ScriptingBridge
 
+let spotifyPlayer = SBApplication(bundleIdentifier: "com.spotify.client")! as SpotifyApplication
+
+
 class Spotify: Player {
-    
-    let spotifyPlayer = SBApplication(bundleIdentifier: "com.spotify.client")! as SpotifyApplication
+    var currentTrack: CurrentTrack = SpotifyCurrentTrack()
     
     func playPause() {
         spotifyPlayer.playpause!()
@@ -77,8 +79,41 @@ class Spotify: Player {
             return "null"
         }
     }
+}
+
+class SpotifyCurrentTrack: CurrentTrack {
+ 
+    var name: String {
+        return spotifyPlayer.currentTrack!.name!
+    }
     
-    func getCurrentCoverData() -> Data {
-        return Data()
+    var artist: String {
+        return spotifyPlayer.currentTrack!.artist!
+    }
+    
+    var album: String {
+        return spotifyPlayer.currentTrack!.album!
+    }
+    
+    var albumArtist: String {
+        return spotifyPlayer.currentTrack!.albumArtist!
+    }
+    
+    var duration: Double {
+        return Double(spotifyPlayer.currentTrack!.duration!)
+    }
+    
+    var tracknumber: Int {
+        return spotifyPlayer.currentTrack!.trackNumber!
+    }
+    
+    var artwork: Data {
+        let dataURL = spotifyPlayer.currentTrack?.artworkUrl ?? ""
+        let artworkdata = try? Data(contentsOf: URL(string: dataURL)!)
+        return artworkdata ?? Data()
+    }
+    
+    var discnumber: Int {
+        return spotifyPlayer.currentTrack!.discNumber!
     }
 }

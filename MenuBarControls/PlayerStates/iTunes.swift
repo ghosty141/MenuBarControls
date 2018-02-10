@@ -9,9 +9,10 @@
 import Foundation
 import ScriptingBridge
 
+let iTunesPlayer = SBApplication(bundleIdentifier: "com.apple.iTunes")! as iTunesApplication
+
 class iTunes: Player {
-    
-    let iTunesPlayer = SBApplication(bundleIdentifier: "com.apple.iTunes")! as iTunesApplication
+    var currentTrack: CurrentTrack = iTunesCurrentTrack()
     
     func playPause() {
         iTunesPlayer.playpause!()
@@ -85,8 +86,39 @@ class iTunes: Player {
             return "null"
         }
     }
+}
+
+class iTunesCurrentTrack: CurrentTrack {
+
+    var name: String {
+        return iTunesPlayer.currentTrack!.name!
+    }
     
-    func getCurrentCoverData() -> Data {
-        return Data()
+    var artist: String {
+        return iTunesPlayer.currentTrack!.artist!
+    }
+    
+    var album: String {
+        return iTunesPlayer.currentTrack!.album!
+    }
+    
+    var albumArtist: String {
+        return iTunesPlayer.currentTrack!.albumArtist!
+    }
+    
+    var duration: Double {
+        return iTunesPlayer.currentTrack!.duration!
+    }
+    
+    var tracknumber: Int {
+        return iTunesPlayer.currentTrack!.trackNumber!
+    }
+    
+    var artwork: Data {
+        return Data(base64Encoded: "R0lGODlhAQABAIAAAAUEBAAAACwAAAAAAQABAAACAkQBADs=")!
+    }
+    
+    var discnumber: Int {
+        return iTunesPlayer.currentTrack!.discNumber!
     }
 }

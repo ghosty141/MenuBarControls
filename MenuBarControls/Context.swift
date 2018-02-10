@@ -8,9 +8,10 @@
 
 import Foundation
 
+var player: Player = iTunes()
+
 class Context {
-    
-    private var player: Player = Spotify()
+    var currentTrack = ContextCurrentTrack()
     
     func playPause() {
         return player.playPause()
@@ -68,10 +69,6 @@ class Context {
         return player.getPlayerState()
     }
     
-    func getCurrentCoverData() -> Data {
-        return player.getCurrentCoverData()
-    }
-    
     func useSpotify() {
         return player = Spotify()
     }
@@ -81,3 +78,37 @@ class Context {
     }
 }
 
+class ContextCurrentTrack {
+    
+    var name: String {
+        return player.currentTrack.name
+    }
+    
+    var artist: String {
+        return player.currentTrack.artist
+    }
+    
+    var album: String {
+        return player.currentTrack.album
+    }
+    
+    var albumArtist: String {
+        return player.currentTrack.albumArtist
+    }
+    
+    var duration: Double {
+        return player.currentTrack.duration
+    }
+    
+    var tracknumber: Int {
+        return player.currentTrack.tracknumber
+    }
+    
+    var artwork: Data {
+        return player.currentTrack.artwork
+    }
+    
+    var discnumber: Int {
+        return player.currentTrack.discnumber
+    }
+}

@@ -104,16 +104,9 @@ class PlayerPopoverViewController: NSViewController {
     }
 
     private func updateCover() {
-        let dataURL = spotify.currentTrack?.artworkUrl ?? lastURL!
-        
-        let urlContent = try? Data(contentsOf: URL(string: dataURL)!)
-        if let coverArt = urlContent {
-            imageGroup.original = NSImage(data: coverArt)
-            imageGroup.processed = blurImage(imageGroup.original!)
-            cover.image = imageGroup.original
-        } else {
-            cover.image = NSImage(named: NSImage.Name(rawValue: "CoverError"))
-        }
+        imageGroup.original = NSImage(data: player.currentTrack.artwork)
+        imageGroup.processed = blurImage(imageGroup.original!)
+        cover.image = imageGroup.original
         if mouseoverIsActive {
             mouseOverOn()
         }

@@ -15,10 +15,11 @@ protocol Player {
 
     func isRunning() -> Bool
     func getPlayerState() -> String
-    func getCurrentCoverData() -> Data
     
     var volume: Int { get set }
     var repeating: Bool { get set }
     var shuffling: Bool { get set }
     var playerPosition: Double { get set }
+    
+    var currentTrack: CurrentTrack { get set }
 }
