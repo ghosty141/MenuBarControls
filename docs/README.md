@@ -6,6 +6,11 @@ A simple app that lets you control Spotify from the menubar. Completely written 
   <img width="381" height="340" src="https://user-images.githubusercontent.com/17564201/28537113-174007a2-70aa-11e7-9412-1e37894b273e.png">
 </p>
 
+
+## News
+
+Because of multiple problems I will not make any changes to this project going forward. Currently the app somehow can't communicate with Spotify using AppleScript (ScriptingBridge) when compiled under the latest XCode and Mojave builds which means development is practically impossible for me. If anybody can help be sure to send me an E-Mail, otherwise head over to the other alternatives like SpotMenu or BeardedSpice. 
+
 ## Installing
 
 Just download the App from [here](https://github.com/Ghosty141/MenuBarControls/releases/latest) and place it into your Applications Folder. Done!
